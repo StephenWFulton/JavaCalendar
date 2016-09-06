@@ -1,2 +1,20 @@
- 
+Calendar and Date classes 
 https://www.ntu.edu.sg/home/ehchua/programming/java/DateTimeCalendar.html
+
+Pull recent  Git Changes
+http://stackoverflow.com/questions/6335681/git-how-do-i-get-the-latest-version-of-my-code
+Case 2: Care about local changes
+
+    Solution 1: no conflicts with new-online version
+
+    git fetch origin
+    git status
+
+    will report something like:
+
+    Your branch is behind 'origin/master' by 1 commit, and can be fast-forwarded.
+
+    Then get the latest version
+
+    git pull
+    
