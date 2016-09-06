@@ -1,0 +1,5 @@
+*****************Current_Open_Settings********************
+Current_Date: "September 16 2016"
+Current_View: "Day"
+
+****************Saved_Events****************************
