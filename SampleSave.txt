@@ -1,5 +1,6 @@
 *****************Current_Open_Settings********************
 Current_Date: "September 16 2016"
 Current_View: "Day"
-Members: Ryan Niday
+First_Date: "August 1 2016"
+Last_Date: "May 31, 2017"
 ****************Saved_Events****************************
