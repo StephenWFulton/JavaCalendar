@@ -18,3 +18,4 @@ Case 2: Care about local changes
 
     git pull
     
+.gitignore adapted from: http://www.bmchild.com/2012/06/git-ignore-for-java-eclipse-project.html
