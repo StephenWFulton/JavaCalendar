@@ -5,10 +5,12 @@ public class CalFile{
 	public static void main(String[] args)throws IOException{
 		Scanner kb = new Scanner(System.in);
 		String str = "";
-		int choice = 0;
+		int choice = 1000;
 		int date = 0;
 		boolean result = false;
-		System.out.println("Initialize (1), Read (2), Write (3) :");
+		while(choice != 0){
+		System.out.println("-----------------------------------------------------------");
+		System.out.println("1.Initialize, 2.Read,    3.Write,    4.getDate, 5.setDate, \n6.getView,    7.setView, 8.getFirst, 9.getLast, 0.quit:");
 		choice = kb.nextInt();
 		if(choice == 1){
 			result = CalInit();
@@ -30,6 +32,38 @@ public class CalFile{
 			if(result == true){System.out.println("Success");}
 			else{System.out.println("Failure");}
 		}
+		if(choice == 4){
+			date = getDate();
+			System.out.println("Current date: " + date);
+		}
+		if(choice == 5){
+			System.out.print("Enter new current date: ");
+			date = kb.nextInt();
+			result = setDate(date);
+			if(result == true){System.out.println("Success");}
+			else{System.out.println("Failure");}
+		}
+		if(choice == 6){
+			str = getView();
+			System.out.println("Current view: " + str);
+		}
+		if(choice == 7){
+			kb.nextLine();
+			System.out.print("Enter new view: ");
+			str = kb.nextLine();
+			result = setView(str);
+			if(result == true){System.out.println("Success");}
+			else{System.out.println("Failure");}
+		}
+		if(choice == 8){
+			date = getFirst();
+			System.out.println("First date in calendar: " + date);
+		}
+		if(choice == 9){
+			date = getLast();
+			System.out.println("Last date in calendar: " + date);
+		}
+		}
 		
 	}
 	
@@ -44,9 +78,9 @@ public class CalFile{
 		
 		fw.write("***************Current_Open_Settings***************");
 		fw.write(System.lineSeparator());
-		fw.write("Current_date:");
+		fw.write("Current_date:\n20160801");
 		fw.write(System.lineSeparator());
-		fw.write("Current_View:");
+		fw.write("Current_View:\nyear");
 		fw.write(System.lineSeparator());
 		fw.write("First_Date: \n20160801");
 		fw.write(System.lineSeparator());
@@ -118,7 +152,7 @@ public class CalFile{
 		File file = new File("CalendarInfo.txt");
 		FileWriter fw = new FileWriter(file2);
 		try{
-			String line = br.readLine();
+			String line = "";
 			while(!(line.equals(curDate))){
 				line = br.readLine();
 				fw.write(line);
@@ -130,7 +164,7 @@ public class CalFile{
 			while((line = br.readLine())!= null){
 				fw.write(line);
 				fw.write(System.lineSeparator());
-				line = br.readLine();
+				//line = br.readLine();
 			}
 			file.delete();
 			file2.renameTo(file);
@@ -141,5 +175,45 @@ public class CalFile{
 		}
 		return(true);
 	}
+	
+	public static int getDate()throws IOException{
+		BufferedReader br = new BufferedReader(new FileReader("CalendarInfo.txt"));
+		String line = br.readLine();
+		line = br.readLine();
+		line = br.readLine();
+		int date = Integer.parseInt(line);
+		return date;
+	}
+	public static boolean setDate(int date)throws IOException{
+		return false;
+	}
+	public static String getView()throws IOException{
+		BufferedReader br = new BufferedReader(new FileReader("CalendarInfo.txt"));
+		String view = br.readLine();
+		view = br.readLine();
+		view = br.readLine();
+		view = br.readLine();
+		view = br.readLine();
+		return view;
+	}
+	public static boolean setView(String view)throws IOException{
+		return false;
+	}
+	public static int getFirst()throws IOException{
+		BufferedReader br = new BufferedReader(new FileReader("CalendarInfo.txt"));
+		String line = br.readLine();
+		for(int i = 0; i < 6; i ++){line = br.readLine();}
+		int date = Integer.parseInt(line);
+		return date;
+	}
+	public static int getLast()throws IOException{
+		BufferedReader br = new BufferedReader(new FileReader("CalendarInfo.txt"));
+		String line = br.readLine();
+		for(int i = 0; i < 8; i ++){line = br.readLine();}
+		int date = Integer.parseInt(line);
+		return date;
+	}
+
+	
 }
 
