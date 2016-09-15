@@ -79,31 +79,47 @@ public class WeekView {
 		frame.getContentPane().add(txtSaturday);
 				
 		JButton sundayBTN = new JButton("30");
-		sundayBTN.setBounds(6, 106, 46, 23);
+		sundayBTN.setBounds(6, 106, 48, 40);
 		frame.getContentPane().add(sundayBTN);
 		
 		JButton mondayBTN = new JButton("31");
-		mondayBTN.setBounds(62, 106, 46, 23);
+		mondayBTN.setBounds(62, 106, 48, 40);
 		frame.getContentPane().add(mondayBTN);
 		
 		JButton tuesdayBTN = new JButton("32");
-		tuesdayBTN.setBounds(118, 106, 54, 23);
+		tuesdayBTN.setBounds(122, 106, 48, 40);
 		frame.getContentPane().add(tuesdayBTN);
 		
 		JButton wednesdayBTN = new JButton("33");
-		wednesdayBTN.setBounds(182, 106, 67, 23);
+		wednesdayBTN.setBounds(192, 106, 48, 40);
 		frame.getContentPane().add(wednesdayBTN);
 		
 		JButton thursdayBTN = new JButton("34");
-		thursdayBTN.setBounds(259, 106, 54, 23);
+		thursdayBTN.setBounds(259, 106, 48, 40);
 		frame.getContentPane().add(thursdayBTN);
 		
 		JButton fridayBTN = new JButton("35");
-		fridayBTN.setBounds(323, 106, 46, 23);
+		fridayBTN.setBounds(323, 106, 48, 40);
 		frame.getContentPane().add(fridayBTN);
 		
 		JButton saturdayBTN = new JButton("36");
-		saturdayBTN.setBounds(373, 106, 52, 23);
+		saturdayBTN.setBounds(373, 106, 48, 40);
 		frame.getContentPane().add(saturdayBTN);
+		
+		JButton btnPrevWeek = new JButton("< Prev. Week");
+		btnPrevWeek.setBounds(6, 23, 102, 23);
+		frame.getContentPane().add(btnPrevWeek);
+		
+		JButton btnNextWeek = new JButton("Next Week >");
+		btnNextWeek.setBounds(323, 23, 102, 23);
+		frame.getContentPane().add(btnNextWeek);
+		
+		JButton btnmonth = new JButton("%Month");
+		btnmonth.setBounds(167, 11, 89, 23);
+		frame.getContentPane().add(btnmonth);
+		
+		JButton btnFullYear = new JButton("Full Year");
+		btnFullYear.setBounds(167, 41, 89, 23);
+		frame.getContentPane().add(btnFullYear);
 	}
 }
