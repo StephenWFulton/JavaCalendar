@@ -76,18 +76,13 @@ public class CalFile{
 		
 		
 		
-		fw.write("***************Current_Open_Settings***************");
-		fw.write(System.lineSeparator());
-		fw.write("Current_date:\n20160801");
-		fw.write(System.lineSeparator());
-		fw.write("Current_View:\nyear");
-		fw.write(System.lineSeparator());
-		fw.write("First_Date: \n20160801");
-		fw.write(System.lineSeparator());
-		fw.write("Last_Date: \n20170531");
-		fw.write(System.lineSeparator());
-		fw.write("*******************Saved_Events********************");
-		fw.write(System.lineSeparator());
+		fw.write("***************Current_Open_Settings***************\n");
+		//fw.write(System.lineSeparator());
+		fw.write("Current_date:\n20160801\n");
+		fw.write("Current_View:\nyear\n");
+		fw.write("First_Date: \n20160801\n");
+		fw.write("Last_Date: \n20170531\n");
+		fw.write("*******************Saved_Events********************\n");
 		
 		int date = 20160801;
 		int dpm = 31;
@@ -100,8 +95,7 @@ public class CalFile{
 			else{dpm = 28;}
 		
 			for(int i = 0; i < dpm; i ++){
-				fw.write(Integer.toString(date));
-				fw.write(System.lineSeparator());
+				fw.write(Integer.toString(date) + "\n");
 				date ++;
 			}
 			date -= dpm;
@@ -117,24 +111,60 @@ public class CalFile{
 
 	public static String CalRead(int date)throws IOException{
 		String curDate = Integer.toString(date);
-		String nextDate = Integer.toString((date+1));
+		String nextDate = "";
+		int Enddate = 0;
+		if(date == 20161231){	
+			nextDate = Integer.toString((date+8870));
+		}
+		else if(date == 20160831 || date == 20161031 || date == 20170131 || date == 20170331){
+			nextDate = Integer.toString((date+70));
+		}
+		else if(date == 20160930 || date == 20161130 || date == 20170430){
+			nextDate = Integer.toString((date+71));
+		}
+		else if(date == 20170228){
+			nextDate = Integer.toString((date+73));
+		}
+		else if(date == 20170531){
+			Enddate = 1;
+		}
+		else
+		{
+			nextDate = Integer.toString((date+1));
+		}
 		BufferedReader br = new BufferedReader(new FileReader("CalendarInfo.txt"));
 		try{
 			String sb = "";
 			String line = br.readLine();
-			
+			for(int y = 0; y > 11; y ++){
+				line = br.readLine();
+			}
 			while(!(line.equals(curDate))){
 				line = br.readLine();
 			}
 			line = br.readLine();
-			while(!(line.equals(nextDate))){
-				if(sb.equals("") || line.equals("")){
-					sb = sb + line;				
+			if(Enddate == 0){
+				while(!(line.equals(nextDate))){
+					if(sb.equals("") || line.equals("")){
+						sb = sb + line;				
+					}
+					else{
+						sb = sb + "\n" +line;
+					}	
+					line = br.readLine();	
 				}
-				else{
-					sb = sb + "\n" +line;
-				}	
-				line = br.readLine();	
+			}
+			else {
+				while((line =br.readLine())!= null){
+					if(sb.equals("") || line.equals("")){
+						sb = sb + line;				
+					}
+					else{
+						sb = sb + "\n" +line;
+					}	
+					line = br.readLine();
+				}
+				Enddate = 0;
 			}
 			return sb;
 			
@@ -153,17 +183,18 @@ public class CalFile{
 		FileWriter fw = new FileWriter(file2);
 		try{
 			String line = "";
+			for(int x = 0; x < 11; x ++){
+				line = br.readLine();
+				fw.write(line + "\n");
+			}
 			while(!(line.equals(curDate))){
 				line = br.readLine();
-				fw.write(line);
-				fw.write(System.lineSeparator());
+				fw.write(line + "\n");
 			}
 			//write event
-			fw.write(event);
-			fw.write(System.lineSeparator());
+			fw.write(event + "\n");
 			while((line = br.readLine())!= null){
-				fw.write(line);
-				fw.write(System.lineSeparator());
+				fw.write(line + "\n");
 			}
 			file.delete();
 			file2.renameTo(file);
@@ -193,17 +224,13 @@ public class CalFile{
 		try{
 			String line = "";
 			line = br.readLine();
-			fw.write(line);
-			fw.write(System.lineSeparator());
+			fw.write(line + "\n");
 			line = br.readLine();
-			fw.write(line);
-			fw.write(System.lineSeparator());
-			fw.write(curDate);
-			fw.write(System.lineSeparator());
+			fw.write(line + "\n");
+			fw.write(curDate + "\n");
 			line = br.readLine();
 			while((line = br.readLine())!= null){
-				fw.write(line);
-				fw.write(System.lineSeparator());
+				fw.write(line + "\n");
 			}
 			file.delete();
 			file2.renameTo(file);
@@ -233,15 +260,12 @@ public class CalFile{
 			String line = "";
 			for(int j = 0; j < 4; j ++){
 				line = br.readLine();
-				fw.write(line);
-				fw.write(System.lineSeparator());
+				fw.write(line + "\n");
 			}
-			fw.write(view);
-			fw.write(System.lineSeparator());
+			fw.write(view + "\n");
 			line = br.readLine();
 			while((line = br.readLine())!= null){
-				fw.write(line);
-				fw.write(System.lineSeparator());
+				fw.write(line + "\n");
 			}
 			file.delete();
 			file2.renameTo(file);
