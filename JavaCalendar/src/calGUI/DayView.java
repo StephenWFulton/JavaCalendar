@@ -7,6 +7,8 @@ import javax.swing.JButton;
 import java.awt.BorderLayout;
 import javax.swing.SpringLayout;
 import javax.swing.JTextArea;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class DayView {
 
@@ -45,26 +47,45 @@ public class DayView {
 		SpringLayout springLayout = new SpringLayout();
 		frame.getContentPane().setLayout(springLayout);
 		
-		JButton btnMonth = new JButton("Month");
-		springLayout.putConstraint(SpringLayout.NORTH, btnMonth, 10, SpringLayout.NORTH, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.WEST, btnMonth, 88, SpringLayout.WEST, frame.getContentPane());
+		JButton btnMonth = new JButton("%Month");
+		btnMonth.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+				 //Dummy action, replace by calling up month view
+			}
+		});
+		
+		JButton btnweek = new JButton("%Week");
+		btnweek.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				
+			}
+		});
+		
 		frame.getContentPane().add(btnMonth);
 		
-		JButton btnYear = new JButton("Year");
-		springLayout.putConstraint(SpringLayout.NORTH, btnYear, 0, SpringLayout.NORTH, btnMonth);
-		springLayout.putConstraint(SpringLayout.WEST, btnYear, 60, SpringLayout.EAST, btnMonth);
+		JButton btnYear = new JButton("%Year");
+		springLayout.putConstraint(SpringLayout.NORTH, btnYear, 10, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.NORTH, btnMonth, 0, SpringLayout.NORTH, btnYear);
+		springLayout.putConstraint(SpringLayout.EAST, btnYear, -94, SpringLayout.EAST, frame.getContentPane());
 		frame.getContentPane().add(btnYear);
 		
 		JTextArea textArea = new JTextArea();
 		springLayout.putConstraint(SpringLayout.NORTH, textArea, 18, SpringLayout.SOUTH, btnMonth);
 		springLayout.putConstraint(SpringLayout.WEST, textArea, 25, SpringLayout.WEST, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.SOUTH, textArea, 175, SpringLayout.SOUTH, btnMonth);
 		springLayout.putConstraint(SpringLayout.EAST, textArea, 403, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(textArea);
 		
 		JButton btnSave = new JButton("Save");
-		springLayout.putConstraint(SpringLayout.NORTH, btnSave, 6, SpringLayout.SOUTH, textArea);
+		springLayout.putConstraint(SpringLayout.NORTH, btnSave, 214, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, textArea, -6, SpringLayout.NORTH, btnSave);
+		springLayout.putConstraint(SpringLayout.EAST, btnMonth, 0, SpringLayout.EAST, btnSave);
 		springLayout.putConstraint(SpringLayout.WEST, btnSave, 185, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(btnSave);
+		
+		springLayout.putConstraint(SpringLayout.SOUTH, btnweek, 0, SpringLayout.SOUTH, btnMonth);
+		springLayout.putConstraint(SpringLayout.EAST, btnweek, -30, SpringLayout.WEST, btnMonth);
+		frame.getContentPane().add(btnweek);
 	}
 }
