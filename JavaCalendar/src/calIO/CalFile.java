@@ -164,7 +164,6 @@ public class CalFile{
 			while((line = br.readLine())!= null){
 				fw.write(line);
 				fw.write(System.lineSeparator());
-				//line = br.readLine();
 			}
 			file.delete();
 			file2.renameTo(file);
@@ -185,7 +184,35 @@ public class CalFile{
 		return date;
 	}
 	public static boolean setDate(int date)throws IOException{
-		return false;
+		BufferedReader br = new BufferedReader(new FileReader("CalendarInfo.txt"));
+		File file2 = new File("2CalendarInfo.txt");
+		file2.createNewFile();
+		File file = new File("CalendarInfo.txt");
+		String curDate = Integer.toString(date);
+		FileWriter fw = new FileWriter(file2);
+		try{
+			String line = "";
+			line = br.readLine();
+			fw.write(line);
+			fw.write(System.lineSeparator());
+			line = br.readLine();
+			fw.write(line);
+			fw.write(System.lineSeparator());
+			fw.write(curDate);
+			fw.write(System.lineSeparator());
+			line = br.readLine();
+			while((line = br.readLine())!= null){
+				fw.write(line);
+				fw.write(System.lineSeparator());
+			}
+			file.delete();
+			file2.renameTo(file);
+
+		}finally{
+			br.close();
+			fw.close();
+		}
+		return(true);
 	}
 	public static String getView()throws IOException{
 		BufferedReader br = new BufferedReader(new FileReader("CalendarInfo.txt"));
@@ -197,7 +224,33 @@ public class CalFile{
 		return view;
 	}
 	public static boolean setView(String view)throws IOException{
-		return false;
+		BufferedReader br = new BufferedReader(new FileReader("CalendarInfo.txt"));
+		File file2 = new File("2CalendarInfo.txt");
+		file2.createNewFile();
+		File file = new File("CalendarInfo.txt");
+		FileWriter fw = new FileWriter(file2);
+		try{
+			String line = "";
+			for(int j = 0; j < 4; j ++){
+				line = br.readLine();
+				fw.write(line);
+				fw.write(System.lineSeparator());
+			}
+			fw.write(view);
+			fw.write(System.lineSeparator());
+			line = br.readLine();
+			while((line = br.readLine())!= null){
+				fw.write(line);
+				fw.write(System.lineSeparator());
+			}
+			file.delete();
+			file2.renameTo(file);
+
+		}finally{
+			br.close();
+			fw.close();
+		}
+		return(true);
 	}
 	public static int getFirst()throws IOException{
 		BufferedReader br = new BufferedReader(new FileReader("CalendarInfo.txt"));
