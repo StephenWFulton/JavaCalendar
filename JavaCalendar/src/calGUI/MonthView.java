@@ -8,7 +8,7 @@ import javax.swing.JTable;
 
 public class MonthView {
 
-	private JFrame frame;
+	public JFrame frame;
 	private JTable table;
 
 	/**

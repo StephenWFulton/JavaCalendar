@@ -11,7 +11,7 @@ import java.awt.event.MouseEvent;
 
 public class DayView {
 
-	private JFrame frame;
+	public JFrame frame;
 
 	/**
 	 * Launch the application.

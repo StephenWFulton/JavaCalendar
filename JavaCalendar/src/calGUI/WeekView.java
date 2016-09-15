@@ -9,7 +9,7 @@ import javax.swing.JTextPane;
 
 public class WeekView {
 
-	private JFrame frame;
+	public JFrame frame;
 
 	/**
 	 * Launch the application.
