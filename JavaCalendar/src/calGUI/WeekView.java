@@ -5,7 +5,6 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JTextPane;
-import javax.swing.DropMode;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
