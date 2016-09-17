@@ -1,3 +1,12 @@
+/*
+    @file DateControl.java
+    @author Ryan Niday
+    @since 2016.02.27
+    @details This class controls the date (year,month,day) that the calendar is specifically looking at.
+                As the details of the date change, this class keeps track of it, and adjusts current
+                year, month, and day respectively.
+ */
+
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -11,7 +20,11 @@ public class DateControl {
 	
 	
 	
-	//Initializes the the calendar
+    /*
+        @pre    CalFile has view of a txt file containing a date to start on
+        @post   The calendar object is set to the start date found from CalFile
+        @return None
+     */
 	public DateControl() throws IOException{
 		year = CalFile.getDate()/10000;
 		month = (CalFile.getDate()/100) - (year*100);
@@ -19,7 +32,11 @@ public class DateControl {
 		myCal = new GregorianCalendar(year,month-1,day);
 	}
 	
-	//converts year, month, and day into one number
+    /*
+     @pre    None
+     @post   None
+     @return A single number representing the year, month, and day
+     */
 	public int setCurFileDate(){
 		int buffer = year;
 		buffer = buffer*100+month;
@@ -27,7 +44,11 @@ public class DateControl {
 		return buffer;
 	}
 	
-	//resets the overall date being tracked by the calendar
+    /*
+     @pre    Valid ints are inputed for year, month, and day
+     @post   The current date of the Calendar object is set to the new input
+     @return None
+     */
 	public void setCurDate(int year,int month,int day) throws IOException{
 		this.year = year;
 		this.month = month;
@@ -36,7 +57,11 @@ public class DateControl {
 		CalFile.setDate(setCurFileDate());
 	}
 	
-	//resets the current day being tracked by the calendar
+    /*
+     @pre    Valid int is inputed for day
+     @post   The current day of the Calendar object is set to the new input
+     @return None
+     */
 	public void setCurDay(int day) throws IOException {
 		myCal.set(Calendar.DATE, day);
 		if(validDate()){
@@ -53,7 +78,11 @@ public class DateControl {
 		CalFile.setDate(setCurFileDate());
 	}
 	
-	//resets the current month being tracked by the calendar
+    /*
+     @pre    Valid int is inputed for month
+     @post   The current month of the Calendar object is set to the new input
+     @return None
+     */
 	public void setCurMonth(int month) throws IOException{
 		myCal.set(Calendar.MONTH, month-1);
 		if(validDate()){
@@ -70,39 +99,67 @@ public class DateControl {
 		CalFile.setDate(setCurFileDate());
 	}
 	
-	//resets the current year being tracked by the calendar
+    /*
+     @pre    Valid int is inputed for year
+     @post   The current year of the Calendar object is set to the new input
+     @return None
+     */
 	public void setCurYear(int year) throws IOException{
 		this.year = year;
 		myCal.set(Calendar.YEAR, year);
 		CalFile.setDate(setCurFileDate());
 	}
 	
-	//returns the current day of the week being tracked by the calendar
+    /*
+     @pre    None
+     @post   None
+     @return Current day of the week being tracked by the calendar
+     */
 	public int getCurDayOfWeek(){
 		return myCal.get(Calendar.DAY_OF_WEEK);
 	}
 	
-	//returns the current week of the year being tracked by the calendar
+    /*
+     @pre    None
+     @post   None
+     @return Current week of the year being tracked by the calendar
+     */
 	public int getCurWeek(){
 		return myCal.get(Calendar.WEEK_OF_YEAR);
 	}
 	
-	//returns the current day of the month being tracked by the calendar
+    /*
+     @pre    None
+     @post   None
+     @return Current day of the month being tracked by the calendar
+     */
 	public int getCurDay(){
 		return myCal.get(Calendar.DATE);
 	}
 	
-	//returns the current month of the year being tracked by the calendar
+    /*
+     @pre    None
+     @post   None
+     @return Current month being tracked by the calendar
+     */
 	public int getCurMonth(){
 		return myCal.get(Calendar.MONTH) + 1;
 	}
 	
-	//returns the current year being tracked by the calendar
+    /*
+     @pre    None
+     @post   None
+     @return Current year bring tracked by the calendar
+     */
 	public int getCurYear(){
 		return myCal.get(Calendar.YEAR);
 	}
 	
-	//returns the day of the week the first day of the selected month falls on
+    /*
+     @pre    None
+     @post   None
+     @return Day of the week for the first day of a month
+     */
 	public int firstDayOfMonth() throws IOException{
 		setCurDay(1);
 		getCurDayOfWeek();
@@ -110,7 +167,11 @@ public class DateControl {
 		return getCurDayOfWeek();
 	}
 	
-	//returns the number of days in selected month
+    /*
+     @pre    None
+     @post   None
+     @return Number of days in the currently tracked month
+     */
 	public int numDaysInMonth() throws IOException{
 		int curMonth = getCurMonth();
 		setCurDay(28);
@@ -122,8 +183,13 @@ public class DateControl {
 		return getCurDay();
 	}
 	
-	//returns an array of all the days in the selected month
-	public int[] daysOfTheMonth() throws IOException{		
+    
+    /*
+     @pre    None
+     @post   None
+     @return An array of the days in the selected month
+     */
+	public int[] daysOfTheMonth() throws IOException{
 		int[] daysOfMonth = new int[numDaysInMonth()];
 		setCurDay(1);
 		for(int i = 0; i < numDaysInMonth(); i++){
@@ -133,7 +199,11 @@ public class DateControl {
 		return daysOfMonth;
 	}
 	
-	//returns an array of all the days in the selected week
+    /*
+     @pre    None
+     @post   None
+     @return An array of the days in the selected week
+     */
 	public int[] daysOfTheWeek(){
 		int curWeek = getCurWeek();
 		int[] daysOfWeek = new int[7];
@@ -151,6 +221,11 @@ public class DateControl {
 	}
 	
 	//Checks if date is in the calendar and returns true or false respectively
+    /*
+     @pre    None
+     @post   None
+     @return False if the selected day is after May 31, or before August 1
+     */
 	public boolean validDate(){
 		if(myCal.get(Calendar.DAY_OF_YEAR) > 151 && myCal.get(Calendar.DAY_OF_YEAR) < 214){
 			return false;

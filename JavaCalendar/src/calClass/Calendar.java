@@ -1,3 +1,11 @@
+/*
+ @file Calendar.java
+ @author Ryan Niday
+ @since 2016.09.17
+ @details This class is the main startup class being used to run the calendar. It initializes the file
+            keeping track of the dates, and then calls up the appropriate view from the GUI classes.
+ */
+
 import java.awt.EventQueue;
 import java.io.IOException;
 
@@ -10,10 +18,7 @@ import calGUI.YearView;
 public class Calendar {
 	public static void main(String[] args) throws IOException{
 		CalFile.CalInit();
-		DateControl myDate = new DateControl();
-		myDate.setCurMonth(7);
-		System.out.println(myDate.getCurDay());
-		System.out.println(myDate.getCurMonth());
+		//DateControl myDate = new DateControl();
 		CalFile.setView("week");
 		if(CalFile.getView().equals("day")){
 			EventQueue.invokeLater(new Runnable() {
