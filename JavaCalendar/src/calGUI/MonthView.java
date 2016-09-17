@@ -20,13 +20,13 @@ public class MonthView {
 	private JTable table;
 	private TableModel dataModel = new AbstractTableModel() {
         public int getColumnCount() { return 7; }
-        public int getRowCount() { return 6;}
+        public int getRowCount() { return 7;}
         public Object getValueAt(int row, int col) { 
         	if(row == 0){
         		String[] WeekNames = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
         		return WeekNames[col];
         	}
-        	System.out.println(Date.firstDayOfMonth());
+        	//System.out.println(Date.daysOfTheMonth().length);
         	if(row == 1 && col < Date.firstDayOfMonth()){
         		return new String();
         	}
