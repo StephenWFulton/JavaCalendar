@@ -87,44 +87,48 @@ public class CalFile{
 	 *
 	 */
 	public static boolean CalInit()throws IOException{
+		try{
+			File file = new File("CalendarInfo.txt");
+			file.createNewFile();
+			FileWriter fw = new FileWriter(file);
 		
-		File file = new File("CalendarInfo.txt");
-		file.createNewFile();
-		FileWriter fw = new FileWriter(file);
-		
-		
-		
-		fw.write("***************Current_Open_Settings***************\n");
-		//fw.write(System.lineSeparator());
-		fw.write("Current_date:\n20160801\n");
-		fw.write("Current_View:\nyear\n");
-		fw.write("First_Date: \n20160801\n");
-		fw.write("Last_Date: \n20170531\n");
-		fw.write("*******************Saved_Events********************\n");
-		
-		int date = 20160801;
-		int dpm = 31;
-		int m = 1;
-		
-		while(m < 11)
-		{
-			if(m == 1 || m == 3 || m == 5 || m == 6 || m == 8 || m == 10){dpm = 31;}
-			else if(m == 2 || m == 4 || m == 9){dpm = 30;}
-			else{dpm = 28;}
-		
-			for(int i = 0; i < dpm; i ++){
-				fw.write(Integer.toString(date) + "\n");
-				date ++;
+			fw.write("***************Current_Open_Settings***************\n");
+			//fw.write(System.lineSeparator());
+			fw.write("Current_date:\n20160801\n");
+			fw.write("Current_View:\nyear\n");
+			fw.write("First_Date: \n20160801\n");
+			fw.write("Last_Date: \n20170531\n");
+			fw.write("*******************Saved_Events********************\n");
+			
+			int date = 20160801;
+			int dpm = 31;
+			int m = 1;
+			
+			while(m < 11)
+			{
+				if(m == 1 || m == 3 || m == 5 || m == 6 || m == 8 || m == 10){dpm = 31;}
+				else if(m == 2 || m == 4 || m == 9){dpm = 30;}
+				else{dpm = 28;}
+			
+				for(int i = 0; i < dpm; i ++){
+					fw.write(Integer.toString(date) + "\n");
+					date ++;
+				}
+				date -= dpm;
+				date += 100;
+				if(m == 5){date += 8800;}
+				m++;
 			}
-			date -= dpm;
-			date += 100;
-			if(m == 5){date += 8800;}
-			m++;
+			
+			return(true);
 		}
-		
-		fw.flush();
-		fw.close();
-		return(true);
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		finally{
+			fw.flush();
+			fw.close();
+		}
 	}
 
 	/*
@@ -134,30 +138,31 @@ public class CalFile{
 	 *
 	 */
 	public static String CalRead(int date)throws IOException{
-		String curDate = Integer.toString(date);
-		String nextDate = "";
-		int Enddate = 0;
-		if(date == 20161231){	
-			nextDate = Integer.toString((date+8870));
-		}
-		else if(date == 20160831 || date == 20161031 || date == 20170131 || date == 20170331){
-			nextDate = Integer.toString((date+70));
-		}
-		else if(date == 20160930 || date == 20161130 || date == 20170430){
-			nextDate = Integer.toString((date+71));
-		}
-		else if(date == 20170228){
-			nextDate = Integer.toString((date+73));
-		}
-		else if(date == 20170531){
-			Enddate = 1;
-		}
-		else
-		{
-			nextDate = Integer.toString((date+1));
-		}
-		BufferedReader br = new BufferedReader(new FileReader("CalendarInfo.txt"));
 		try{
+			String curDate = Integer.toString(date);
+			String nextDate = "";
+			int Enddate = 0;
+			if(date == 20161231){	
+				nextDate = Integer.toString((date+8870));
+			}
+			else if(date == 20160831 || date == 20161031 || date == 20170131 || date == 20170331){	
+				nextDate = Integer.toString((date+70));
+			}
+			else if(date == 20160930 || date == 20161130 || date == 20170430){
+				nextDate = Integer.toString((date+71));
+			}
+			else if(date == 20170228){
+				nextDate = Integer.toString((date+73));
+			}
+			else if(date == 20170531){
+				Enddate = 1;
+			}
+			else
+			{
+				nextDate = Integer.toString((date+1));
+			}
+			BufferedReader br = new BufferedReader(new FileReader("CalendarInfo.txt"));
+		
 			String sb = "";
 			String line = br.readLine();
 			for(int y = 0; y < 9; y ++){
@@ -191,7 +196,11 @@ public class CalFile{
 			}
 			return sb;
 			
-		}finally{
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		finally{
 			br.close();
 		}
 		
@@ -204,41 +213,42 @@ public class CalFile{
 	 *
 	 */
 	public static boolean CalWrite(int date, String event)throws IOException{
-		String curDate = Integer.toString(date);
-		//**********************************************
-		
-		
-		String nextDate = "";
-		int Enddate = 0;
-		if(date == 20161231){	
-			nextDate = Integer.toString((date+8870));
-		}
-		else if(date == 20160831 || date == 20161031 || date == 20170131 || date == 20170331){
-			nextDate = Integer.toString((date+70));
-		}
-		else if(date == 20160930 || date == 20161130 || date == 20170430){
-			nextDate = Integer.toString((date+71));
-		}
-		else if(date == 20170228){
-			nextDate = Integer.toString((date+73));
-		}
-		else if(date == 20170531){
-			Enddate = 1;
-		}
-		else
-		{
-			nextDate = Integer.toString((date+1));
-		}
-
-		//*****************************************************
-
-
-		BufferedReader br = new BufferedReader(new FileReader("CalendarInfo.txt"));
-		File file2 = new File("2CalendarInfo.txt");
-		file2.createNewFile();
-		File file = new File("CalendarInfo.txt");
-		FileWriter fw = new FileWriter(file2);
 		try{
+			String curDate = Integer.toString(date);
+			//**********************************************
+			
+			
+			String nextDate = "";
+			int Enddate = 0;
+			if(date == 20161231){	
+				nextDate = Integer.toString((date+8870));
+			}
+			else if(date == 20160831 || date == 20161031 || date == 20170131 || date == 20170331){	
+				nextDate = Integer.toString((date+70));
+			}
+			else if(date == 20160930 || date == 20161130 || date == 20170430){
+				nextDate = Integer.toString((date+71));
+			}
+			else if(date == 20170228){
+				nextDate = Integer.toString((date+73));
+			}
+			else if(date == 20170531){
+				Enddate = 1;
+			}
+			else
+			{
+				nextDate = Integer.toString((date+1));
+			}
+	
+			//*****************************************************
+	
+	
+			BufferedReader br = new BufferedReader(new FileReader("CalendarInfo.txt"));
+			File file2 = new File("2CalendarInfo.txt");
+			file2.createNewFile();
+			File file = new File("CalendarInfo.txt");
+			FileWriter fw = new FileWriter(file2);
+		
 			String line = "";
 			for(int x = 0; x < 11; x ++){
 				line = br.readLine();
@@ -270,8 +280,13 @@ public class CalFile{
 			file.delete();
 			file2.renameTo(file);
 
-		}finally{
+		}
+		catch(Exception e){
+			e.printStackTrace();	
+		}
+		finally{
 			br.close();
+			fw.flush();
 			fw.close();
 		}
 		return(true);
@@ -284,12 +299,20 @@ public class CalFile{
 	 *
 	 */
 	public static int getDate()throws IOException{
-		BufferedReader br = new BufferedReader(new FileReader("CalendarInfo.txt"));
-		String line = br.readLine();
-		line = br.readLine();
-		line = br.readLine();
-		int date = Integer.parseInt(line);
-		return date;
+		try{
+			BufferedReader br = new BufferedReader(new FileReader("CalendarInfo.txt"));
+			String line = br.readLine();
+			line = br.readLine();
+			line = br.readLine();
+			int date = Integer.parseInt(line);
+			return date;
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		finally{
+			br.close();
+		}
 	}
 
 	/*
@@ -299,13 +322,14 @@ public class CalFile{
 	 *
 	 */
 	public static boolean setDate(int date)throws IOException{
-		BufferedReader br = new BufferedReader(new FileReader("CalendarInfo.txt"));
-		File file2 = new File("2CalendarInfo.txt");
-		file2.createNewFile();
-		File file = new File("CalendarInfo.txt");
-		String curDate = Integer.toString(date);
-		FileWriter fw = new FileWriter(file2);
 		try{
+			BufferedReader br = new BufferedReader(new FileReader("CalendarInfo.txt"));
+			File file2 = new File("2CalendarInfo.txt");
+			file2.createNewFile();
+			File file = new File("CalendarInfo.txt");
+			String curDate = Integer.toString(date);
+			FileWriter fw = new FileWriter(file2);
+		
 			String line = "";
 			line = br.readLine();
 			fw.write(line + "\n");
@@ -319,8 +343,13 @@ public class CalFile{
 			file.delete();
 			file2.renameTo(file);
 
-		}finally{
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		finally{
 			br.close();
+			fw.flush();
 			fw.close();
 		}
 		return(true);
@@ -333,13 +362,21 @@ public class CalFile{
 	 *
 	 */
 	public static String getView()throws IOException{
-		BufferedReader br = new BufferedReader(new FileReader("CalendarInfo.txt"));
-		String view = br.readLine();
-		view = br.readLine();
-		view = br.readLine();
-		view = br.readLine();
-		view = br.readLine();
-		return view;
+		try{
+			BufferedReader br = new BufferedReader(new FileReader("CalendarInfo.txt"));
+			String view = br.readLine();
+			view = br.readLine();
+			view = br.readLine();
+			view = br.readLine();
+			view = br.readLine();
+			return view;
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		finally{
+			br.close();
+		}
 	}
 
 	/*
@@ -349,12 +386,13 @@ public class CalFile{
 	 *
 	 */
 	public static boolean setView(String view)throws IOException{
-		BufferedReader br = new BufferedReader(new FileReader("CalendarInfo.txt"));
-		File file2 = new File("2CalendarInfo.txt");
-		file2.createNewFile();
-		File file = new File("CalendarInfo.txt");
-		FileWriter fw = new FileWriter(file2);
-		try{
+		try{		
+			BufferedReader br = new BufferedReader(new FileReader("CalendarInfo.txt"));
+			File file2 = new File("2CalendarInfo.txt");
+			file2.createNewFile();
+			File file = new File("CalendarInfo.txt");
+			FileWriter fw = new FileWriter(file2);
+		
 			String line = "";
 			for(int j = 0; j < 4; j ++){
 				line = br.readLine();
@@ -368,8 +406,13 @@ public class CalFile{
 			file.delete();
 			file2.renameTo(file);
 
-		}finally{
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}		
+		finally{
 			br.close();
+			fw.flush();
 			fw.close();
 		}
 		return(true);
@@ -382,11 +425,19 @@ public class CalFile{
 	 *
 	 */
 	public static int getFirst()throws IOException{
-		BufferedReader br = new BufferedReader(new FileReader("CalendarInfo.txt"));
-		String line = br.readLine();
-		for(int i = 0; i < 6; i ++){line = br.readLine();}
-		int date = Integer.parseInt(line);
-		return date;
+		try{
+			BufferedReader br = new BufferedReader(new FileReader("CalendarInfo.txt"));
+			String line = br.readLine();
+			for(int i = 0; i < 6; i ++){line = br.readLine();}
+			int date = Integer.parseInt(line);
+			return date;
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		finally{
+			br.close();
+		}
 	}
 
 	/*
@@ -396,11 +447,19 @@ public class CalFile{
 	 *
 	 */
 	public static int getLast()throws IOException{
-		BufferedReader br = new BufferedReader(new FileReader("CalendarInfo.txt"));
-		String line = br.readLine();
-		for(int i = 0; i < 8; i ++){line = br.readLine();}
-		int date = Integer.parseInt(line);
-		return date;
+		try{
+			BufferedReader br = new BufferedReader(new FileReader("CalendarInfo.txt"));
+			String line = br.readLine();
+			for(int i = 0; i < 8; i ++){line = br.readLine();}
+			int date = Integer.parseInt(line);
+			return date;
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		finally{
+			br.close();
+		}
 	}
 
 	
