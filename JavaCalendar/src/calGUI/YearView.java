@@ -8,11 +8,12 @@ import java.awt.event.MouseEvent;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import calClass.DateControl;
 
 public class YearView {
 
 	public JFrame frame;
-
+	DateControl Date = new DateControl();
 	/**
 	 * Launch the application.
 	 */
@@ -51,7 +52,7 @@ public class YearView {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
 				//update the current date to August 1
-				
+				Date.setCurDate(2016, 7, 1);
 				//close current view
 				frame.dispose();
 				//launch Month view
@@ -76,7 +77,7 @@ public class YearView {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
 				//update the current date to September 1
-				
+				Date.setCurDate(2016, 8, 1);
 				//close current view
 				frame.dispose();
 				//launch Month view
@@ -101,7 +102,7 @@ public class YearView {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
 				//update the current date to October 1
-				
+				Date.setCurDate(2016, 9, 1);
 				//close current view
 				frame.dispose();
 				//launch Month view
@@ -126,7 +127,7 @@ public class YearView {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
 				//update the current date to November 1
-				
+				Date.setCurDate(2016, 10, 1);
 				//close current view
 				frame.dispose();
 				//launch Month view
@@ -151,7 +152,7 @@ public class YearView {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
 				//update the current date to December 1
-				
+				Date.setCurDate(2016, 11, 1);
 				//close current view
 				frame.dispose();
 				//launch Month view
@@ -180,7 +181,7 @@ public class YearView {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
 				//update the current date to January 1
-				
+				Date.setCurDate(2017, 0, 1);
 				//close current view
 				frame.dispose();
 				//launch Month view
@@ -205,7 +206,7 @@ public class YearView {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
 				//update the current date to February 1
-				
+				Date.setCurDate(2017, 1, 1);
 				//close current view
 				frame.dispose();
 				//launch Month view
@@ -230,7 +231,7 @@ public class YearView {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
 				//update the current date to March 1
-				
+				Date.setCurDate(2017, 2, 1);
 				//close current view
 				frame.dispose();
 				//launch Month view
@@ -255,7 +256,7 @@ public class YearView {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
 				//update the current date to April 1
-				
+				Date.setCurDate(2017, 3, 1);
 				//close current view
 				frame.dispose();
 				//launch Month view
@@ -280,7 +281,7 @@ public class YearView {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
 				//update the current date to May 1
-				
+				Date.setCurDate(2017, 4, 1);
 				//close current view
 				frame.dispose();
 				//launch Month view
