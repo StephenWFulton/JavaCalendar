@@ -236,45 +236,41 @@ public class DateControl {
 	}
 	
 	//Converts the string name of a month into the number representation
-	public int monthNum(String monthName){
-		if(monthName.toLowerCase().equals("january")){
-			return 1;
-		}
-		else if(monthName.toLowerCase().equals("february")){
-			return 2;
-		}
-		else if(monthName.toLowerCase().equals("march")){
-			return 3;
-		}
-		else if(monthName.toLowerCase().equals("april")){
-			return 4;
-		}
-		else if(monthName.toLowerCase().equals("may")){
-			return 5;
-		}
-		else if(monthName.toLowerCase().equals("june")){
-			return 6;
-		}
-		else if(monthName.toLowerCase().equals("july")){
-			return 7;
-		}
-		else if(monthName.toLowerCase().equals("august")){
-			return 8;
-		}
-		else if(monthName.toLowerCase().equals("september")){
-			return 9;
-		}
-		else if(monthName.toLowerCase().equals("october")){
-			return 10;
-		}
-		else if(monthName.toLowerCase().equals("november")){
-			return 11;
-		}
-		else if(monthName.toLowerCase().equals("december")){
-			return 12;
-		}
-		else{
-			return 0;
-		}
+    /*
+     @pre    None
+     @post   None
+     @return The name corresponding to the number of the current month
+     */
+	public String monthName(){
+        if(getCurMonth() == 8){
+            return "August";
+        }
+        else if(getCurMonth() == 9){
+            return "September";
+        }
+        else if(getCurMonth() == 10){
+            return "October";
+        }
+        else if(getCurMonth() == 11){
+            return "November";
+        }
+        else if(getCurMonth() == 12){
+            return "December";
+        }
+        else if(getCurMonth() == 1){
+            return "January";
+        }
+        else if(getCurMonth() == 2){
+            return "February";
+        }
+        else if(getCurMonth() == 3){
+            return "March";
+        }
+        else if(getCurMonth() == 4){
+            return "April";
+        }
+        else if(getCurMonth() == 5){
+            return "May";
+        }
 	}
 }
