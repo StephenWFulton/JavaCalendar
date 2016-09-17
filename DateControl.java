@@ -1,9 +1,10 @@
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class DateControl {
-	private Calendar myCal;								//The calendar keeping track of the date
-	int month;								//Keeps track of the month currently being tracked
+	private Calendar myCal;						//The calendar keeping track of the date
+	int month;									//Keeps track of the month currently being tracked
 	int year;									//Keeps track of the year currently being tracked
 	int day;									//Keeps track of the day currently being tracked
 	
@@ -11,39 +12,51 @@ public class DateControl {
 	
 	
 	//Initializes the the calendar
-	public DateControl(/*year,month,day*/){
-		//this.year = year;
-		//this.month = (month - 1);
-		//this.day = day;
-		myCal = new GregorianCalendar(2017,1,1);
+	public DateControl() throws IOException{
+		year = CalFile.getDate()/10000;
+		month = (CalFile.getDate()/100) - (year*100);
+		day = CalFile.getDate() - (((year*100)+month)*100);
+		myCal = new GregorianCalendar(year,month-1,day);
+	}
+	
+	//converts year, month, and day into one number
+	public int setCurFileDate(){
+		int buffer = year;
+		buffer = buffer*100+month;
+		buffer = buffer*100+day;
+		return buffer;
 	}
 	
 	//resets the overall date being tracked by the calendar
-	public void setCurDate(int year,int month,int day){
+	public void setCurDate(int year,int month,int day) throws IOException{
 		this.year = year;
 		this.month = month;
 		this.day = day;
 		myCal.set(year,month,day);
+		CalFile.setDate(setCurFileDate());
 	}
 	
 	//resets the current day being tracked by the calendar
-	public void setCurDay(int day) {
+	public void setCurDay(int day) throws IOException {
 		this.day = day;
-		myCal.set(Calendar.DATE, /*this.*/day);
+		myCal.set(Calendar.DATE, day);
+		CalFile.setDate(setCurFileDate());
 	}
 	
 	//resets the current month being tracked by the calendar
-	public void setCurMonth(int month){
-		month = month - 1;
-		this.month = month - 1;
-		myCal.set(Calendar.MONTH, /*this.*/month);
+	public void setCurMonth(int month) throws IOException{
+		this.month = month;
+		myCal.set(Calendar.MONTH, month-1);
+		CalFile.setDate(setCurFileDate());
 	}
 	
 	//resets the current year being tracked by the calendar
-	public void setCurYear(int year){
+	public void setCurYear(int year) throws IOException{
 		this.year = year;
-		myCal.set(Calendar.YEAR, /*this.*/year);
+		myCal.set(Calendar.YEAR, year);
+		CalFile.setDate(setCurFileDate());
 	}
+	
 	
 	public int getCurDayOfWeek(){
 		return myCal.get(Calendar.DAY_OF_WEEK);
@@ -70,7 +83,7 @@ public class DateControl {
 	}
 	
 	//returns the day of the week the first day of the selected month falls on
-	public int firstDayOfMonth(){
+	public int firstDayOfMonth() throws IOException{
 		setCurDay(1);
 		getCurDayOfWeek();
 		myCal.set(year,month,day);
@@ -78,7 +91,7 @@ public class DateControl {
 	}
 	
 	//returns the number of days in selected month
-	public int numDaysInMonth(){
+	public int numDaysInMonth() throws IOException{
 		int curMonth = getCurMonth();
 		setCurDay(28);
 		while(getCurMonth() == curMonth){
@@ -90,7 +103,7 @@ public class DateControl {
 	}
 	
 	//returns an array of all the days in the selected month
-	public int[] daysOfTheMonth(){		
+	public int[] daysOfTheMonth() throws IOException{		
 		int[] daysOfMonth = new int[numDaysInMonth()];
 		setCurDay(1);
 		for(int i = 0; i < numDaysInMonth(); i++){
