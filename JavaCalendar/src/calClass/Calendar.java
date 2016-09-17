@@ -22,7 +22,7 @@ public class Calendar {
     public static void main(String[] args){
         CalFile.CalInit();
         DateControl myDate = new DateControl();
-        myDate.setCurDate(2017,4,7);
+        myDate.setCurDate(2017,4,30);
         CalFile.setView("day");
         if(CalFile.getView().equals("day")){
             EventQueue.invokeLater(new Runnable() {
