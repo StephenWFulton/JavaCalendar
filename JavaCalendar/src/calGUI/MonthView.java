@@ -9,11 +9,14 @@ import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JTextPane;
+import calClass.DateControl;
 
 
 public class MonthView {
 
 	public JFrame frame;
+	private DateControl Date = new DateControl();
 	private JTable table;
 	private TableModel dataModel = new AbstractTableModel() {
         public int getColumnCount() { return 7; }
@@ -23,7 +26,16 @@ public class MonthView {
         		String[] WeekNames = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
         		return WeekNames[col];
         	}
-        	return new Integer(row*col); }
+        	System.out.println(Date.firstDayOfMonth());
+        	if(row == 1 && col < Date.firstDayOfMonth()){
+        		return new String();
+        	}
+        	if((row-1)*7+col > Date.daysOfTheMonth().length){
+        		return new String();
+        	}
+        	int Day = Date.daysOfTheMonth()[(col-Date.firstDayOfMonth())+((row-1)*7)];
+        	return Day;
+        	}
     };
 
 
@@ -62,7 +74,7 @@ public class MonthView {
 		table = new JTable(dataModel);
 		table.setCellSelectionEnabled(true);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);//allow only a single cell to be selected
-		table.setBounds(0, 0, 434, 261);
+		table.setBounds(0, 42, 434, 208);
 		table.setShowGrid(true);
 		table.addMouseListener(new MouseAdapter() {
 			@Override
@@ -72,5 +84,10 @@ public class MonthView {
 			}
 		});
 		frame.getContentPane().add(table);
+		
+		JTextPane txtpnmonth = new JTextPane();
+		txtpnmonth.setText(Date.monthName());
+		txtpnmonth.setBounds(162, 11, 85, 20);
+		frame.getContentPane().add(txtpnmonth);
 	}
 }
