@@ -8,7 +8,6 @@ import javax.swing.SpringLayout;
 import javax.swing.JTextArea;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.IOException;
 import calClass.DateControl;
 import calIO.CalFile;
 import javax.swing.JTextPane;
@@ -155,7 +154,7 @@ public class DayView {
 			public void mouseReleased(MouseEvent e) {
 				//set current day - 1
 				int curDay = Date.getCurDay() -1;
-				Date.setCurDate(Date.getCurYear(), Date.getCurMonth()-1, curDay);
+				Date.setCurDate(Date.getCurYear(), Date.getCurMonth(), curDay);
 				//dispose current view
 				frame.dispose();
 				//launch day view
@@ -182,7 +181,7 @@ public class DayView {
 			public void mouseReleased(MouseEvent e) {
 				//set current day + 1
 				int curDay = Date.getCurDay() + 1;
-				Date.setCurDate(Date.getCurYear(), Date.getCurMonth()-1, curDay);
+				Date.setCurDate(Date.getCurYear(), Date.getCurMonth(), curDay);
 				//dispose current view
 				frame.dispose();
 				//launch day view
