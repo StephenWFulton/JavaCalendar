@@ -5,6 +5,9 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class YearView {
 
@@ -43,6 +46,7 @@ public class YearView {
 		frame.getContentPane().setLayout(null);
 		
 		JButton btnAugust = new JButton("August");
+		btnAugust.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		btnAugust.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
@@ -67,6 +71,7 @@ public class YearView {
 		frame.getContentPane().add(btnAugust);
 		
 		JButton btnSeptember = new JButton("September");
+		btnSeptember.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		btnSeptember.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
@@ -91,6 +96,7 @@ public class YearView {
 		frame.getContentPane().add(btnSeptember);
 		
 		JButton btnOctober = new JButton("October");
+		btnOctober.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		btnOctober.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
@@ -115,6 +121,7 @@ public class YearView {
 		frame.getContentPane().add(btnOctober);
 		
 		JButton btnNovember = new JButton("November");
+		btnNovember.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		btnNovember.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
@@ -139,6 +146,7 @@ public class YearView {
 		frame.getContentPane().add(btnNovember);
 		
 		JButton btnDecember = new JButton("December");
+		btnDecember.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		btnDecember.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
@@ -163,6 +171,11 @@ public class YearView {
 		frame.getContentPane().add(btnDecember);
 		
 		JButton btnJanuary = new JButton("January");
+		btnJanuary.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnJanuary.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnJanuary.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
@@ -187,6 +200,7 @@ public class YearView {
 		frame.getContentPane().add(btnJanuary);
 		
 		JButton btnFebruary = new JButton("February");
+		btnFebruary.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		btnFebruary.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
@@ -211,6 +225,7 @@ public class YearView {
 		frame.getContentPane().add(btnFebruary);
 		
 		JButton btnMarch = new JButton("March");
+		btnMarch.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		btnMarch.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
@@ -235,6 +250,7 @@ public class YearView {
 		frame.getContentPane().add(btnMarch);
 		
 		JButton btnApril = new JButton("April");
+		btnApril.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		btnApril.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
@@ -259,6 +275,7 @@ public class YearView {
 		frame.getContentPane().add(btnApril);
 		
 		JButton btnMay = new JButton("May");
+		btnMay.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		btnMay.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
