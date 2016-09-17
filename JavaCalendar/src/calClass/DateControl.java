@@ -182,7 +182,7 @@ public class DateControl {
     public int firstDayOfMonth(){
         setCurDay(1);
         getCurDayOfWeek();
-        myCal.set(year,month,day);
+        myCal.set(year,month-1,day);
         return getCurDayOfWeek();
     }
     
