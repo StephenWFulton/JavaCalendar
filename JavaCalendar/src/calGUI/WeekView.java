@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JTextPane;
+import javax.swing.DropMode;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 public class WeekView {
@@ -79,47 +82,279 @@ public class WeekView {
 		frame.getContentPane().add(txtSaturday);
 				
 		JButton sundayBTN = new JButton("30");
+		sundayBTN.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+				//set current day to selected day
+				
+				//close current window
+				frame.dispose();
+				//open DayView window
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							DayView window = new DayView();
+							window.frame.setVisible(true);
+							
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+			}
+		});
 		sundayBTN.setBounds(6, 106, 48, 40);
 		frame.getContentPane().add(sundayBTN);
 		
 		JButton mondayBTN = new JButton("31");
+		mondayBTN.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+				//set current day to selected day
+				
+				//close current window
+				frame.dispose();
+				//open DayView window
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							DayView window = new DayView();
+							window.frame.setVisible(true);
+							
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+			}
+		});
 		mondayBTN.setBounds(62, 106, 48, 40);
 		frame.getContentPane().add(mondayBTN);
 		
 		JButton tuesdayBTN = new JButton("32");
+		tuesdayBTN.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+				//set current day to selected day
+				
+				//close current window
+				frame.dispose();
+				//open DayView window
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							DayView window = new DayView();
+							window.frame.setVisible(true);
+							
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+			}
+		});
 		tuesdayBTN.setBounds(122, 106, 48, 40);
 		frame.getContentPane().add(tuesdayBTN);
 		
 		JButton wednesdayBTN = new JButton("33");
+		wednesdayBTN.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+				//set current day to selected day
+				
+				//close current window
+				frame.dispose();
+				//open DayView window
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							DayView window = new DayView();
+							window.frame.setVisible(true);
+							
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+			}
+		});
 		wednesdayBTN.setBounds(192, 106, 48, 40);
 		frame.getContentPane().add(wednesdayBTN);
 		
 		JButton thursdayBTN = new JButton("34");
+		thursdayBTN.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+				//set current day to selected day
+				
+				//close current window
+				frame.dispose();
+				//open DayView window
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							DayView window = new DayView();
+							window.frame.setVisible(true);
+							
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+			}
+		});
 		thursdayBTN.setBounds(259, 106, 48, 40);
 		frame.getContentPane().add(thursdayBTN);
 		
 		JButton fridayBTN = new JButton("35");
+		fridayBTN.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+				//set current day to selected day
+				
+				//close current window
+				frame.dispose();
+				//open DayView window
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							DayView window = new DayView();
+							window.frame.setVisible(true);
+							
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+			}
+		});
 		fridayBTN.setBounds(323, 106, 48, 40);
 		frame.getContentPane().add(fridayBTN);
 		
 		JButton saturdayBTN = new JButton("36");
+		saturdayBTN.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+				//set current day to selected day
+				
+				//close current window
+				frame.dispose();
+				//open DayView window
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							DayView window = new DayView();
+							window.frame.setVisible(true);
+							
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+			}
+		});
 		saturdayBTN.setBounds(373, 106, 48, 40);
 		frame.getContentPane().add(saturdayBTN);
 		
 		JButton btnPrevWeek = new JButton("< Prev. Week");
+		btnPrevWeek.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+				//set current day-7
+				
+				//close current window
+				frame.dispose();
+				//open DayView window
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							WeekView window = new WeekView();
+							window.frame.setVisible(true);
+							
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+			}
+		});
 		btnPrevWeek.setBounds(6, 23, 102, 23);
 		frame.getContentPane().add(btnPrevWeek);
 		
 		JButton btnNextWeek = new JButton("Next Week >");
+		btnNextWeek.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+				//set current day+7
+				
+				//close current window
+				frame.dispose();
+				//open DayView window
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							WeekView window = new WeekView();
+							window.frame.setVisible(true);
+							
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+			}
+		});
 		btnNextWeek.setBounds(323, 23, 102, 23);
 		frame.getContentPane().add(btnNextWeek);
 		
 		JButton btnmonth = new JButton("%Month");
-		btnmonth.setBounds(167, 11, 89, 23);
+		btnmonth.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+				//close current window
+				frame.dispose();
+				//open DayView window
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							MonthView window = new MonthView();
+							window.frame.setVisible(true);
+							
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+			}
+		});
+		btnmonth.setBounds(125, 45, 89, 23);
 		frame.getContentPane().add(btnmonth);
 		
 		JButton btnFullYear = new JButton("Full Year");
-		btnFullYear.setBounds(167, 41, 89, 23);
+		btnFullYear.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+				//close current window
+				frame.dispose();
+				//open DayView window
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							YearView window = new YearView();
+							window.frame.setVisible(true);
+							
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+			}
+		});
+		btnFullYear.setBounds(224, 45, 89, 23);
 		frame.getContentPane().add(btnFullYear);
+		
+		JTextPane txtpnweek = new JTextPane();
+		txtpnweek.setText("%Week");
+		txtpnweek.setBounds(182, 14, 67, 20);
+		frame.getContentPane().add(txtpnweek);
 	}
 }
