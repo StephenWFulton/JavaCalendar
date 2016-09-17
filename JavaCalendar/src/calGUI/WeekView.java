@@ -63,7 +63,7 @@ public class WeekView {
 		
 		JTextPane txtWednesday = new JTextPane();
 		txtWednesday.setText("Wednesday");
-		txtWednesday.setBounds(182, 75, 67, 20);
+		txtWednesday.setBounds(182, 75, 69, 20);
 		frame.getContentPane().add(txtWednesday);
 		
 		JTextPane txtThursday = new JTextPane();
@@ -278,7 +278,7 @@ public class WeekView {
 				});
 			}
 		});
-		btnPrevWeek.setBounds(6, 23, 102, 23);
+		btnPrevWeek.setBounds(6, 23, 121, 23);
 		frame.getContentPane().add(btnPrevWeek);
 		
 		JButton btnNextWeek = new JButton("Next Week >");
@@ -303,7 +303,7 @@ public class WeekView {
 				});
 			}
 		});
-		btnNextWeek.setBounds(323, 23, 102, 23);
+		btnNextWeek.setBounds(311, 23, 114, 23);
 		frame.getContentPane().add(btnNextWeek);
 		
 		JButton btnmonth = new JButton("%Month");
