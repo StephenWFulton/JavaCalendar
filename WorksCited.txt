@@ -1,4 +1,4 @@
-Calendar and Date classes 
+Calendar and GregorianCalendar classes 
 https://www.ntu.edu.sg/home/ehchua/programming/java/DateTimeCalendar.html
 
 Pull recent  Git Changes
