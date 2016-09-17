@@ -7,12 +7,14 @@ import javax.swing.JButton;
 import javax.swing.JTextPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import calClass.DateControl;
 
 
 public class WeekView {
 
 	public JFrame frame;
-
+	private DateControl Date = new DateControl();
+	int[] visibleDates = Date.daysOfTheWeek();
 	/**
 	 * Launch the application.
 	 */
@@ -80,12 +82,13 @@ public class WeekView {
 		txtSaturday.setBounds(373, 75, 52, 20);
 		frame.getContentPane().add(txtSaturday);
 				
-		JButton sundayBTN = new JButton("30");
+		JButton sundayBTN = new JButton(Integer.toString(visibleDates[0]));
 		sundayBTN.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
 				//set current day to selected day
-				
+				int curDay = Date.getCurDay() + (0-Date.getCurDayOfWeek());
+				Date.setCurDate(Date.getCurYear(), Date.getCurMonth()-1, curDay);
 				//close current window
 				frame.dispose();
 				//open DayView window
@@ -105,12 +108,13 @@ public class WeekView {
 		sundayBTN.setBounds(6, 106, 48, 40);
 		frame.getContentPane().add(sundayBTN);
 		
-		JButton mondayBTN = new JButton("31");
+		JButton mondayBTN = new JButton(Integer.toString(visibleDates[1]));
 		mondayBTN.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
 				//set current day to selected day
-				
+				int curDay = Date.getCurDay() + (1-Date.getCurDayOfWeek());
+				Date.setCurDate(Date.getCurYear(), Date.getCurMonth()-1, curDay);
 				//close current window
 				frame.dispose();
 				//open DayView window
@@ -130,12 +134,13 @@ public class WeekView {
 		mondayBTN.setBounds(62, 106, 48, 40);
 		frame.getContentPane().add(mondayBTN);
 		
-		JButton tuesdayBTN = new JButton("32");
+		JButton tuesdayBTN = new JButton(Integer.toString(visibleDates[2]));
 		tuesdayBTN.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
 				//set current day to selected day
-				
+				int curDay = Date.getCurDay() + (2-Date.getCurDayOfWeek());
+				Date.setCurDate(Date.getCurYear(), Date.getCurMonth()-1, curDay);
 				//close current window
 				frame.dispose();
 				//open DayView window
@@ -155,12 +160,13 @@ public class WeekView {
 		tuesdayBTN.setBounds(122, 106, 48, 40);
 		frame.getContentPane().add(tuesdayBTN);
 		
-		JButton wednesdayBTN = new JButton("33");
+		JButton wednesdayBTN = new JButton(Integer.toString(visibleDates[3]));
 		wednesdayBTN.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
 				//set current day to selected day
-				
+				int curDay = Date.getCurDay() + (3-Date.getCurDayOfWeek());
+				Date.setCurDate(Date.getCurYear(), Date.getCurMonth()-1, curDay);
 				//close current window
 				frame.dispose();
 				//open DayView window
@@ -180,12 +186,13 @@ public class WeekView {
 		wednesdayBTN.setBounds(192, 106, 48, 40);
 		frame.getContentPane().add(wednesdayBTN);
 		
-		JButton thursdayBTN = new JButton("34");
+		JButton thursdayBTN = new JButton(Integer.toString(visibleDates[4]));
 		thursdayBTN.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
 				//set current day to selected day
-				
+				int curDay = Date.getCurDay() + (4-Date.getCurDayOfWeek());
+				Date.setCurDate(Date.getCurYear(), Date.getCurMonth()-1, curDay);
 				//close current window
 				frame.dispose();
 				//open DayView window
@@ -205,12 +212,13 @@ public class WeekView {
 		thursdayBTN.setBounds(259, 106, 48, 40);
 		frame.getContentPane().add(thursdayBTN);
 		
-		JButton fridayBTN = new JButton("35");
+		JButton fridayBTN = new JButton(Integer.toString(visibleDates[5]));
 		fridayBTN.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
 				//set current day to selected day
-				
+				int curDay = Date.getCurDay() + (5-Date.getCurDayOfWeek());
+				Date.setCurDate(Date.getCurYear(), Date.getCurMonth()-1, curDay);
 				//close current window
 				frame.dispose();
 				//open DayView window
@@ -230,12 +238,13 @@ public class WeekView {
 		fridayBTN.setBounds(323, 106, 48, 40);
 		frame.getContentPane().add(fridayBTN);
 		
-		JButton saturdayBTN = new JButton("36");
+		JButton saturdayBTN = new JButton(Integer.toString(visibleDates[6]));
 		saturdayBTN.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
 				//set current day to selected day
-				
+				int curDay = Date.getCurDay() + (6-Date.getCurDayOfWeek());
+				Date.setCurDate(Date.getCurYear(), Date.getCurMonth()-1, curDay);
 				//close current window
 				frame.dispose();
 				//open DayView window
@@ -260,7 +269,8 @@ public class WeekView {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
 				//set current day-7
-				
+				int curDay = Date.getCurDay() - 7;
+				Date.setCurDate(Date.getCurYear(), Date.getCurMonth()-1, curDay);
 				//close current window
 				frame.dispose();
 				//open DayView window
@@ -285,7 +295,8 @@ public class WeekView {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
 				//set current day+7
-				
+				int curDay = Date.getCurDay() + 7;
+				Date.setCurDate(Date.getCurYear(), Date.getCurMonth()-1, curDay);
 				//close current window
 				frame.dispose();
 				//open DayView window
@@ -305,7 +316,7 @@ public class WeekView {
 		btnNextWeek.setBounds(311, 23, 114, 23);
 		frame.getContentPane().add(btnNextWeek);
 		
-		JButton btnmonth = new JButton("%Month");
+		JButton btnmonth = new JButton(Date.monthName());
 		btnmonth.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
@@ -328,7 +339,7 @@ public class WeekView {
 		btnmonth.setBounds(125, 45, 89, 23);
 		frame.getContentPane().add(btnmonth);
 		
-		JButton btnFullYear = new JButton("Full Year");
+		JButton btnFullYear = new JButton(Integer.toString(Date.getCurYear()));
 		btnFullYear.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
@@ -352,7 +363,7 @@ public class WeekView {
 		frame.getContentPane().add(btnFullYear);
 		
 		JTextPane txtpnweek = new JTextPane();
-		txtpnweek.setText("%Week");
+		txtpnweek.setText(Integer.toString(Date.getCurWeek()));
 		txtpnweek.setBounds(182, 14, 67, 20);
 		frame.getContentPane().add(txtpnweek);
 	}
