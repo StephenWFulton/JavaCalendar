@@ -100,6 +100,25 @@ public class DayView {
 		frame.getContentPane().add(btnMonth);
 		
 		JButton btnYear = new JButton("%Year");
+		btnYear.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				//dispose current view
+				frame.dispose();
+				//launch day view
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							YearView window = new YearView();
+							window.frame.setVisible(true);
+							
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+			}
+		});
 		springLayout.putConstraint(SpringLayout.NORTH, btnweek, 0, SpringLayout.NORTH, btnYear);
 		springLayout.putConstraint(SpringLayout.EAST, btnweek, -26, SpringLayout.WEST, btnYear);
 		springLayout.putConstraint(SpringLayout.EAST, btnYear, -149, SpringLayout.EAST, frame.getContentPane());
