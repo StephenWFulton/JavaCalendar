@@ -19,3 +19,10 @@ Case 2: Care about local changes
     git pull
     
 .gitignore adapted from: http://www.bmchild.com/2012/06/git-ignore-for-java-eclipse-project.html
+
+http://www.tutorialspoint.com/java/java_filereader_class.htm
+-writer code
+http://stackoverflow.com/questions/16027229/reading-from-a-text-file-and-storing-in-a-string
+-reader code
+http://stackoverflow.com/questions/1816673/how-do-i-check-if-a-file-exists-in-java
+-checking if a file exists

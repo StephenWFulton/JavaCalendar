@@ -87,6 +87,12 @@ public class CalFile{
         
     }
 
+    /*
+     *	@pre None.
+     *	@post None.
+     *	@return If the file exists it returns true, if not returns false.
+     *
+     */
     public static boolean CalExist(){
 	File file = new File("CalendarInfo.txt");
 	boolean Existance = file.exists();
