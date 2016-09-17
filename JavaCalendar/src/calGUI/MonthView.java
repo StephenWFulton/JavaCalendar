@@ -30,7 +30,7 @@ public class MonthView {
         	if(row == 1 && col < Date.firstDayOfMonth()){
         		return new String();
         	}
-        	if((row-1)*7+col > Date.daysOfTheMonth().length){
+        	if(((row-1)*7+col) > (Date.daysOfTheMonth().length-1 + Date.firstDayOfMonth())){
         		return new String();
         	}
         	int Day = Date.daysOfTheMonth()[(col-Date.firstDayOfMonth())+((row-1)*7)];
