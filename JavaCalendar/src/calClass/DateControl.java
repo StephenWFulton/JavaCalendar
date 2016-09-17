@@ -1,3 +1,5 @@
+package calClass;
+
 /*
     @file DateControl.java
     @author Ryan Niday
@@ -10,6 +12,8 @@
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+
+import calIO.CalFile;
 
 public class DateControl {
 	private Calendar myCal;						//The calendar keeping track of the date
