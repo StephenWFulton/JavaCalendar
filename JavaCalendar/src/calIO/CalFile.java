@@ -23,7 +23,7 @@ public class CalFile{
 		boolean result = false;
 		while(choice != 0){
 		System.out.println("-----------------------------------------------------------");
-		System.out.println("1.Initialize 2.Read    3.Write    4.getDate 5.setDate \n6.getView,    7.setView 8.getFirst 9.getLast 0.quit:");
+		System.out.println("1.Initialize  2.Read     3.Write     4.getDate  5.setDate \n6.getView     7.setView  8.getFirst  9.getLast  0.quit");
 		choice = kb.nextInt();
 		if(choice == 1){
 			result = CalInit();
@@ -205,6 +205,34 @@ public class CalFile{
 	 */
 	public static boolean CalWrite(int date, String event)throws IOException{
 		String curDate = Integer.toString(date);
+		//**********************************************
+		
+		
+		String nextDate = "";
+		int Enddate = 0;
+		if(date == 20161231){	
+			nextDate = Integer.toString((date+8870));
+		}
+		else if(date == 20160831 || date == 20161031 || date == 20170131 || date == 20170331){
+			nextDate = Integer.toString((date+70));
+		}
+		else if(date == 20160930 || date == 20161130 || date == 20170430){
+			nextDate = Integer.toString((date+71));
+		}
+		else if(date == 20170228){
+			nextDate = Integer.toString((date+73));
+		}
+		else if(date == 20170531){
+			Enddate = 1;
+		}
+		else
+		{
+			nextDate = Integer.toString((date+1));
+		}
+
+		//*****************************************************
+
+
 		BufferedReader br = new BufferedReader(new FileReader("CalendarInfo.txt"));
 		File file2 = new File("2CalendarInfo.txt");
 		file2.createNewFile();
@@ -222,8 +250,22 @@ public class CalFile{
 			}
 			//write event
 			fw.write(event + "\n");
-			while((line = br.readLine())!= null){
+			//*******************************
+
+			if(Enddate == 0){
+				while(!(line.equals(nextDate))){
+					line = br.readLine();	
+				}
+			}
+			else {
+				while((line = br.readLine())!= null){}
+				Enddate = 0;
+			}			
+
+			//********************************
+			while(line != null){
 				fw.write(line + "\n");
+				line = br.readLine();
 			}
 			file.delete();
 			file2.renameTo(file);
@@ -350,7 +392,7 @@ public class CalFile{
 	/*
 	 *	@pre The CalendarInfo.txt file exists with proper information and formatting
 	 *	@post None.
-	 *	@return Integer of the date stored as the last date of the calendar.
+	 *	@return Integer of the date stored as the last date of the Calendar.
 	 *
 	 */
 	public static int getLast()throws IOException{
