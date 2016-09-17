@@ -62,9 +62,15 @@ public class DateControl {
         else{
             if(myCal.get(Calendar.DAY_OF_YEAR) < 182){
                 myCal.set(2017,4,31);
+                this.year = getCurYear();
+                this.month = getCurMonth();
+                this.day = getCurDay();
             }
             else{
                 myCal.set(2016,7,1);
+                this.year = getCurYear();
+                this.month = getCurMonth();
+                this.day = getCurDay();
             }
         }
         CalFile.setDate(setCurFileDate());

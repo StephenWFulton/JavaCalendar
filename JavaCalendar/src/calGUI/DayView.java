@@ -8,7 +8,7 @@ import javax.swing.SpringLayout;
 import javax.swing.JTextArea;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import calClass.DateControl;
+import calClass.*;
 import calIO.CalFile;
 import javax.swing.JTextPane;
 
@@ -16,7 +16,6 @@ import javax.swing.JTextPane;
 public class DayView {
 	
 	public JFrame frame;
-	
 	private DateControl Date = new DateControl();
 
 	/**
