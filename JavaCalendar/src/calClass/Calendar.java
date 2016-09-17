@@ -9,7 +9,6 @@ package calClass;
  */
 
 import java.awt.EventQueue;
-import java.io.IOException;
 
 import calGUI.DayView;
 import calGUI.MonthView;
@@ -20,7 +19,7 @@ import calIO.CalFile;
 
 
 public class Calendar {
-	public static void main(String[] args) throws IOException{
+	public static void main(String[] args){
 		CalFile.CalInit();
 		//DateControl myDate = new DateControl();
 		CalFile.setView("week");
