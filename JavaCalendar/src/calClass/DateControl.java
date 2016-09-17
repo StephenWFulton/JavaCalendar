@@ -193,7 +193,7 @@ public class DateControl {
      */
     public int numDaysInMonth(){
         int curMonth = getCurMonth();
-        setCurDay(28);
+        myCal.set(Calendar.DATE,28);
         while(getCurMonth() == curMonth){
             myCal.add(Calendar.DATE, 1);
         }
