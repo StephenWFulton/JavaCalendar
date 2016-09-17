@@ -1,7 +1,20 @@
+/**
+ *	@file CalFile.java
+ *	@author Stuart Wreath
+ *	@since 2016.09.17
+ *
+ */
+
 import java.io.*;
 import java.util.Scanner;
 
 public class CalFile{
+	/*
+	 *	@pre None.
+	 *	@post None.
+	 *	@return Allows user to run methods of this file at will.
+	 *
+	 */
 	public static void main(String[] args)throws IOException{
 		Scanner kb = new Scanner(System.in);
 		String str = "";
@@ -10,7 +23,7 @@ public class CalFile{
 		boolean result = false;
 		while(choice != 0){
 		System.out.println("-----------------------------------------------------------");
-		System.out.println("1.Initialize, 2.Read,    3.Write,    4.getDate, 5.setDate, \n6.getView,    7.setView, 8.getFirst, 9.getLast, 0.quit:");
+		System.out.println("1.Initialize 2.Read    3.Write    4.getDate 5.setDate \n6.getView,    7.setView 8.getFirst 9.getLast 0.quit:");
 		choice = kb.nextInt();
 		if(choice == 1){
 			result = CalInit();
@@ -67,7 +80,12 @@ public class CalFile{
 		
 	}
 	
-	//Change CalInit to take in the current date and view as arguments
+	/*
+	 *	@pre None.
+	 *	@post A file called CalendarInfo.txt exists with proper information and formatting
+	 *	@return None
+	 *
+	 */
 	public static boolean CalInit()throws IOException{
 		
 		File file = new File("CalendarInfo.txt");
@@ -109,6 +127,12 @@ public class CalFile{
 		return(true);
 	}
 
+	/*
+	 *	@pre The CalendarInfo.txt file exists and has proper information and dates in it.
+	 *	@post None.
+	 *	@return String that holds the event written at the date inputted.
+	 *
+	 */
 	public static String CalRead(int date)throws IOException{
 		String curDate = Integer.toString(date);
 		String nextDate = "";
@@ -173,6 +197,12 @@ public class CalFile{
 		
 	}
 	
+	/*
+	 *	@pre The CalendarInfo.txt file exists with proper information and formatting.
+	 *	@post A new event is added to the CalendarInfo file.
+	 *	@return Boolean that tells you if the writing was successful.
+	 *
+	 */
 	public static boolean CalWrite(int date, String event)throws IOException{
 		String curDate = Integer.toString(date);
 		BufferedReader br = new BufferedReader(new FileReader("CalendarInfo.txt"));
@@ -205,6 +235,12 @@ public class CalFile{
 		return(true);
 	}
 	
+	/*
+	 *	@pre The CalendarInfo.txt file exists with proper information and formatting
+	 *	@post None.
+	 *	@return Integer of the date stored as current date.
+	 *
+	 */
 	public static int getDate()throws IOException{
 		BufferedReader br = new BufferedReader(new FileReader("CalendarInfo.txt"));
 		String line = br.readLine();
@@ -213,6 +249,13 @@ public class CalFile{
 		int date = Integer.parseInt(line);
 		return date;
 	}
+
+	/*
+	 *	@pre The CalendarInfo.txt file exists with proper information and formatting
+	 *	@post None.
+	 *	@return Boolean stating if the writing was completed.
+	 *
+	 */
 	public static boolean setDate(int date)throws IOException{
 		BufferedReader br = new BufferedReader(new FileReader("CalendarInfo.txt"));
 		File file2 = new File("2CalendarInfo.txt");
@@ -240,6 +283,13 @@ public class CalFile{
 		}
 		return(true);
 	}
+
+	/*
+	 *	@pre The CalendarInfo.txt file exists with proper information and formatting
+	 *	@post None.
+	 *	@return String containing the current view of the calendar.
+	 *
+	 */
 	public static String getView()throws IOException{
 		BufferedReader br = new BufferedReader(new FileReader("CalendarInfo.txt"));
 		String view = br.readLine();
@@ -249,6 +299,13 @@ public class CalFile{
 		view = br.readLine();
 		return view;
 	}
+
+	/*
+	 *	@pre The CalendarInfo.txt file exists with proper information and formatting
+	 *	@post None.
+	 *	@return Boolean stating if the writing was successful.
+	 *
+	 */
 	public static boolean setView(String view)throws IOException{
 		BufferedReader br = new BufferedReader(new FileReader("CalendarInfo.txt"));
 		File file2 = new File("2CalendarInfo.txt");
@@ -275,6 +332,13 @@ public class CalFile{
 		}
 		return(true);
 	}
+
+	/*
+	 *	@pre The CalendarInfo.txt file exists with proper information and formatting
+	 *	@post None.
+	 *	@return Integer of the date stored as the First date of the Calendar.
+	 *
+	 */
 	public static int getFirst()throws IOException{
 		BufferedReader br = new BufferedReader(new FileReader("CalendarInfo.txt"));
 		String line = br.readLine();
@@ -282,6 +346,13 @@ public class CalFile{
 		int date = Integer.parseInt(line);
 		return date;
 	}
+
+	/*
+	 *	@pre The CalendarInfo.txt file exists with proper information and formatting
+	 *	@post None.
+	 *	@return Integer of the date stored as the last date of the calendar.
+	 *
+	 */
 	public static int getLast()throws IOException{
 		BufferedReader br = new BufferedReader(new FileReader("CalendarInfo.txt"));
 		String line = br.readLine();
