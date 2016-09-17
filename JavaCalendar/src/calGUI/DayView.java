@@ -75,12 +75,6 @@ public class DayView {
 				});
 			}
 		});
-		btnMonth.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseReleased(MouseEvent arg0) {
-				 //Dummy action, replace by calling up month view
-			}
-		});
 		
 		JButton btnweek = new JButton("Week: " + Integer.toString(Date.getCurWeek()));
 		btnweek.addMouseListener(new MouseAdapter() {
@@ -131,6 +125,7 @@ public class DayView {
 		frame.getContentPane().add(btnYear);
 		
 		final JTextArea textArea = new JTextArea();
+		textArea.setText(CalFile.CalRead(Date.setCurFileDate()));
 		springLayout.putConstraint(SpringLayout.NORTH, textArea, 85, SpringLayout.NORTH, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, btnYear, -16, SpringLayout.NORTH, textArea);
 		springLayout.putConstraint(SpringLayout.WEST, textArea, 25, SpringLayout.WEST, frame.getContentPane());
@@ -160,7 +155,7 @@ public class DayView {
 			public void mouseReleased(MouseEvent e) {
 				//set current day - 1
 				int curDay = Date.getCurDay() -1;
-				Date.setCurDay(curDay);
+				Date.setCurDate(Date.getCurYear(), Date.getCurMonth()-1, curDay);
 				//dispose current view
 				frame.dispose();
 				//launch day view
@@ -187,7 +182,7 @@ public class DayView {
 			public void mouseReleased(MouseEvent e) {
 				//set current day + 1
 				int curDay = Date.getCurDay() + 1;
-				Date.setCurDay(curDay);
+				Date.setCurDate(Date.getCurYear(), Date.getCurMonth()-1, curDay);
 				//dispose current view
 				frame.dispose();
 				//launch day view
