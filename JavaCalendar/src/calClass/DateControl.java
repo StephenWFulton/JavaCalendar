@@ -229,7 +229,7 @@ public class DateControl {
             daysOfWeek[i] = getCurDay();
             myCal.add(Calendar.DATE, 1);
         }
-        myCal.set(year,month,day);
+        myCal.set(year,month-1,day);
         return daysOfWeek;
     }
     
