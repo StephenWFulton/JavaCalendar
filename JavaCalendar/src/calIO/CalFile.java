@@ -136,14 +136,14 @@ public class CalFile{
 		try{
 			String sb = "";
 			String line = br.readLine();
-			for(int y = 0; y > 11; y ++){
+			for(int y = 0; y < 9; y ++){
 				line = br.readLine();
 			}
 			while(!(line.equals(curDate))){
 				line = br.readLine();
 			}
-			line = br.readLine();
 			if(Enddate == 0){
+				line = br.readLine();
 				while(!(line.equals(nextDate))){
 					if(sb.equals("") || line.equals("")){
 						sb = sb + line;				
@@ -155,14 +155,13 @@ public class CalFile{
 				}
 			}
 			else {
-				while((line =br.readLine())!= null){
+				while((line = br.readLine())!= null){
 					if(sb.equals("") || line.equals("")){
 						sb = sb + line;				
 					}
 					else{
 						sb = sb + "\n" +line;
-					}	
-					line = br.readLine();
+					}
 				}
 				Enddate = 0;
 			}
