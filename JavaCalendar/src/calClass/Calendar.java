@@ -20,7 +20,12 @@ import calIO.CalFile;
 
 public class Calendar {
     public static void main(String[] args){
-        CalFile.CalInit();
+        if(CalFile.CalExst()){
+            
+        }
+        else{
+            CalFile.CalInit();
+        }
         DateControl myDate = new DateControl();
         myDate.setCurDate(2017,4,30);
         CalFile.setView("day");
