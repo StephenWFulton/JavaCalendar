@@ -1,4 +1,4 @@
-package calIO;
+//package calIO;
 
 /**
  *	@file CalFile.java
@@ -78,8 +78,19 @@ public class CalFile{
                 date = getLast();
                 System.out.println("Last date in calendar: " + date);
             }
+	    if(choice == 10){
+		result = CalExist();
+                if(result == true){System.out.println("The File Exists");}
+                else{System.out.println("The File does not Exist");}
+	    }
         }
         
+    }
+
+    public static boolean CalExist(){
+	File file = new File("CalendarInfo.txt");
+	boolean Existance = file.exists();
+	return Existance;
     }
     
     /*
