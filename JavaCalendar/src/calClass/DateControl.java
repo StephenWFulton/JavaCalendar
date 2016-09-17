@@ -198,7 +198,6 @@ public class DateControl {
             myCal.add(Calendar.DATE, 1);
         }
         myCal.add(Calendar.DATE, -1);
-        myCal.set(year,month,day);
         return getCurDay();
     }
     
@@ -214,7 +213,7 @@ public class DateControl {
         for(int i = 0; i < numDaysInMonth(); i++){
             daysOfMonth[i] = i + 1;
         }
-        myCal.set(year,month,day);
+        myCal.set(year,month-1,day);
         return daysOfMonth;
     }
     
