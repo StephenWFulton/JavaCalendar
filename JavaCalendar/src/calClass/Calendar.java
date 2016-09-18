@@ -20,7 +20,7 @@ import calIO.CalFile;
 
 public class Calendar {
     public static void main(String[] args){
-        if(CalFile.CalExst()){
+        if(CalFile.CalExist()){
             
         }
         else{
