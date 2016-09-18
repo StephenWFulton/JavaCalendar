@@ -36,7 +36,7 @@ public class MonthView {
         public int getRowCount() { return 7;}
         public Object getValueAt(int row, int col) { 
         	if(row == 0){
-        		String[] WeekNames = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+        		String[] WeekNames = {"Sunday", "Monday", "Tuesday", "Wed.", "Thursday", "Friday", "Saturday"};
         		return WeekNames[col];
         	}
         	//System.out.println(Date.daysOfTheMonth().length);
