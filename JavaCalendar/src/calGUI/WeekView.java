@@ -1,5 +1,14 @@
 package calGUI;
 
+/**
+ * @file WeekView.java
+ * @author Adam Van Hal
+ * @since 2016.09.17
+ * @details This class generates the GUI responsible for displaying the Week portion of the calendar. All 
+ * data it needs is retrieved using get methods from DateControl.java. When a new date is selected it uses 
+ * set methods in DateControl.java to change the date and then it launches the corresponding GUI window
+ */
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -15,9 +24,12 @@ public class WeekView {
 	public JFrame frame;
 	private DateControl Date = new DateControl();
 	int[] visibleDates = Date.daysOfTheWeek();
-	/**
-	 * Launch the application.
-	 */
+
+    /**
+    * @pre    None
+    * @post   Launches the Week GUI, primarily used in standalone testing. 
+    * @return None
+    */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -32,15 +44,19 @@ public class WeekView {
 	}
 
 	/**
-	 * Create the application.
-	 */
+	* @pre    None
+    * @post   Starts the initialize function 
+    * @return None
+    */
 	public WeekView() {
 		initialize();
 	}
 
 	/**
-	 * Initialize the contents of the frame.
-	 */
+	* @pre    None
+    * @post   Initializes the contents of the JFrame adding all the swing components and event handlers.
+    * @return None
+    */
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);

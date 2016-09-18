@@ -1,5 +1,16 @@
 package calGUI;
 
+/**
+ * @file DayView.java
+ * @author Adam Van Hal
+ * @since 2016.09.17
+ * @details This class generates the GUI responsible for displaying the Day portion of the calendar. All 
+ * date data it needs is retrieved using get methods from DateControl.java. When a new date is selected it uses 
+ * set methods in DateControl.java to change the date and then it launches the corresponding GUI window
+ * If a new event is entered in the text field it calls CalFile.Java to save it. Previously saved events are 
+ * retrieved also from CalFile.java
+ */
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -8,7 +19,7 @@ import javax.swing.SpringLayout;
 import javax.swing.JTextArea;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import calClass.*;
+import calClass.DateControl;
 import calIO.CalFile;
 import javax.swing.JTextPane;
 
@@ -18,9 +29,11 @@ public class DayView {
 	public JFrame frame;
 	private DateControl Date = new DateControl();
 
-	/**
-	 * Launch the application.
-	 */
+    /**
+    * @pre    None
+    * @post   Launches the Day GUI, primarily used in standalone testing. 
+    * @return None
+    */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -36,15 +49,19 @@ public class DayView {
 	}
 
 	/**
-	 * Create the application.
-	 */
+	* @pre    None
+    * @post   Starts the initialize function 
+    * @return None
+    */
 	public DayView() {
 		initialize();
 	}
 
 	/**
-	 * Initialize the contents of the frame.
-	 */
+	* @pre    None
+    * @post   Initializes the contents of the JFrame adding all the swing components and event handlers.
+    * @return None
+    */
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
