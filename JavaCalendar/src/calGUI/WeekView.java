@@ -64,36 +64,43 @@ public class WeekView {
 		frame.getContentPane().setLayout(null);
 		
 		JTextPane txtSunday = new JTextPane();
+		txtSunday.setEditable(false);
 		txtSunday.setText("Sunday");
 		txtSunday.setBounds(6, 75, 46, 20);
 		frame.getContentPane().add(txtSunday);
 		
 		JTextPane txtMonday = new JTextPane();
+		txtMonday.setEditable(false);
 		txtMonday.setText("Monday");
 		txtMonday.setBounds(62, 75, 46, 20);
 		frame.getContentPane().add(txtMonday);
 		
 		JTextPane txtTuesday = new JTextPane();
+		txtTuesday.setEditable(false);
 		txtTuesday.setText("Tuesday");
 		txtTuesday.setBounds(118, 75, 54, 20);
 		frame.getContentPane().add(txtTuesday);
 		
 		JTextPane txtWednesday = new JTextPane();
+		txtWednesday.setEditable(false);
 		txtWednesday.setText("Wednesday");
 		txtWednesday.setBounds(182, 75, 69, 20);
 		frame.getContentPane().add(txtWednesday);
 		
 		JTextPane txtThursday = new JTextPane();
+		txtThursday.setEditable(false);
 		txtThursday.setText("Thursday");
 		txtThursday.setBounds(259, 75, 54, 20);
 		frame.getContentPane().add(txtThursday);
 		
 		JTextPane txtFriday = new JTextPane();
+		txtFriday.setEditable(false);
 		txtFriday.setText("Friday");
 		txtFriday.setBounds(323, 75, 46, 20);
 		frame.getContentPane().add(txtFriday);
 		
 		JTextPane txtSaturday = new JTextPane();
+		txtSaturday.setEditable(false);
 		txtSaturday.setText("Saturday");
 		txtSaturday.setBounds(373, 75, 52, 20);
 		frame.getContentPane().add(txtSaturday);
@@ -379,6 +386,7 @@ public class WeekView {
 		frame.getContentPane().add(btnFullYear);
 		
 		JTextPane txtpnweek = new JTextPane();
+		txtpnweek.setEditable(false);
 		txtpnweek.setText(Integer.toString(Date.getCurWeek()));
 		txtpnweek.setBounds(182, 14, 67, 20);
 		frame.getContentPane().add(txtpnweek);

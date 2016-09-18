@@ -128,6 +128,7 @@ public class MonthView {
 		frame.getContentPane().add(table);
 		
 		JTextPane txtpnmonth = new JTextPane();
+		txtpnmonth.setEditable(false);
 		txtpnmonth.setText(Date.monthName());
 		txtpnmonth.setBounds(175, 11, 85, 20);
 		frame.getContentPane().add(txtpnmonth);
