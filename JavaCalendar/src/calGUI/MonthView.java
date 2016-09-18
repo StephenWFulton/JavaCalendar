@@ -80,8 +80,30 @@ public class MonthView {
 		table.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				System.out.println(table.getSelectionModel().getLeadSelectionIndex()); //get selected cell row index
-				System.out.println(table.getColumnModel().getSelectionModel().getLeadSelectionIndex()); //get selected cell column index
+				//get the selected value
+				int row = table.getSelectedRow();
+				int col = table.getSelectedColumn();
+				Object Cell = table.getValueAt(row, col);
+				//check if the cell contained an int
+				if(Cell.getClass() == Integer.class){
+					//set the day to the new value
+					int NewDay = (int) Cell;
+					Date.setCurDay(NewDay);
+					//dispose current view
+					frame.dispose();
+					//open day view
+					EventQueue.invokeLater(new Runnable() {
+						public void run() {
+							try {
+								DayView window = new DayView();
+								window.frame.setVisible(true);
+								
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
+						}
+					});
+				}
 			}
 		});
 		frame.getContentPane().add(table);
