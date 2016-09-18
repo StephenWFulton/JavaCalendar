@@ -26,9 +26,6 @@ public class Calendar {
         else{
             CalFile.CalInit();
         }
-        DateControl myDate = new DateControl();
-        myDate.setCurDate(2017,4,30);
-        CalFile.setView("day");
         if(CalFile.getView().equals("day")){
             EventQueue.invokeLater(new Runnable() {
                 public void run() {
