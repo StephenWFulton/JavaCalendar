@@ -14,6 +14,7 @@ package calGUI;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import javax.swing.SpringLayout;
 import javax.swing.JTextArea;
@@ -140,12 +141,15 @@ public class DayView {
 		frame.getContentPane().add(btnYear);
 		
 		final JTextArea textArea = new JTextArea();
+		JScrollPane Pane = new JScrollPane(textArea);
+		springLayout.putConstraint(SpringLayout.NORTH, Pane, 6, SpringLayout.SOUTH, btnYear);
 		textArea.setText(CalFile.CalRead(Date.setCurFileDate()));
 		springLayout.putConstraint(SpringLayout.NORTH, textArea, 85, SpringLayout.NORTH, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, btnYear, -16, SpringLayout.NORTH, textArea);
 		springLayout.putConstraint(SpringLayout.WEST, textArea, 25, SpringLayout.WEST, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.EAST, textArea, 403, SpringLayout.WEST, frame.getContentPane());
-		frame.getContentPane().add(textArea);
+		//frame.getContentPane().add(textArea);
+		frame.getContentPane().add(Pane);
 		
 		JButton btnSave = new JButton("Save");
 		springLayout.putConstraint(SpringLayout.SOUTH, textArea, -6, SpringLayout.NORTH, btnSave);
@@ -164,6 +168,8 @@ public class DayView {
 		frame.getContentPane().add(btnweek);
 		
 		JButton btnPrevDay = new JButton("< Prev. Day");
+		springLayout.putConstraint(SpringLayout.WEST, Pane, 0, SpringLayout.WEST, btnPrevDay);
+		springLayout.putConstraint(SpringLayout.SOUTH, Pane, 176, SpringLayout.SOUTH, btnPrevDay);
 		springLayout.putConstraint(SpringLayout.WEST, btnMonth, 46, SpringLayout.EAST, btnPrevDay);
 		btnPrevDay.addMouseListener(new MouseAdapter() {
 			@Override
@@ -192,6 +198,7 @@ public class DayView {
 		frame.getContentPane().add(btnPrevDay);
 		
 		JButton btnNextDay = new JButton("Next Day >");
+		springLayout.putConstraint(SpringLayout.EAST, Pane, 0, SpringLayout.EAST, btnNextDay);
 		btnNextDay.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
@@ -219,7 +226,8 @@ public class DayView {
 		frame.getContentPane().add(btnNextDay);
 		
 		JTextPane txtpnday = new JTextPane();
-		txtpnday.setText(Integer.toString(Date.getCurDay()));
+		txtpnday.setEditable(false);
+		txtpnday.setText("Day: " + Integer.toString(Date.getCurDay()));
 		springLayout.putConstraint(SpringLayout.WEST, txtpnday, 34, SpringLayout.EAST, btnMonth);
 		springLayout.putConstraint(SpringLayout.SOUTH, txtpnday, 0, SpringLayout.SOUTH, btnMonth);
 		frame.getContentPane().add(txtpnday);
