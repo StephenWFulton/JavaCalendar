@@ -106,7 +106,7 @@ public class MonthView {
 				//check if the cell contained an int
 				if(Cell.getClass() == Integer.class){
 					//set the day to the new value
-					int NewDay = (int) Cell;
+					int NewDay = (Integer) Cell;
 					Date.setCurDay(NewDay);
 					//dispose current view
 					frame.dispose();
