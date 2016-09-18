@@ -11,6 +11,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JTextPane;
 import calClass.DateControl;
+import javax.swing.JButton;
 
 
 public class MonthView {
@@ -87,7 +88,57 @@ public class MonthView {
 		
 		JTextPane txtpnmonth = new JTextPane();
 		txtpnmonth.setText(Date.monthName());
-		txtpnmonth.setBounds(162, 11, 85, 20);
+		txtpnmonth.setBounds(175, 11, 85, 20);
 		frame.getContentPane().add(txtpnmonth);
+		
+		JButton btnPrevMonth = new JButton("< Prev. Month");
+		btnPrevMonth.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+				//set to previous month after adjusting for the off by 1 error, set day to the first.
+				int curMonth = Date.getCurMonth() -1 -1;
+				Date.setCurDate(Date.getCurYear(), curMonth, 1);
+				//close current view
+				frame.dispose();
+				//launch Month view
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							MonthView window = new MonthView();
+							window.frame.setVisible(true);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+			}
+		});
+		btnPrevMonth.setBounds(10, 11, 113, 23);
+		frame.getContentPane().add(btnPrevMonth);
+		
+		JButton btnNextMonth = new JButton("Next Month >");
+		btnNextMonth.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+				//set to next month after adjusting for the off by 1 error, set day to the first.
+				int curMonth = Date.getCurMonth() + 1 - 1;
+				Date.setCurDate(Date.getCurYear(), curMonth, 1);
+				//close current view
+				frame.dispose();
+				//launch Month view
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							MonthView window = new MonthView();
+							window.frame.setVisible(true);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+			}
+		});
+		btnNextMonth.setBounds(305, 11, 119, 23);
+		frame.getContentPane().add(btnNextMonth);
 	}
 }
