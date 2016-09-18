@@ -71,7 +71,6 @@ public class DayView {
 		frame.getContentPane().setLayout(springLayout);
 		
 		JButton btnMonth = new JButton(Date.monthName());
-		springLayout.putConstraint(SpringLayout.NORTH, btnMonth, 10, SpringLayout.NORTH, frame.getContentPane());
 		btnMonth.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
@@ -93,6 +92,7 @@ public class DayView {
 		});
 		
 		JButton btnweek = new JButton("Week: " + Integer.toString(Date.getCurWeek()));
+		springLayout.putConstraint(SpringLayout.SOUTH, btnMonth, -10, SpringLayout.NORTH, btnweek);
 		btnweek.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
@@ -116,6 +116,9 @@ public class DayView {
 		frame.getContentPane().add(btnMonth);
 		
 		JButton btnYear = new JButton(Integer.toString(Date.getCurYear()));
+		springLayout.putConstraint(SpringLayout.EAST, btnweek, -26, SpringLayout.WEST, btnYear);
+		springLayout.putConstraint(SpringLayout.WEST, btnYear, -188, SpringLayout.EAST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, btnYear, -107, SpringLayout.EAST, frame.getContentPane());
 		btnYear.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
@@ -135,13 +138,11 @@ public class DayView {
 				});
 			}
 		});
-		springLayout.putConstraint(SpringLayout.NORTH, btnweek, 0, SpringLayout.NORTH, btnYear);
-		springLayout.putConstraint(SpringLayout.EAST, btnweek, -26, SpringLayout.WEST, btnYear);
-		springLayout.putConstraint(SpringLayout.EAST, btnYear, -149, SpringLayout.EAST, frame.getContentPane());
 		frame.getContentPane().add(btnYear);
 		
 		final JTextArea textArea = new JTextArea();
 		JScrollPane Pane = new JScrollPane(textArea);
+		springLayout.putConstraint(SpringLayout.SOUTH, btnweek, -6, SpringLayout.NORTH, Pane);
 		springLayout.putConstraint(SpringLayout.NORTH, Pane, 6, SpringLayout.SOUTH, btnYear);
 		textArea.setText(CalFile.CalRead(Date.setCurFileDate()));
 		springLayout.putConstraint(SpringLayout.NORTH, textArea, 85, SpringLayout.NORTH, frame.getContentPane());
@@ -152,6 +153,7 @@ public class DayView {
 		frame.getContentPane().add(Pane);
 		
 		JButton btnSave = new JButton("Save");
+		springLayout.putConstraint(SpringLayout.SOUTH, Pane, -8, SpringLayout.NORTH, btnSave);
 		springLayout.putConstraint(SpringLayout.SOUTH, textArea, -6, SpringLayout.NORTH, btnSave);
 		btnSave.addMouseListener(new MouseAdapter() {
 			@Override
@@ -168,9 +170,8 @@ public class DayView {
 		frame.getContentPane().add(btnweek);
 		
 		JButton btnPrevDay = new JButton("< Prev. Day");
+		springLayout.putConstraint(SpringLayout.WEST, btnMonth, 27, SpringLayout.EAST, btnPrevDay);
 		springLayout.putConstraint(SpringLayout.WEST, Pane, 0, SpringLayout.WEST, btnPrevDay);
-		springLayout.putConstraint(SpringLayout.SOUTH, Pane, 176, SpringLayout.SOUTH, btnPrevDay);
-		springLayout.putConstraint(SpringLayout.WEST, btnMonth, 46, SpringLayout.EAST, btnPrevDay);
 		btnPrevDay.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
@@ -226,10 +227,11 @@ public class DayView {
 		frame.getContentPane().add(btnNextDay);
 		
 		JTextPane txtpnday = new JTextPane();
+		springLayout.putConstraint(SpringLayout.NORTH, txtpnday, 0, SpringLayout.NORTH, btnMonth);
+		springLayout.putConstraint(SpringLayout.WEST, txtpnday, 22, SpringLayout.EAST, btnMonth);
+		springLayout.putConstraint(SpringLayout.EAST, txtpnday, 87, SpringLayout.EAST, btnMonth);
 		txtpnday.setEditable(false);
 		txtpnday.setText("Day: " + Integer.toString(Date.getCurDay()));
-		springLayout.putConstraint(SpringLayout.WEST, txtpnday, 34, SpringLayout.EAST, btnMonth);
-		springLayout.putConstraint(SpringLayout.SOUTH, txtpnday, 0, SpringLayout.SOUTH, btnMonth);
 		frame.getContentPane().add(txtpnday);
 	}
 }
