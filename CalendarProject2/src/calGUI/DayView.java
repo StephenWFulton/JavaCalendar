@@ -69,6 +69,7 @@ public class DayView {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		SpringLayout springLayout = new SpringLayout();
 		frame.getContentPane().setLayout(springLayout);
+		frame.setResizable(false);
 		
 		JButton btnMonth = new JButton(Date.monthName());
 		btnMonth.addMouseListener(new MouseAdapter() {
