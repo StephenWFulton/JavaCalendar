@@ -90,6 +90,7 @@ public class MonthView {
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setResizable(false);
 		
 		table = new JTable(dataModel);
 		table.setCellSelectionEnabled(true);
