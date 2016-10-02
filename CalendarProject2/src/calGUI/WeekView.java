@@ -62,6 +62,7 @@ public class WeekView {
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setResizable(false);
 		
 		JTextPane txtSunday = new JTextPane();
 		txtSunday.setEditable(false);
