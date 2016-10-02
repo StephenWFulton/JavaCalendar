@@ -61,6 +61,7 @@ public class YearView {
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setResizable(false);
 		
 		JButton btnAugust = new JButton("August");
 		btnAugust.setFont(new Font("Tahoma", Font.PLAIN, 10));
