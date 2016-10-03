@@ -482,6 +482,34 @@ public class CalFile{
         
     }
     
+    public static boolean remove(int index, int date, boolean removeAll){
+    	String event = CalRead(date);
+    	
+    }
+    
+    public static String checkConflicts(int[] startTimes, int[] endTimes, String[] events){
+    	String[] conflicts = new String[startTimes.length];
+    	int[] hours = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+    	String temp = "";
+    	
+    	for(int i = 0; i < conflicts.length; i++){
+    		conflicts[i] = "";
+    	}
+    	
+    	for(int i = 0; i < startTimes.length; i++){
+    		for( int j = startTimes[i]; j < endTimes[i]; j++){
+    			if(hours[j] != 0) conflicts[i] = " *conflict*";
+    			else hours[j]++;
+    		}
+    	}
+    	
+    	for(int i = 0; i < startTimes.length; i++){
+    		temp += startTimes[i] + "-" + endTimes[i] + " " + events[i] + conflicts[i];
+    	}
+    	
+    	return temp;
+    	
+    }
     
 }
 
