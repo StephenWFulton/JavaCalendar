@@ -160,9 +160,21 @@ public class DayView {
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				//save current content to text file
-				int curdate = Date.setCurFileDate();
+				/*int curdate = Date.setCurFileDate();
 				String event = textArea.getText();
 				CalFile.CalWrite(curdate, event);
+				*/
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							AddView window = new AddView();
+							window.frame.setVisible(true);
+							
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
 			}
 		});
 		springLayout.putConstraint(SpringLayout.WEST, btnSave, 185, SpringLayout.WEST, frame.getContentPane());
