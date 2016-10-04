@@ -237,32 +237,6 @@ public class CalFile{
             String curDate = Integer.toString(date);
             //**********************************************
             
-            
-            String nextDate = "";
-            int Enddate = 0;
-            if(date == 20161231){
-                nextDate = Integer.toString((date+8870));
-            }
-            else if(date == 20160831 || date == 20161031 || date == 20170131 || date == 20170331){
-                nextDate = Integer.toString((date+70));
-            }
-            else if(date == 20160930 || date == 20161130 || date == 20170430){
-                nextDate = Integer.toString((date+71));
-            }
-            else if(date == 20170228){
-                nextDate = Integer.toString((date+73));
-            }
-            else if(date == 20170531){
-                Enddate = 1;
-            }
-            else
-            {
-                nextDate = Integer.toString((date+1));
-            }
-            
-            //*****************************************************
-            
-            
             BufferedReader br = new BufferedReader(new FileReader("CalendarInfo.txt"));
             File file2 = new File("2CalendarInfo.txt");
             file2.createNewFile();
@@ -283,19 +257,8 @@ public class CalFile{
             //write event
             bw.write(event);
             bw.newLine();
-            //*******************************
             
-            if(Enddate == 0){
-                while(!(line.equals(nextDate))){
-                    line = br.readLine();
-                }
-            }
-            else {
-                while((line = br.readLine())!= null){}
-                Enddate = 0;
-            }
-            
-            //********************************
+            line = br.readLine();
             while(line != null){
                 bw.write(line);
                 bw.newLine();
@@ -482,10 +445,10 @@ public class CalFile{
         
     }
     
-    public static boolean remove(int index, int date, boolean removeAll){
-    	String event = CalRead(date);
+    //public static boolean remove(int index, int date, boolean removeAll){
+   	//String event = CalRead(date);
     	
-    }
+    //}
     
     public static String checkConflicts(int[] startTimes, int[] endTimes, String[] events){
     	String[] conflicts = new String[startTimes.length];
@@ -504,7 +467,7 @@ public class CalFile{
     	}
     	
     	for(int i = 0; i < startTimes.length; i++){
-    		temp += startTimes[i] + "-" + endTimes[i] + " " + events[i] + conflicts[i];
+    		temp += startTimes[i] + "-" + endTimes[i] + " " + events[i] + conflicts[i] + "\n";
     	}
     	
     	return temp;
