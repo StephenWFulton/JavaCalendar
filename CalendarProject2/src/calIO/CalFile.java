@@ -84,7 +84,7 @@ public class CalFile{
                 else{System.out.println("The File does not Exist");}
 	    }
         }
-        
+        kb.close();
     }
 
     /*
@@ -224,6 +224,65 @@ public class CalFile{
             e.printStackTrace();
             return "";
         }
+    }
+    
+    public static boolean CalWriteV2(int date, String event, String frequency, String startTime, String endTime)
+    {
+    	try{
+    		String curDate = Integer.toString(date);
+    		if(frequency.equals("s"))
+    		{
+    			CalWrite(date, startTime + " " + endTime + " " + frequency + " " + event);
+    		}
+    	}catch(Exception e)
+    	{
+    		
+    	}
+    	return true;
+    }
+    
+    
+    //Assumes the user  can't add multiday event to last day of school year (may 31)
+    public static boolean CalWriteMultiDay(int date, int endDate, String event, String frequency, String startTime, String endTime)
+    {
+    	int nextDate = date;
+    	while(nextDate <= endDate)
+    	{
+    		CalWrite(date, formatEvent(event, startTime, endTime, frequency));
+    		nextDate = getNextDay(date);
+    	}
+    	return true;
+    }
+    
+    public static String formatEvent(String event, String startTime, String endTime, String frequency)
+    {
+    	return startTime + " " + endTime + " " + frequency + " " + event;
+    }
+    
+    public static int getNextDay(int date)
+    {
+    	 int nextDate = date;
+    	 if(date == 20161231){
+             nextDate = date+8870;
+         }
+         else if(date == 20160831 || date == 20161031 || date == 20170131 || date == 20170331){
+             nextDate = date+70;
+         }
+         else if(date == 20160930 || date == 20161130 || date == 20170430){
+             nextDate = date+71;
+         }
+         else if(date == 20170228){
+             nextDate = date+73;
+         }
+         else if(date == 20170531)
+         {
+        	 nextDate = date;
+         }
+         else
+         {
+        	 nextDate = date + 1;
+         }
+    	 return nextDate;
     }
     
     /*
@@ -445,10 +504,11 @@ public class CalFile{
         
     }
     
-    //public static boolean remove(int index, int date, boolean removeAll){
-   	//String event = CalRead(date);
+    public static boolean remove(int index, int date, boolean removeAll){
+    	String event = CalRead(date);
+    	return false;
     	
-    //}
+    }
     
     public static String checkConflicts(int[] startTimes, int[] endTimes, String[] events){
     	String[] conflicts = new String[startTimes.length];
