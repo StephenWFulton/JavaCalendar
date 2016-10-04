@@ -43,26 +43,15 @@ public class AddView {
 		timePanel.setLayout(new BoxLayout(timePanel, BoxLayout.Y_AXIS));
 		timePanel.setBorder(BorderFactory.createLineBorder(Color.black));
 		
-		JPanel timeTop = new JPanel();
-		timeTop.setLayout(new BoxLayout(timeTop, BoxLayout.X_AXIS));
 		JLabel timeLabel = new JLabel("Time:");
-		timeTop.add(timeLabel);
-		JRadioButton yes = new JRadioButton("Yes");
-		JRadioButton no = new JRadioButton("No");
-		no.setSelected(true);
-		ButtonGroup timeGroup = new ButtonGroup();
-		timeGroup.add(yes);
-		timeGroup.add(no);
-		timeTop.add(yes);
-		timeTop.add(no);
-		timePanel.add(timeTop);
+		timePanel.add(timeLabel);
 		
 		JPanel timeBegin = new JPanel();
 		timeBegin.setLayout(new FlowLayout());
 		JLabel start = new JLabel("Start");
 		timeBegin.add(start);
-		String[] hours = new String[24];
-		final JComboBox startHour = new JComboBox();
+		Integer[] hours = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23};
+		final JComboBox startHour = new JComboBox(hours);
 		timeBegin.add(startHour);
 		timePanel.add(timeBegin);
 		
@@ -70,10 +59,23 @@ public class AddView {
 		timeEnd.setLayout(new FlowLayout());
 		JLabel end = new JLabel("End");
 		timeEnd.add(end);
-		final JComboBox endHour = new JComboBox();
+		Integer[] endHours = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24};
+		final JComboBox endHour = new JComboBox(endHours);
 		timeEnd.add(endHour);
 		timePanel.add(timeEnd);
 		
+		startHour.addActionListener(
+				new ActionListener(){
+						public void actionPerformed(ActionEvent e){
+								JComboBox sh = (JComboBox)e.getSource();
+								Integer i = (Integer)sh.getSelectedItem();
+								endHour.removeAllItems();
+								for(Integer j = i; j <= 24; j++)
+								{
+									endHour.addItem(j);
+								}
+						}
+				});
 		
 		JPanel typePanel = new JPanel();
 		typePanel.setLayout(new BoxLayout(typePanel, BoxLayout.Y_AXIS));
@@ -81,31 +83,85 @@ public class AddView {
 		
 		JRadioButton single = new JRadioButton("Single Day");
 		single.setSelected(true);
+		single.setAlignmentX(Component.CENTER_ALIGNMENT);
 		typePanel.add(single);
+		
 		JPanel multiPanel = new JPanel();
 		multiPanel.setLayout(new FlowLayout());
 		JRadioButton multiDay = new JRadioButton("Multi Day");
 		multiPanel.add(multiDay);
+		final JComboBox monthList = new JComboBox();
+		final JComboBox dayList = new JComboBox();
+		multiPanel.add(monthList);
+		monthList.setVisible(multiDay.isSelected());
+		multiPanel.add(dayList);
+		dayList.setVisible(multiDay.isSelected());
+		multiPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		typePanel.add(multiPanel);
-		JPanel recurringPanel = new JPanel();
+		
+		final JPanel recurringPanel = new JPanel();
 		recurringPanel.setLayout(new FlowLayout());
 		JRadioButton recurring = new JRadioButton("Recurring");
 		recurringPanel.add(recurring);
-		JRadioButton weekly = new JRadioButton("Weekly");
+		final JRadioButton weekly = new JRadioButton("Weekly");
 		recurringPanel.add(weekly);
-		JRadioButton biweekly = new JRadioButton("BiWeekly");
+		final JRadioButton biweekly = new JRadioButton("BiWeekly");
 		recurringPanel.add(biweekly);
-		JRadioButton monthly = new JRadioButton("Monthly");
+		final JRadioButton monthly = new JRadioButton("Monthly");
 		recurringPanel.add(monthly);
-		ButtonGroup recurringGroup = new ButtonGroup();
+		weekly.setVisible(recurring.isSelected());
+		biweekly.setVisible(recurring.isSelected());
+		monthly.setVisible(recurring.isSelected());
+		final ButtonGroup recurringGroup = new ButtonGroup();
 		recurringGroup.add(weekly);
 		recurringGroup.add(biweekly);
 		recurringGroup.add(monthly);
+		recurringPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		typePanel.add(recurringPanel);
 		ButtonGroup dayGroup = new ButtonGroup();
 		dayGroup.add(single);
 		dayGroup.add(multiDay);
 		dayGroup.add(recurring);
+		
+		recurring.addActionListener(
+				new ActionListener(){
+						public void actionPerformed(ActionEvent e){
+								weekly.setSelected(true);
+								weekly.setVisible(true);
+								biweekly.setVisible(true);
+								monthly.setVisible(true);
+								monthList.setVisible(false);
+								dayList.setVisible(false);
+								monthList.removeAllItems();
+								dayList.removeAllItems();
+						}
+				});
+		
+		single.addActionListener(
+				new ActionListener(){
+						public void actionPerformed(ActionEvent e){
+								recurringGroup.clearSelection();
+								weekly.setVisible(false);
+								biweekly.setVisible(false);
+								monthly.setVisible(false);
+								monthList.setVisible(false);
+								dayList.setVisible(false);
+								monthList.removeAllItems();
+								dayList.removeAllItems();
+						}
+				});
+		
+		multiDay.addActionListener(
+				new ActionListener(){
+						public void actionPerformed(ActionEvent e){
+								recurringGroup.clearSelection();
+								weekly.setVisible(false);
+								biweekly.setVisible(false);
+								monthly.setVisible(false);
+								monthList.setVisible(true);
+								dayList.setVisible(true);
+						}
+				});
 		
 		frame.add(timePanel);
 		frame.add(typePanel);
