@@ -314,8 +314,40 @@ public class CalFile{
                 bw.newLine();
             }
             //write event
-            bw.write(event);
-            bw.newLine();
+            boolean eventWritten = false;
+            line = br.readLine();
+            while(!(line.equals(getNextDay(date)))){
+            	int lineStartTime = Integer.parseInt(line.substring(0, 1));
+            	int eventStartTime = Integer.parseInt(event.substring(0, 1));
+            	if(lineStartTime < eventStartTime){
+            		bw.write(line);
+            		eventWritten = true;
+            	}
+            	else if(lineStartTime > eventStartTime){
+            		bw.write(event);
+            		bw.newLine();
+            		eventWritten = true;
+            		break;
+            	}
+            	else if(lineStartTime == eventStartTime){
+            		int lineEndTime = Integer.parseInt(line.substring(3, 4));
+            		int eventEndTime = Integer.parseInt(line.substring(3, 4));
+            		if(lineEndTime < eventEndTime){
+            			bw.write(line);
+            			eventWritten = true;
+            		}
+            		else if(lineEndTime >= eventEndTime){
+            			bw.write(event);
+            			eventWritten = true;
+            		}
+            	}
+            	bw.newLine();
+            	line = br.readLine();
+            }
+            if(!eventWritten){
+            	bw.write(event);
+            	bw.newLine();
+            }
             
             line = br.readLine();
             while(line != null){
