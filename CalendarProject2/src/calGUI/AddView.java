@@ -166,5 +166,20 @@ public class AddView {
 		frame.add(timePanel);
 		frame.add(typePanel);
 	}
+	
+	private void writeEvent(int date, int enddate, String modifier, String event){
+		if(modifier.equals("s")){
+			CalFile.CalWrite(date, event);
+		}
+		else{
+			while(date <= enddate){
+				CalFile.CalWrite(date, event);
+				/*if(modifier.equals("w")) date = Date.getNextWeek(date);//weekly event
+				else if(modifier.equals("b")) date = Date.getNextWeek(getNextWeek(date));//biweekly event
+				else if(modifier.equals("m")) date++;//multiday event
+				else date = getNextMonth(date);//monthly event*/
+			}
+		}
+	}
 
 }

@@ -153,7 +153,7 @@ public class DayView {
 		//frame.getContentPane().add(textArea);
 		frame.getContentPane().add(Pane);
 		
-		JButton btnSave = new JButton("Save");
+		JButton btnSave = new JButton("Add Event");
 		springLayout.putConstraint(SpringLayout.SOUTH, Pane, -8, SpringLayout.NORTH, btnSave);
 		springLayout.putConstraint(SpringLayout.SOUTH, textArea, -6, SpringLayout.NORTH, btnSave);
 		btnSave.addMouseListener(new MouseAdapter() {
