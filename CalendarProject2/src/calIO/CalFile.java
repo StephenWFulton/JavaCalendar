@@ -84,7 +84,7 @@ public class CalFile{
                 else{System.out.println("The File does not Exist");}
 	    }
         }
-        
+        kb.close();
     }
 
     /*
@@ -296,32 +296,6 @@ public class CalFile{
             String curDate = Integer.toString(date);
             //**********************************************
             
-            
-            String nextDate = "";
-            int Enddate = 0;
-            if(date == 20161231){
-                nextDate = Integer.toString((date+8870));
-            }
-            else if(date == 20160831 || date == 20161031 || date == 20170131 || date == 20170331){
-                nextDate = Integer.toString((date+70));
-            }
-            else if(date == 20160930 || date == 20161130 || date == 20170430){
-                nextDate = Integer.toString((date+71));
-            }
-            else if(date == 20170228){
-                nextDate = Integer.toString((date+73));
-            }
-            else if(date == 20170531){
-                Enddate = 1;
-            }
-            else
-            {
-                nextDate = Integer.toString((date+1));
-            }
-            
-            //*****************************************************
-            
-            
             BufferedReader br = new BufferedReader(new FileReader("CalendarInfo.txt"));
             File file2 = new File("2CalendarInfo.txt");
             file2.createNewFile();
@@ -340,21 +314,42 @@ public class CalFile{
                 bw.newLine();
             }
             //write event
-            bw.write(event);
-            bw.newLine();
-            //*******************************
-            
-            if(Enddate == 0){
-                while(!(line.equals(nextDate))){
-                    line = br.readLine();
-                }
+            boolean eventWritten = false;
+            line = br.readLine();
+            while(!(line.equals(getNextDay(date)))){
+            	int lineStartTime = Integer.parseInt(line.substring(0, 1));
+            	int eventStartTime = Integer.parseInt(event.substring(0, 1));
+            	if(lineStartTime < eventStartTime){
+            		bw.write(line);
+            		eventWritten = true;
+            	}
+            	else if(lineStartTime > eventStartTime){
+            		bw.write(event);
+            		bw.newLine();
+            		eventWritten = true;
+            		break;
+            	}
+            	else if(lineStartTime == eventStartTime){
+            		int lineEndTime = Integer.parseInt(line.substring(3, 4));
+            		int eventEndTime = Integer.parseInt(line.substring(3, 4));
+            		if(lineEndTime < eventEndTime){
+            			bw.write(line);
+            			eventWritten = true;
+            		}
+            		else if(lineEndTime >= eventEndTime){
+            			bw.write(event);
+            			eventWritten = true;
+            		}
+            	}
+            	bw.newLine();
+            	line = br.readLine();
             }
-            else {
-                while((line = br.readLine())!= null){}
-                Enddate = 0;
+            if(!eventWritten){
+            	bw.write(event);
+            	bw.newLine();
             }
             
-            //********************************
+            line = br.readLine();
             while(line != null){
                 bw.write(line);
                 bw.newLine();
@@ -564,7 +559,7 @@ public class CalFile{
     	}
     	
     	for(int i = 0; i < startTimes.length; i++){
-    		temp += startTimes[i] + "-" + endTimes[i] + " " + events[i] + conflicts[i];
+    		temp += startTimes[i] + "-" + endTimes[i] + " " + events[i] + conflicts[i] + "\n";
     	}
     	
     	return temp;

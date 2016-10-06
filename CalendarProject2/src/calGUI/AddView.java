@@ -13,7 +13,9 @@ import java.io.*;
 public class AddView {
 	
 	public JFrame frame;
-	private DateControl Date = new DateControl();
+	private static DateControl Date = new DateControl();
+	private final static String[] months = {"August", "September", "October", "November", "December", "January", "February", "March", "April", "May"};
+	public final static int[] days = {31,30,31,30,31,31,28,31,30,31};
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -99,6 +101,15 @@ public class AddView {
 		multiPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		typePanel.add(multiPanel);
 		
+		monthList.addActionListener(
+				new ActionListener(){
+						public void actionPerformed(ActionEvent e){
+								JComboBox bx = (JComboBox)e.getSource();
+								String x = (String)bx.getSelectedItem();
+								updateDays(dayList, x);
+						}
+				});
+		
 		final JPanel recurringPanel = new JPanel();
 		recurringPanel.setLayout(new FlowLayout());
 		JRadioButton recurring = new JRadioButton("Recurring");
@@ -160,11 +171,157 @@ public class AddView {
 								monthly.setVisible(false);
 								monthList.setVisible(true);
 								dayList.setVisible(true);
+								fillBoxes(monthList, dayList);
 						}
 				});
 		
 		frame.add(timePanel);
 		frame.add(typePanel);
+	}
+	
+	public static void fillBoxes(JComboBox monthBox, JComboBox dayBox)
+	{
+		String curMonth;
+		int start;
+		monthBox.removeAllItems();
+		if(Date.getCurMonth() == 8)
+		{
+			curMonth = "August";
+			start = 0;
+		}
+		else if(Date.getCurMonth() == 9)
+		{
+			curMonth = "September";
+			start = 1;
+		}
+		else if(Date.getCurMonth() == 10)
+		{
+			curMonth = "October";
+			start = 2;
+		}
+		else if(Date.getCurMonth() == 11)
+		{
+			curMonth = "November";
+			start = 3;
+		}
+		else if(Date.getCurMonth() == 12)
+		{
+			curMonth = "December";
+			start = 4;
+		}
+		else if(Date.getCurMonth() == 1)
+		{
+			curMonth = "January";
+			start = 5;
+		}
+		else if(Date.getCurMonth() == 2)
+		{
+			curMonth = "February";
+			start = 6;
+		}
+		else if(Date.getCurMonth() == 3)
+		{
+			curMonth = "March";
+			start = 7;
+		}
+		else if(Date.getCurMonth() == 4)
+		{
+			curMonth = "April";
+			start = 8;
+		}
+		else
+		{
+			curMonth = "May";
+			start = 9;
+		}
+		for(int i = start; i < 10; i++)
+		{
+			monthBox.addItem(months[i]);
+		}
+		
+		updateDays(dayBox, curMonth);
+	}
+	
+	public static void updateDays(JComboBox dayBox, String month)
+	{
+		Integer firstDay = 1;
+		Integer numDays = 1;
+		dayBox.removeAllItems();
+		
+		if(month.equals("September") || month.equals("November") || month.equals("April"))
+		{
+			numDays = 30;
+		}
+		else if(month.equals("February"))
+		{
+			numDays = 28;
+		}
+		else
+		{
+			numDays = 31;
+		}
+		
+		if(Date.getCurMonth() == 8 && month.equals("August"))
+		{
+			firstDay = (Integer)Date.getCurDay();
+		}
+		else if(Date.getCurMonth() == 9 && month.equals("Sepetember"))
+		{
+			firstDay = (Integer)Date.getCurDay();
+		}
+		else if(Date.getCurMonth() == 10 && month.equals("October"))
+		{
+			firstDay = (Integer)Date.getCurDay();
+		}
+		else if(Date.getCurMonth() == 11 && month.equals("November"))
+		{
+			firstDay = (Integer)Date.getCurDay();
+		}
+		else if(Date.getCurMonth() == 12 && month.equals("December"))
+		{
+			firstDay = (Integer)Date.getCurDay();
+		}
+		else if(Date.getCurMonth() == 1 && month.equals("January"))
+		{
+			firstDay = (Integer)Date.getCurDay();
+		}
+		else if(Date.getCurMonth() == 2 && month.equals("February"))
+		{
+			firstDay = (Integer)Date.getCurDay();
+		}
+		else if(Date.getCurMonth() == 3 && month.equals("March"))
+		{
+			firstDay = (Integer)Date.getCurDay();
+		}
+		else if(Date.getCurMonth() == 4 && month.equals("April"))
+		{
+			firstDay = (Integer)Date.getCurDay();
+		}
+		else if(Date.getCurMonth() == 5 && month.equals("May"))
+		{
+			firstDay = (Integer)Date.getCurDay();
+		}
+		
+		for(Integer j = firstDay; j <= numDays; j++)
+		{
+			dayBox.addItem(j);
+		}
+		
+	}
+	
+	private void writeEvent(int date, int enddate, String modifier, String event){
+		if(modifier.equals("s")){
+			CalFile.CalWrite(date, event);
+		}
+		else{
+			while(date <= enddate){
+				CalFile.CalWrite(date, event);
+				/*if(modifier.equals("w")) date = Date.getNextWeek(date);//weekly event
+				else if(modifier.equals("b")) date = Date.getNextWeek(getNextWeek(date));//biweekly event
+				else if(modifier.equals("m")) date++;//multiday event
+				else date = getNextMonth(date);//monthly event*/
+			}
+		}
 	}
 
 }

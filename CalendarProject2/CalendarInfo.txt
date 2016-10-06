@@ -1,5 +1,5 @@
 ***************Current_Open_Settings***************
-Current_date: 20160808
+Current_date: 20161119
 Current_View: year
 First_Date: 20160801
 Last_Date: 20170531
