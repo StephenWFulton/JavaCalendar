@@ -201,7 +201,12 @@ public class DateControl {
         return getCurDay();
     }
     
-    
+    public String[] nextDayOfWeek(){
+    	while(getCurMonth() != 5 && getCurDay <= 31)
+    	{
+    		
+    	}
+    }
     /*
      @pre    None
      @post   None
