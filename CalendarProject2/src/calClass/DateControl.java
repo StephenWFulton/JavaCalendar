@@ -202,11 +202,16 @@ public class DateControl {
     }
     
     public String nextDayOfWeek(){
-    	while(getCurMonth() != 5 && getCurDay() <= 31)
+    	myCal.add(Calendar.DATE, 7);
+    	if(myCal.get(Calendar.DATE) >= 31 && myCal.get(Calendar.MONTH) == 6)
     	{
-    		
+    		return Integer.toString(20160531);
     	}
-    	return "";
+    	return Integer.toString(myCal.get(Calendar.YEAR)*1000 + myCal.get(Calendar.MONTH)*100 + myCal.get(Calendar.DATE));
+    }
+    
+    public void resetDate(){
+    	myCal.set(year, month, day);
     }
     /*
      @pre    None
