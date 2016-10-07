@@ -215,7 +215,18 @@ public class AddView {
 								writeEvent(eventCurDate, eventEndDate, "n", event);
 							}
 						}
-						
+						frame.dispose();
+						EventQueue.invokeLater(new Runnable() {
+							public void run() {
+								try {
+									DayView window = new DayView();
+									window.frame.setVisible(true);
+									
+								} catch (Exception e) {
+									e.printStackTrace();
+								}
+							}
+						});
 					}
 				});
 		
@@ -361,6 +372,7 @@ public class AddView {
 		else{
 			while(date <= enddate){
 				CalFile.CalWrite(date, event);
+				date = date+1;
 				/*if(modifier.equals("w")) date = Date.getNextWeek(date);//weekly event
 				else if(modifier.equals("b")) date = Date.getNextWeek(getNextWeek(date));//biweekly event
 				else if(modifier.equals("m")) date++;//multiday event

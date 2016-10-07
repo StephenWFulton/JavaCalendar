@@ -208,6 +208,71 @@ public class CalFile{
         }
     }
     
+    public static String CalReadV2(int date)
+    {
+    	try{
+    		String curDate = Integer.toString(date);
+            String nextDate = Integer.toString(getNextDay(date));
+            int Enddate = 0;
+            if(nextDate.equals("20170531")) Enddate = 1;
+            
+            BufferedReader br = new BufferedReader(new FileReader("CalendarInfo.txt"));
+            String sb = "";
+            String line = br.readLine();
+            int[] startTimes = new int[0];
+            int[] endTimes = new int[0];
+            String[] events = new String[0];
+            
+            for(int y = 0; y < 5; y ++){
+                line = br.readLine();
+            }
+            while(!(line.equals(curDate))){
+                line = br.readLine();
+            }
+            line = br.readLine();
+            while(!(line.equals(nextDate)))
+            {
+            	int startTime = Integer.parseInt(line.substring(0, line.indexOf(" ")));
+            	line = line.substring(line.indexOf(" ")+1);
+            	startTimes = updateIntArr(startTime, startTimes);
+            	int endTime = Integer.parseInt(line.substring(0, line.indexOf(" ")));
+            	line = line.substring(line.indexOf(" ")+1);
+            	endTimes = updateIntArr(endTime, endTimes);
+            	events = updateStringArr(line, events);
+            	line = br.readLine();
+            }
+            br.close();
+            return checkConflicts(startTimes, endTimes, events);
+            
+    	}catch (IOException e)
+    	{
+    		e.printStackTrace();
+    		return "";
+    	}
+    }
+    
+    public static int[] updateIntArr(int newInt, int[] oldArr)
+    {
+    	int[] temp = new int[oldArr.length+1];
+    	for(int i = 0; i < oldArr.length; i++)
+    	{
+    		temp[i] = oldArr[i];
+    	}
+    	temp[oldArr.length] = newInt;
+    	return temp;
+    }
+    
+    public static String[] updateStringArr(String x, String[] oldArr)
+    {
+    	String[] temp = new String[oldArr.length+1];
+    	for(int i = 0; i < oldArr.length; i++)
+    	{
+    		temp[i] = oldArr[i];
+    	}
+    	temp[oldArr.length] = x;
+    	return temp;
+    }
+    
     public static int getNextDay(int date)
     {
     	 int nextDate = date;
@@ -493,7 +558,7 @@ public class CalFile{
     
     public static String checkConflicts(int[] startTimes, int[] endTimes, String[] events){
     	String[] conflicts = new String[startTimes.length];
-    	int[] hours = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+    	int[] hours = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
     	String temp = "";
     	
     	for(int i = 0; i < conflicts.length; i++){
@@ -501,7 +566,7 @@ public class CalFile{
     	}
     	
     	for(int i = 0; i < startTimes.length; i++){
-    		for( int j = startTimes[i]; j < endTimes[i]; j++){
+    		for( int j = startTimes[i]; j <= endTimes[i]; j++){
     			if(hours[j] != 0) conflicts[i] = " *conflict*";
     			else hours[j]++;
     		}
