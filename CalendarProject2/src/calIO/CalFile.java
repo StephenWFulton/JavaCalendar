@@ -253,7 +253,7 @@ public class CalFile{
             BufferedWriter bw = new BufferedWriter(new FileWriter(file2));
             
             String line = "";
-            for(int x = 0; x < 11; x ++){
+            for(int x = 0; x < 6; x ++){
                 line = br.readLine();
                 bw.write(line);
                 bw.newLine();

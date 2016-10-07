@@ -180,6 +180,7 @@ public class AddView {
 		JPanel eventPanel = new JPanel();
 		eventPanel.setLayout(new FlowLayout());
 		final JTextField eventText = new JTextField(20);
+		eventText.setText("");
 		final JButton addeventbtn = new JButton("Add Event");
 		eventPanel.add(eventText);
 		eventPanel.add(addeventbtn);
@@ -212,6 +213,7 @@ public class AddView {
 								writeEvent(eventCurDate, eventEndDate, "n", event);
 							}
 						}
+						
 					}
 				});
 		
