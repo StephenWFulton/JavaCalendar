@@ -1,5 +1,5 @@
 ***************Current_Open_Settings***************
-Current_date: 20161119
+Current_date: 20161205
 Current_View: year
 First_Date: 20160801
 Last_Date: 20170531
@@ -132,6 +132,7 @@ This is an
 20161203
 20161204
 20161205
+0 0 sdfghj
 20161206
 20161207
 20161208

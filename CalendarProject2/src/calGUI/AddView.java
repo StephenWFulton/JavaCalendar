@@ -175,8 +175,47 @@ public class AddView {
 						}
 				});
 		
+		JPanel eventPanel = new JPanel();
+		eventPanel.setLayout(new FlowLayout());
+		final JTextField eventText = new JTextField(20);
+		final JButton addeventbtn = new JButton("Add Event");
+		eventPanel.add(eventText);
+		eventPanel.add(addeventbtn);
+		
+		addeventbtn.addActionListener(
+				new ActionListener(){
+					public void actionPerformed(ActionEvent e){
+						String startTime = startHour.getSelectedItem().toString();
+						String endTime = endHour.getSelectedItem().toString();
+						String event = startTime + " " + endTime + " " + eventText.getText();
+						int eventCurDate = Date.setCurFileDate();
+						int eventEndDate = eventCurDate;
+						
+						if(single.isSelected()) writeEvent(eventCurDate, eventEndDate, "s", event);
+						else if(multiDay.isSelected()){
+							//calculate end date from monthList
+							writeEvent(eventCurDate, eventEndDate, "m", event);
+						}
+						else if(recurring.isSelected()){
+							if(weekly.isSelected()){
+								//calculate end date
+								writeEvent(eventCurDate, eventEndDate, "w", event);
+							}
+							else if(biweekly.isSelected()){
+								//calcuate end date
+								writeEvent(eventCurDate, eventEndDate, "b", event);
+							}
+							else if(monthly.isSelected()){
+								//calculate end date
+								writeEvent(eventCurDate, eventEndDate, "n", event);
+							}
+						}
+					}
+				});
+		
 		frame.add(timePanel);
 		frame.add(typePanel);
+		frame.add(eventPanel);
 	}
 	
 	public static void fillBoxes(JComboBox monthBox, JComboBox dayBox)
