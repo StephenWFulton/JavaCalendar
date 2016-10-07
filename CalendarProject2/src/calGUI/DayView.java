@@ -150,6 +150,7 @@ public class DayView {
 		springLayout.putConstraint(SpringLayout.SOUTH, btnYear, -16, SpringLayout.NORTH, textArea);
 		springLayout.putConstraint(SpringLayout.WEST, textArea, 25, SpringLayout.WEST, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.EAST, textArea, 403, SpringLayout.WEST, frame.getContentPane());
+		textArea.setEditable(false);
 		//frame.getContentPane().add(textArea);
 		frame.getContentPane().add(Pane);
 		
