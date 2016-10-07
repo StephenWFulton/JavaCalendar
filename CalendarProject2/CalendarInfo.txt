@@ -1,5 +1,5 @@
 ***************Current_Open_Settings***************
-Current_date: 20161205
+Current_date: 20161101
 Current_View: year
 First_Date: 20160801
 Last_Date: 20170531
@@ -126,6 +126,7 @@ This is an
 20161127
 20161128
 20161129
+13 13 qwertyui
 20161130
 20161201
 20161202

@@ -208,39 +208,6 @@ public class CalFile{
         }
     }
     
-   /* public static boolean CalWriteV2(int date, String event, String frequency, String startTime, String endTime)
-    {
-    	try{
-    		String curDate = Integer.toString(date);
-    		if(frequency.equals("s"))
-    		{
-    			CalWrite(date, startTime + " " + endTime + " " + frequency + " " + event);
-    		}
-    	}catch(Exception e)
-    	{
-    		
-    	}
-    	return true;
-    }*/
-    
-    
-    //Assumes the user  can't add multiday event to last day of school year (may 31)
-   /* public static boolean CalWriteMultiDay(int date, int endDate, String event, String frequency, String startTime, String endTime)
-    {
-    	int nextDate = date;
-    	while(nextDate <= endDate)
-    	{
-    		CalWrite(date, formatEvent(event, startTime, endTime, frequency));
-    		nextDate = getNextDay(date);
-    	}
-    	return true;
-    }*/
-    
-    public static String formatEvent(String event, String startTime, String endTime, String frequency)
-    {
-    	return startTime + " " + endTime + " " + frequency + " " + event;
-    }
-    
     public static int getNextDay(int date)
     {
     	 int nextDate = date;
