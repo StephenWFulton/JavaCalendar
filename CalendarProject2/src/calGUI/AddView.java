@@ -106,7 +106,9 @@ public class AddView {
 						public void actionPerformed(ActionEvent e){
 								JComboBox bx = (JComboBox)e.getSource();
 								String x = (String)bx.getSelectedItem();
-								updateDays(dayList, x);
+								if(x != null){
+									updateDays(dayList, x);
+								}
 						}
 				});
 		
@@ -134,20 +136,6 @@ public class AddView {
 		dayGroup.add(multiDay);
 		dayGroup.add(recurring);
 		
-		recurring.addActionListener(
-				new ActionListener(){
-						public void actionPerformed(ActionEvent e){
-								weekly.setSelected(true);
-								weekly.setVisible(true);
-								biweekly.setVisible(true);
-								monthly.setVisible(true);
-								monthList.setVisible(false);
-								dayList.setVisible(false);
-								monthList.removeAllItems();
-								dayList.removeAllItems();
-						}
-				});
-		
 		single.addActionListener(
 				new ActionListener(){
 						public void actionPerformed(ActionEvent e){
@@ -172,6 +160,20 @@ public class AddView {
 								monthList.setVisible(true);
 								dayList.setVisible(true);
 								fillBoxes(monthList, dayList);
+						}
+				});
+		
+		recurring.addActionListener(
+				new ActionListener(){
+						public void actionPerformed(ActionEvent e){
+								weekly.setSelected(true);
+								weekly.setVisible(true);
+								biweekly.setVisible(true);
+								monthly.setVisible(true);
+								monthList.setVisible(false);
+								dayList.setVisible(false);
+								monthList.removeAllItems();
+								dayList.removeAllItems();
 						}
 				});
 		
