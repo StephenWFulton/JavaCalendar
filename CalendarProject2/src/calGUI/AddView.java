@@ -13,7 +13,7 @@ import java.io.*;
 public class AddView {
 	
 	public JFrame frame;
-	private static DateControl Date = new DateControl();
+	private static DateControl Date;
 	private final static String[] months = {"August", "September", "October", "November", "December", "January", "February", "March", "April", "May"};
 	public final static int[] days = {31,30,31,30,31,31,28,31,30,31};
 	
@@ -36,9 +36,11 @@ public class AddView {
 	}
 	
 	private void initialize(){
+		Date = new DateControl();
 		frame = new JFrame();
 		frame.setSize(600, 400);
 		frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
+		
 		frame.setResizable(false);
 		
 		JPanel timePanel = new JPanel();
@@ -308,7 +310,7 @@ public class AddView {
 		{
 			firstDay = (Integer)Date.getCurDay();
 		}
-		else if(Date.getCurMonth() == 9 && month.equals("Sepetember"))
+		else if(Date.getCurMonth() == 9 && month.equals("September"))
 		{
 			firstDay = (Integer)Date.getCurDay();
 		}
