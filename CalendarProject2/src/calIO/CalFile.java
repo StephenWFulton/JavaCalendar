@@ -163,27 +163,9 @@ public class CalFile{
     public static String CalRead(int date){
         try{
             String curDate = Integer.toString(date);
-            String nextDate = "";
+            String nextDate = Integer.toString(getNextDay(date));
             int Enddate = 0;
-            if(date == 20161231){
-                nextDate = Integer.toString((date+8870));
-            }
-            else if(date == 20160831 || date == 20161031 || date == 20170131 || date == 20170331){
-                nextDate = Integer.toString((date+70));
-            }
-            else if(date == 20160930 || date == 20161130 || date == 20170430){
-                nextDate = Integer.toString((date+71));
-            }
-            else if(date == 20170228){
-                nextDate = Integer.toString((date+73));
-            }
-            else if(date == 20170531){
-                Enddate = 1;
-            }
-            else
-            {
-                nextDate = Integer.toString((date+1));
-            }
+            if(nextDate.equals("20170531")) Enddate = 1;
             BufferedReader br = new BufferedReader(new FileReader("CalendarInfo.txt"));
             
             String sb = "";
@@ -195,27 +177,27 @@ public class CalFile{
                 line = br.readLine();
             }
             if(Enddate == 0){
-                line = br.readLine();
-                while(!(line.equals(nextDate))){
-                    if(sb.equals("") || line.equals("")){
-                        sb = sb + line;
-                    }
-                    else{
-                        sb = sb + "\n" +line;
-                    }
-                    line = br.readLine();
-                }
+            	line = br.readLine();
+            	while(!(line.equals(nextDate))){
+            		if(sb.equals("") || line.equals("")){
+            			sb = sb + line;
+            		}
+            		else{
+            			sb = sb + "\n" +line;
+            		}
+            		line = br.readLine();
+            	}
             }
             else {
-                while((line = br.readLine())!= null){
-                    if(sb.equals("") || line.equals("")){
-                        sb = sb + line;
-                    }
-                    else{
-                        sb = sb + "\n" +line;
-                    }
-                }
-                Enddate = 0;
+            	while((line = br.readLine())!= null){
+            		if(sb.equals("") || line.equals("")){
+            			sb = sb + line;
+            		}
+            		else{
+            			sb = sb + "\n" +line;
+            		}
+            	}
+            	Enddate = 0;
             }
             br.close();
             return sb;
@@ -226,7 +208,7 @@ public class CalFile{
         }
     }
     
-    public static boolean CalWriteV2(int date, String event, String frequency, String startTime, String endTime)
+   /* public static boolean CalWriteV2(int date, String event, String frequency, String startTime, String endTime)
     {
     	try{
     		String curDate = Integer.toString(date);
@@ -239,11 +221,11 @@ public class CalFile{
     		
     	}
     	return true;
-    }
+    }*/
     
     
     //Assumes the user  can't add multiday event to last day of school year (may 31)
-    public static boolean CalWriteMultiDay(int date, int endDate, String event, String frequency, String startTime, String endTime)
+   /* public static boolean CalWriteMultiDay(int date, int endDate, String event, String frequency, String startTime, String endTime)
     {
     	int nextDate = date;
     	while(nextDate <= endDate)
@@ -252,7 +234,7 @@ public class CalFile{
     		nextDate = getNextDay(date);
     	}
     	return true;
-    }
+    }*/
     
     public static String formatEvent(String event, String startTime, String endTime, String frequency)
     {
@@ -294,6 +276,7 @@ public class CalFile{
     public static boolean CalWrite(int date, String event){
         try{
             String curDate = Integer.toString(date);
+            String nextDate = Integer.toString(getNextDay(date));
             //**********************************************
             
             BufferedReader br = new BufferedReader(new FileReader("CalendarInfo.txt"));
@@ -315,8 +298,7 @@ public class CalFile{
             }
             //write event
             boolean eventWritten = false;
-            line = br.readLine();
-            while(!(line.equals(getNextDay(date)))){
+            while(!(line.equals(nextDate))){
             	int lineStartTime = Integer.parseInt(line.substring(0, 1));
             	int eventStartTime = Integer.parseInt(event.substring(0, 1));
             	if(lineStartTime < eventStartTime){
@@ -537,7 +519,7 @@ public class CalFile{
     }
     
     public static boolean remove(int index, int date, boolean removeAll){
-    	String event = CalRead(date);
+    	//String event = CalRead(date);
     	return false;
     	
     }

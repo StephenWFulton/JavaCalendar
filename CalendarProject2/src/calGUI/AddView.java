@@ -83,14 +83,14 @@ public class AddView {
 		typePanel.setLayout(new BoxLayout(typePanel, BoxLayout.Y_AXIS));
 		typePanel.setBorder(BorderFactory.createLineBorder(Color.black));
 		
-		JRadioButton single = new JRadioButton("Single Day");
+		final JRadioButton single = new JRadioButton("Single Day");
 		single.setSelected(true);
 		single.setAlignmentX(Component.CENTER_ALIGNMENT);
 		typePanel.add(single);
 		
 		JPanel multiPanel = new JPanel();
 		multiPanel.setLayout(new FlowLayout());
-		JRadioButton multiDay = new JRadioButton("Multi Day");
+		final JRadioButton multiDay = new JRadioButton("Multi Day");
 		multiPanel.add(multiDay);
 		final JComboBox monthList = new JComboBox();
 		final JComboBox dayList = new JComboBox();
@@ -112,7 +112,7 @@ public class AddView {
 		
 		final JPanel recurringPanel = new JPanel();
 		recurringPanel.setLayout(new FlowLayout());
-		JRadioButton recurring = new JRadioButton("Recurring");
+		final JRadioButton recurring = new JRadioButton("Recurring");
 		recurringPanel.add(recurring);
 		final JRadioButton weekly = new JRadioButton("Weekly");
 		recurringPanel.add(weekly);
@@ -175,8 +175,47 @@ public class AddView {
 						}
 				});
 		
+		JPanel eventPanel = new JPanel();
+		eventPanel.setLayout(new FlowLayout());
+		final JTextField eventText = new JTextField(20);
+		final JButton addeventbtn = new JButton("Add Event");
+		eventPanel.add(eventText);
+		eventPanel.add(addeventbtn);
+		
+		addeventbtn.addActionListener(
+				new ActionListener(){
+					public void actionPerformed(ActionEvent e){
+						String startTime = startHour.getSelectedItem().toString();
+						String endTime = endHour.getSelectedItem().toString();
+						String event = startTime + " " + endTime + " " + eventText.getText();
+						int eventCurDate = Date.setCurFileDate();
+						int eventEndDate = eventCurDate;
+						
+						if(single.isSelected()) writeEvent(eventCurDate, eventEndDate, "s", event);
+						else if(multiDay.isSelected()){
+							//calculate end date from monthList
+							writeEvent(eventCurDate, eventEndDate, "m", event);
+						}
+						else if(recurring.isSelected()){
+							if(weekly.isSelected()){
+								//calculate end date
+								writeEvent(eventCurDate, eventEndDate, "w", event);
+							}
+							else if(biweekly.isSelected()){
+								//calcuate end date
+								writeEvent(eventCurDate, eventEndDate, "b", event);
+							}
+							else if(monthly.isSelected()){
+								//calculate end date
+								writeEvent(eventCurDate, eventEndDate, "n", event);
+							}
+						}
+					}
+				});
+		
 		frame.add(timePanel);
 		frame.add(typePanel);
+		frame.add(eventPanel);
 	}
 	
 	public static void fillBoxes(JComboBox monthBox, JComboBox dayBox)
