@@ -328,7 +328,7 @@ public class CalFile{
             line = br.readLine();
             //write event
             boolean eventWritten = false;
-            while(!(line.equals(nextDate)) || line != null){
+            while(!(line.equals(nextDate)) && line != null){
             	int lineStartTime = Integer.parseInt(line.substring(0, line.indexOf(" ")));
             	int eventStartTime = Integer.parseInt(event.substring(0, line.indexOf(" ")));
             	if(lineStartTime < eventStartTime){
