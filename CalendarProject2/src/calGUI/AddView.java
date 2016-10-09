@@ -258,11 +258,9 @@ public class AddView {
 								//calculate end date
 								eventEndDate = 20170531;
 								boolean daySelected = false;
-								System.out.println(Date.getCurDayOfWeek());
 								if(sunday.isSelected()){
 									while(Date.getCurDayOfWeek() != 0 && Date.getCurDate() != 20170531)
 									{
-										System.out.println("here");
 										Date.getNextDay();
 									}
 									eventCurDate = Date.getCurDate();
