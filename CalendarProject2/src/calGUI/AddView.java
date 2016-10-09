@@ -155,7 +155,6 @@ public class AddView {
 		multiDay.addActionListener(
 				new ActionListener(){
 						public void actionPerformed(ActionEvent e){
-								System.out.println(Date.getCurDate());
 								recurringGroup.clearSelection();
 								weekly.setVisible(false);
 								biweekly.setVisible(false);
@@ -437,7 +436,6 @@ public class AddView {
 		else{
 			while(date <= enddate){
 				CalFile.CalWrite(date, event);
-				System.out.println(Date.getCurDate());
 				Date.getNextDay();
 				date = Date.getCurDate();
 				/*if(modifier.equals("w")) date = Date.getNextWeek(date);//weekly event
