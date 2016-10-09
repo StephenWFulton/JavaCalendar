@@ -154,6 +154,57 @@ public class CalFile{
         return(true);
     }
     
+    public static void remove(String event, int date, boolean removeAll)
+    {
+    	try{
+    		BufferedReader br = new BufferedReader(new FileReader("CalendarInfo.txt"));
+            File file2 = new File("2CalendarInfo.txt");
+            file2.createNewFile();
+            File file = new File("CalendarInfo.txt");
+            BufferedWriter bw = new BufferedWriter(new FileWriter(file2));
+            String line = br.readLine();
+            if(removeAll)
+            {
+            	while(line != null)
+            	{
+            		if(line.equals(event)){}
+            		else
+            		{
+            			bw.write(line);
+            			bw.newLine();
+            		}
+            		line = br.readLine();
+            	}
+            }
+            else
+            {
+            	while(!line.equals(date))
+            	{
+            		bw.write(line);
+            		bw.newLine();
+            		line = br.readLine();
+            	}
+            	while(!line.equals(event))
+            	{
+            		bw.write(line);
+            		bw.newLine();
+            		line = br.readLine();
+            	}
+            	line = br.readLine();
+            	while(line != null)
+            	{
+            		bw.write(line);
+            		bw.newLine();
+            		line = br.readLine();
+            	}
+            }
+            
+    	}catch(IOException e)
+    	{
+    		e.printStackTrace();
+    	}
+    }
+    
     /*
      *	@pre The CalendarInfo.txt file exists and has proper information and dates in it.
      *	@post None.
