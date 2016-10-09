@@ -94,6 +94,9 @@ public class AddView {
 		multiPanel.setLayout(new FlowLayout());
 		final JRadioButton multiDay = new JRadioButton("Multi Day");
 		multiPanel.add(multiDay);
+		final JLabel endDay = new JLabel("End day");
+		multiPanel.add(endDay);
+		endDay.setVisible(multiDay.isSelected());
 		final JComboBox monthList = new JComboBox();
 		final JComboBox dayList = new JComboBox();
 		multiPanel.add(monthList);
@@ -149,6 +152,7 @@ public class AddView {
 								dayList.setVisible(false);
 								monthList.removeAllItems();
 								dayList.removeAllItems();
+								endDay.setVisible(false);
 						}
 				});
 		
@@ -162,6 +166,7 @@ public class AddView {
 								monthList.setVisible(true);
 								dayList.setVisible(true);
 								fillBoxes(monthList, dayList);
+								endDay.setVisible(true);
 						}
 				});
 		
@@ -176,6 +181,7 @@ public class AddView {
 								dayList.setVisible(false);
 								monthList.removeAllItems();
 								dayList.removeAllItems();
+								endDay.setVisible(false);
 						}
 				});
 		
