@@ -1,12 +1,10 @@
 ***************Current_Open_Settings***************
-Current_date: 20160808
+Current_date: 20160801
 Current_View: year
 First_Date: 20160801
 Last_Date: 20170531
 *******************Saved_Events********************
 20160801
-0 0 hi
-0 6 yo
 20160802
 20160803
 20160804

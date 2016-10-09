@@ -11,6 +11,7 @@ package calGUI;
  * retrieved also from CalFile.java
  */
 
+import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -18,10 +19,18 @@ import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import javax.swing.SpringLayout;
 import javax.swing.JTextArea;
+import javax.swing.JComboBox;
+import javax.swing.JRadioButton;
+import javax.swing.ButtonGroup;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
 import calClass.DateControl;
 import calIO.CalFile;
+
 import javax.swing.JTextPane;
 
 
@@ -65,7 +74,7 @@ public class DayView {
     */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 550, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		SpringLayout springLayout = new SpringLayout();
 		frame.getContentPane().setLayout(springLayout);
@@ -180,10 +189,38 @@ public class DayView {
 				});
 			}
 		});
-		springLayout.putConstraint(SpringLayout.WEST, btnSave, 185, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, btnSave, 10, SpringLayout.WEST, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, btnSave, -10, SpringLayout.SOUTH, frame.getContentPane());
+		final JComboBox removeList = new JComboBox();
+		removeList.setPreferredSize(new Dimension(195, 25));
+		JButton remove = new JButton("Remove Event");
+		final JRadioButton single = new JRadioButton("Single");
+		single.setSelected(true);
+		final JRadioButton all = new JRadioButton("All");
+		ButtonGroup removeGroup = new ButtonGroup();
+		removeGroup.add(single);
+		removeGroup.add(all);
+		springLayout.putConstraint(SpringLayout.WEST, removeList, 10, SpringLayout.EAST, btnSave);
+		springLayout.putConstraint(SpringLayout.SOUTH, removeList, -10, SpringLayout.SOUTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, remove, 10, SpringLayout.EAST, removeList);
+		springLayout.putConstraint(SpringLayout.SOUTH, remove, -10, SpringLayout.SOUTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, single, 10, SpringLayout.EAST, remove);
+		springLayout.putConstraint(SpringLayout.SOUTH, single, -10, SpringLayout.SOUTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, all, 5, SpringLayout.EAST, single);
+		springLayout.putConstraint(SpringLayout.SOUTH, all, -10, SpringLayout.SOUTH, frame.getContentPane());
 		frame.getContentPane().add(btnSave);
+		frame.getContentPane().add(removeList);
+		frame.getContentPane().add(remove);
+		frame.getContentPane().add(single);
+		frame.getContentPane().add(all);
 		frame.getContentPane().add(btnweek);
+		
+		remove.addActionListener(
+				new ActionListener(){
+						public void actionPerformed(ActionEvent e){
+								
+						}
+				});
 		
 		JButton btnPrevDay = new JButton("< Prev. Day");
 		springLayout.putConstraint(SpringLayout.WEST, btnMonth, 27, SpringLayout.EAST, btnPrevDay);
