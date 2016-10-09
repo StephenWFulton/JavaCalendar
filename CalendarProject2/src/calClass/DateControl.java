@@ -47,6 +47,10 @@ public class DateControl {
         return buffer;
     }
     
+    public void getNextDay(){
+    	myCal.add(Calendar.DATE, 1);
+    }
+    
     /*
      @pre    Valid ints are inputed for year, month, and day
      @post   The current date of the Calendar object is set to the new input
@@ -186,6 +190,10 @@ public class DateControl {
         return getCurDayOfWeek();
     }
     
+    public int getCurDate(){
+    	return myCal.get(Calendar.YEAR)*10000 + (myCal.get(Calendar.MONTH)+1)*100 + myCal.get(Calendar.DATE);
+    }
+    
     /*
      @pre    None
      @post   None
@@ -207,7 +215,7 @@ public class DateControl {
     	{
     		return Integer.toString(20160531);
     	}
-    	return Integer.toString(myCal.get(Calendar.YEAR)*1000 + myCal.get(Calendar.MONTH)*100 + myCal.get(Calendar.DATE));
+    	return Integer.toString(myCal.get(Calendar.YEAR)*10000 + myCal.get(Calendar.MONTH)*100 + myCal.get(Calendar.DATE));
     }
     
     public void resetDate(){

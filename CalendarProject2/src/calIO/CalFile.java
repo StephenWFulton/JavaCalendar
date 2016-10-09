@@ -229,14 +229,14 @@ public class CalFile{
             line = br.readLine();
             while(!(line.equals(nextDate)))
             {
-            	int startTime = Integer.parseInt(line.substring(0, line.indexOf(" ")));
-            	line = line.substring(line.indexOf(" ")+1);
-            	startTimes = updateIntArr(startTime, startTimes);
-            	int endTime = Integer.parseInt(line.substring(0, line.indexOf(" ")));
-            	line = line.substring(line.indexOf(" ")+1);
-            	endTimes = updateIntArr(endTime, endTimes);
-            	events = updateStringArr(line, events);
-            	line = br.readLine();
+            		int startTime = Integer.parseInt(line.substring(0, line.indexOf(" ")));
+                	line = line.substring(line.indexOf(" ")+1);
+                	startTimes = updateIntArr(startTime, startTimes);
+                	int endTime = Integer.parseInt(line.substring(0, line.indexOf(" ")));
+                	line = line.substring(line.indexOf(" ")+1);
+                	endTimes = updateIntArr(endTime, endTimes);
+                	events = updateStringArr(line, events);
+                	line = br.readLine();
             }
             br.close();
             return checkConflicts(startTimes, endTimes, events);
@@ -325,39 +325,50 @@ public class CalFile{
                 bw.write(line);
                 bw.newLine();
             }
+            line = br.readLine();
             //write event
             boolean eventWritten = false;
-            while(!(line.equals(nextDate))){
-            	int lineStartTime = Integer.parseInt(line.substring(0, 1));
-            	int eventStartTime = Integer.parseInt(event.substring(0, 1));
+            while(!(line.equals(nextDate)) || line != null){
+            	int lineStartTime = Integer.parseInt(line.substring(0, line.indexOf(" ")));
+            	int eventStartTime = Integer.parseInt(event.substring(0, line.indexOf(" ")));
             	if(lineStartTime < eventStartTime){
             		bw.write(line);
-            		eventWritten = true;
             	}
             	else if(lineStartTime > eventStartTime){
             		bw.write(event);
             		bw.newLine();
+            		bw.write(line);
             		eventWritten = true;
-            		break;
             	}
             	else if(lineStartTime == eventStartTime){
-            		int lineEndTime = Integer.parseInt(line.substring(3, 4));
-            		int eventEndTime = Integer.parseInt(line.substring(3, 4));
+            		String temp = line.substring(line.indexOf(" ")+1);
+            		String tempEvent = event.substring(event.indexOf(" ") + 1);
+            		int lineEndTime = Integer.parseInt(temp.substring(0, temp.indexOf(" ")));
+            		int eventEndTime = Integer.parseInt(tempEvent.substring(0, tempEvent.indexOf(" ")));
             		if(lineEndTime < eventEndTime){
             			bw.write(line);
-            			eventWritten = true;
             		}
             		else if(lineEndTime >= eventEndTime){
             			bw.write(event);
+            			bw.newLine();
+            			bw.write(line);
             			eventWritten = true;
             		}
             	}
             	bw.newLine();
             	line = br.readLine();
+            	if(eventWritten){break;}
             }
             if(!eventWritten){
             	bw.write(event);
             	bw.newLine();
+            	bw.write(line);
+            	bw.newLine();
+            }
+            else
+            {
+                bw.write(line);
+                bw.newLine();
             }
             
             line = br.readLine();
