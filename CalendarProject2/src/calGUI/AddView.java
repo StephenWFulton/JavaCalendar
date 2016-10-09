@@ -213,14 +213,17 @@ public class AddView {
 						else if(recurring.isSelected()){
 							if(weekly.isSelected()){
 								//calculate end date
+								eventEndDate = 20170531;
 								writeEvent(eventCurDate, eventEndDate, "w", event);
 							}
 							else if(biweekly.isSelected()){
 								//calcuate end date
+								eventEndDate = 20170531;
 								writeEvent(eventCurDate, eventEndDate, "b", event);
 							}
 							else if(monthly.isSelected()){
 								//calculate end date
+								eventEndDate = 20170531;
 								writeEvent(eventCurDate, eventEndDate, "n", event);
 							}
 						}

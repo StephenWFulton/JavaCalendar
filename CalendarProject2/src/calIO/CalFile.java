@@ -157,6 +157,7 @@ public class CalFile{
     public static void remove(String event, int date, boolean removeAll)
     {
     	try{
+    		String curDate = String.valueOf(date);
     		BufferedReader br = new BufferedReader(new FileReader("CalendarInfo.txt"));
             File file2 = new File("2CalendarInfo.txt");
             file2.createNewFile();
@@ -178,7 +179,7 @@ public class CalFile{
             }
             else
             {
-            	while(!line.equals(date))
+            	while(!line.equals(curDate))
             	{
             		bw.write(line);
             		bw.newLine();
