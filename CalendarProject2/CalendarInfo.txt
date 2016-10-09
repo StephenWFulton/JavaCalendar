@@ -1,25 +1,29 @@
 ***************Current_Open_Settings***************
-Current_date: 20160829
+Current_date: 20160801
 Current_View: year
 First_Date: 20160801
 Last_Date: 20170531
 *******************Saved_Events********************
 20160801
-0 0 asdf
+0 0 ahsdf
+0 0 sunday test
 20160802
 20160803
 20160804
 20160805
 20160806
 20160807
+0 0 sunday test pls work I'm desperate
 20160808
-0 0 
 20160809
 20160810
 20160811
 20160812
 20160813
 20160814
+0 0 sunday test pls work I'm desperate
+0 0 ahsdf
+0 0 sunday test
 20160815
 20160816
 20160817
@@ -27,6 +31,9 @@ Last_Date: 20170531
 20160819
 20160820
 20160821
+0 0 sunday test pls work I'm desperate
+0 0 ahsdf
+0 0 sunday test
 20160822
 20160823
 20160824
@@ -34,6 +41,9 @@ Last_Date: 20170531
 20160826
 20160827
 20160828
+0 0 sunday test pls work I'm desperate
+0 0 ahsdf
+0 0 sunday test
 20160829
 20160830
 20160831
@@ -41,6 +51,9 @@ Last_Date: 20170531
 20160902
 20160903
 20160904
+0 0 sunday test pls work I'm desperate
+0 0 ahsdf
+0 0 sunday test
 20160905
 20160906
 20160907
@@ -48,6 +61,9 @@ Last_Date: 20170531
 20160909
 20160910
 20160911
+0 0 sunday test pls work I'm desperate
+0 0 ahsdf
+0 0 sunday test
 20160912
 20160913
 20160914
@@ -55,6 +71,9 @@ Last_Date: 20170531
 20160916
 20160917
 20160918
+0 0 sunday test pls work I'm desperate
+0 0 ahsdf
+0 0 sunday test
 20160919
 20160920
 20160921
@@ -62,6 +81,9 @@ Last_Date: 20170531
 20160923
 20160924
 20160925
+0 0 sunday test pls work I'm desperate
+0 0 ahsdf
+0 0 sunday test
 20160926
 20160927
 20160928
@@ -69,6 +91,9 @@ Last_Date: 20170531
 20160930
 20161001
 20161002
+0 0 sunday test pls work I'm desperate
+0 0 ahsdf
+0 0 sunday test
 20161003
 20161004
 20161005
@@ -76,6 +101,9 @@ Last_Date: 20170531
 20161007
 20161008
 20161009
+0 0 sunday test pls work I'm desperate
+0 0 ahsdf
+0 0 sunday test
 20161010
 20161011
 20161012
@@ -83,6 +111,9 @@ Last_Date: 20170531
 20161014
 20161015
 20161016
+0 0 sunday test pls work I'm desperate
+0 0 ahsdf
+0 0 sunday test
 20161017
 20161018
 20161019
@@ -90,6 +121,9 @@ Last_Date: 20170531
 20161021
 20161022
 20161023
+0 0 sunday test pls work I'm desperate
+0 0 ahsdf
+0 0 sunday test
 20161024
 20161025
 20161026
@@ -97,6 +131,9 @@ Last_Date: 20170531
 20161028
 20161029
 20161030
+0 0 sunday test pls work I'm desperate
+0 0 ahsdf
+0 0 sunday test
 20161031
 20161101
 20161102
@@ -104,6 +141,9 @@ Last_Date: 20170531
 20161104
 20161105
 20161106
+0 0 sunday test pls work I'm desperate
+0 0 ahsdf
+0 0 sunday test
 20161107
 20161108
 20161109
@@ -111,6 +151,9 @@ Last_Date: 20170531
 20161111
 20161112
 20161113
+0 0 sunday test pls work I'm desperate
+0 0 ahsdf
+0 0 sunday test
 20161114
 20161115
 20161116
@@ -118,6 +161,9 @@ Last_Date: 20170531
 20161118
 20161119
 20161120
+0 0 sunday test pls work I'm desperate
+0 0 ahsdf
+0 0 sunday test
 20161121
 20161122
 20161123
@@ -125,6 +171,9 @@ Last_Date: 20170531
 20161125
 20161126
 20161127
+0 0 sunday test pls work I'm desperate
+0 0 ahsdf
+0 0 sunday test
 20161128
 20161129
 20161130
@@ -132,6 +181,9 @@ Last_Date: 20170531
 20161202
 20161203
 20161204
+0 0 sunday test pls work I'm desperate
+0 0 ahsdf
+0 0 sunday test
 20161205
 20161206
 20161207
@@ -139,6 +191,9 @@ Last_Date: 20170531
 20161209
 20161210
 20161211
+0 0 sunday test pls work I'm desperate
+0 0 ahsdf
+0 0 sunday test
 20161212
 20161213
 20161214
@@ -146,6 +201,9 @@ Last_Date: 20170531
 20161216
 20161217
 20161218
+0 0 sunday test pls work I'm desperate
+0 0 ahsdf
+0 0 sunday test
 20161219
 20161220
 20161221
@@ -153,6 +211,9 @@ Last_Date: 20170531
 20161223
 20161224
 20161225
+0 0 sunday test pls work I'm desperate
+0 0 ahsdf
+0 0 sunday test
 20161226
 20161227
 20161228
@@ -160,6 +221,9 @@ Last_Date: 20170531
 20161230
 20161231
 20170101
+0 0 sunday test pls work I'm desperate
+0 0 ahsdf
+0 0 sunday test
 20170102
 20170103
 20170104
@@ -167,6 +231,9 @@ Last_Date: 20170531
 20170106
 20170107
 20170108
+0 0 sunday test pls work I'm desperate
+0 0 ahsdf
+0 0 sunday test
 20170109
 20170110
 20170111
@@ -174,6 +241,9 @@ Last_Date: 20170531
 20170113
 20170114
 20170115
+0 0 sunday test pls work I'm desperate
+0 0 ahsdf
+0 0 sunday test
 20170116
 20170117
 20170118
@@ -181,6 +251,9 @@ Last_Date: 20170531
 20170120
 20170121
 20170122
+0 0 sunday test pls work I'm desperate
+0 0 ahsdf
+0 0 sunday test
 20170123
 20170124
 20170125
@@ -188,6 +261,9 @@ Last_Date: 20170531
 20170127
 20170128
 20170129
+0 0 sunday test pls work I'm desperate
+0 0 ahsdf
+0 0 sunday test
 20170130
 20170131
 20170201
@@ -195,6 +271,9 @@ Last_Date: 20170531
 20170203
 20170204
 20170205
+0 0 sunday test pls work I'm desperate
+0 0 ahsdf
+0 0 sunday test
 20170206
 20170207
 20170208
@@ -202,6 +281,9 @@ Last_Date: 20170531
 20170210
 20170211
 20170212
+0 0 sunday test pls work I'm desperate
+0 0 ahsdf
+0 0 sunday test
 20170213
 20170214
 20170215
@@ -209,6 +291,9 @@ Last_Date: 20170531
 20170217
 20170218
 20170219
+0 0 sunday test pls work I'm desperate
+0 0 ahsdf
+0 0 sunday test
 20170220
 20170221
 20170222
@@ -216,6 +301,9 @@ Last_Date: 20170531
 20170224
 20170225
 20170226
+0 0 sunday test pls work I'm desperate
+0 0 ahsdf
+0 0 sunday test
 20170227
 20170228
 20170301
@@ -223,6 +311,9 @@ Last_Date: 20170531
 20170303
 20170304
 20170305
+0 0 sunday test pls work I'm desperate
+0 0 ahsdf
+0 0 sunday test
 20170306
 20170307
 20170308
@@ -230,6 +321,9 @@ Last_Date: 20170531
 20170310
 20170311
 20170312
+0 0 sunday test pls work I'm desperate
+0 0 ahsdf
+0 0 sunday test
 20170313
 20170314
 20170315
@@ -237,6 +331,9 @@ Last_Date: 20170531
 20170317
 20170318
 20170319
+0 0 sunday test pls work I'm desperate
+0 0 ahsdf
+0 0 sunday test
 20170320
 20170321
 20170322
@@ -244,6 +341,9 @@ Last_Date: 20170531
 20170324
 20170325
 20170326
+0 0 sunday test pls work I'm desperate
+0 0 ahsdf
+0 0 sunday test
 20170327
 20170328
 20170329
@@ -251,6 +351,9 @@ Last_Date: 20170531
 20170331
 20170401
 20170402
+0 0 sunday test pls work I'm desperate
+0 0 ahsdf
+0 0 sunday test
 20170403
 20170404
 20170405
@@ -258,6 +361,9 @@ Last_Date: 20170531
 20170407
 20170408
 20170409
+0 0 sunday test pls work I'm desperate
+0 0 ahsdf
+0 0 sunday test
 20170410
 20170411
 20170412
@@ -265,6 +371,9 @@ Last_Date: 20170531
 20170414
 20170415
 20170416
+0 0 sunday test pls work I'm desperate
+0 0 ahsdf
+0 0 sunday test
 20170417
 20170418
 20170419
@@ -272,6 +381,9 @@ Last_Date: 20170531
 20170421
 20170422
 20170423
+0 0 sunday test pls work I'm desperate
+0 0 ahsdf
+0 0 sunday test
 20170424
 20170425
 20170426
@@ -279,6 +391,9 @@ Last_Date: 20170531
 20170428
 20170429
 20170430
+0 0 sunday test pls work I'm desperate
+0 0 ahsdf
+0 0 sunday test
 20170501
 20170502
 20170503
@@ -286,6 +401,9 @@ Last_Date: 20170531
 20170505
 20170506
 20170507
+0 0 sunday test pls work I'm desperate
+0 0 ahsdf
+0 0 sunday test
 20170508
 20170509
 20170510
@@ -293,6 +411,9 @@ Last_Date: 20170531
 20170512
 20170513
 20170514
+0 0 sunday test pls work I'm desperate
+0 0 ahsdf
+0 0 sunday test
 20170515
 20170516
 20170517
@@ -300,6 +421,9 @@ Last_Date: 20170531
 20170519
 20170520
 20170521
+0 0 sunday test pls work I'm desperate
+0 0 ahsdf
+0 0 sunday test
 20170522
 20170523
 20170524
@@ -307,6 +431,9 @@ Last_Date: 20170531
 20170526
 20170527
 20170528
+0 0 sunday test pls work I'm desperate
+0 0 ahsdf
+0 0 sunday test
 20170529
 20170530
 20170531
