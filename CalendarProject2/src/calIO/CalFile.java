@@ -211,7 +211,7 @@ public class CalFile{
     public static String getEvents(int date)
     {
     	String temp = "";
-    	String[] x = CalReadV2(date);
+    	String[] x = CalReadV2(date, false);
     	for (int i = 0; i < x.length; i++)
     	{
     		temp += x[i] + "\n";
@@ -219,7 +219,7 @@ public class CalFile{
     	return temp;
     }
     
-    public static String[] CalReadV2(int date)
+    public static String[] CalReadV2(int date, boolean box)
     {
     	try{
     		String curDate = Integer.toString(date);
@@ -267,7 +267,18 @@ public class CalFile{
                 }
             }
             br.close();
-            return checkConflicts(startTimes, endTimes, events);
+            if(!box)
+            {
+                return checkConflicts(startTimes, endTimes, events);
+            }
+            else
+            {
+            	for (int i = 0; i < events.length; i++)
+            	{
+            		events[i] = startTimes[i] + " " + endTimes[i] + " " + events[i];
+            	}
+            	return events;
+            }
             
     	}catch (IOException e)
     	{
