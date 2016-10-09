@@ -145,11 +145,12 @@ public class DayView {
 		JScrollPane Pane = new JScrollPane(textArea);
 		springLayout.putConstraint(SpringLayout.SOUTH, btnweek, -6, SpringLayout.NORTH, Pane);
 		springLayout.putConstraint(SpringLayout.NORTH, Pane, 6, SpringLayout.SOUTH, btnYear);
-		textArea.setText(CalFile.CalRead(Date.setCurFileDate()));
+		textArea.setText(CalFile.CalReadV2(Date.setCurFileDate()));
 		springLayout.putConstraint(SpringLayout.NORTH, textArea, 85, SpringLayout.NORTH, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, btnYear, -16, SpringLayout.NORTH, textArea);
 		springLayout.putConstraint(SpringLayout.WEST, textArea, 25, SpringLayout.WEST, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.EAST, textArea, 403, SpringLayout.WEST, frame.getContentPane());
+		textArea.setEditable(false);
 		//frame.getContentPane().add(textArea);
 		frame.getContentPane().add(Pane);
 		
@@ -164,6 +165,7 @@ public class DayView {
 				String event = textArea.getText();
 				CalFile.CalWrite(curdate, event);
 				*/
+				frame.dispose();
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {

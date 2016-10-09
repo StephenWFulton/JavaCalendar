@@ -13,7 +13,7 @@ import java.io.*;
 public class AddView {
 	
 	public JFrame frame;
-	private static DateControl Date = new DateControl();
+	private static DateControl Date;
 	private final static String[] months = {"August", "September", "October", "November", "December", "January", "February", "March", "April", "May"};
 	public final static int[] days = {31,30,31,30,31,31,28,31,30,31};
 	
@@ -36,9 +36,11 @@ public class AddView {
 	}
 	
 	private void initialize(){
+		Date = new DateControl();
 		frame = new JFrame();
 		frame.setSize(600, 400);
 		frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
+		
 		frame.setResizable(false);
 		
 		JPanel timePanel = new JPanel();
@@ -106,7 +108,9 @@ public class AddView {
 						public void actionPerformed(ActionEvent e){
 								JComboBox bx = (JComboBox)e.getSource();
 								String x = (String)bx.getSelectedItem();
-								updateDays(dayList, x);
+								if(x != null){
+									updateDays(dayList, x);
+								}
 						}
 				});
 		
@@ -133,20 +137,6 @@ public class AddView {
 		dayGroup.add(single);
 		dayGroup.add(multiDay);
 		dayGroup.add(recurring);
-		
-		recurring.addActionListener(
-				new ActionListener(){
-						public void actionPerformed(ActionEvent e){
-								weekly.setSelected(true);
-								weekly.setVisible(true);
-								biweekly.setVisible(true);
-								monthly.setVisible(true);
-								monthList.setVisible(false);
-								dayList.setVisible(false);
-								monthList.removeAllItems();
-								dayList.removeAllItems();
-						}
-				});
 		
 		single.addActionListener(
 				new ActionListener(){
@@ -175,9 +165,24 @@ public class AddView {
 						}
 				});
 		
+		recurring.addActionListener(
+				new ActionListener(){
+						public void actionPerformed(ActionEvent e){
+								weekly.setSelected(true);
+								weekly.setVisible(true);
+								biweekly.setVisible(true);
+								monthly.setVisible(true);
+								monthList.setVisible(false);
+								dayList.setVisible(false);
+								monthList.removeAllItems();
+								dayList.removeAllItems();
+						}
+				});
+		
 		JPanel eventPanel = new JPanel();
 		eventPanel.setLayout(new FlowLayout());
 		final JTextField eventText = new JTextField(20);
+		eventText.setText("");
 		final JButton addeventbtn = new JButton("Add Event");
 		eventPanel.add(eventText);
 		eventPanel.add(addeventbtn);
@@ -210,6 +215,18 @@ public class AddView {
 								writeEvent(eventCurDate, eventEndDate, "n", event);
 							}
 						}
+						frame.dispose();
+						EventQueue.invokeLater(new Runnable() {
+							public void run() {
+								try {
+									DayView window = new DayView();
+									window.frame.setVisible(true);
+									
+								} catch (Exception e) {
+									e.printStackTrace();
+								}
+							}
+						});
 					}
 				});
 		
@@ -304,7 +321,7 @@ public class AddView {
 		{
 			firstDay = (Integer)Date.getCurDay();
 		}
-		else if(Date.getCurMonth() == 9 && month.equals("Sepetember"))
+		else if(Date.getCurMonth() == 9 && month.equals("September"))
 		{
 			firstDay = (Integer)Date.getCurDay();
 		}
@@ -355,6 +372,7 @@ public class AddView {
 		else{
 			while(date <= enddate){
 				CalFile.CalWrite(date, event);
+				date = date+1;
 				/*if(modifier.equals("w")) date = Date.getNextWeek(date);//weekly event
 				else if(modifier.equals("b")) date = Date.getNextWeek(getNextWeek(date));//biweekly event
 				else if(modifier.equals("m")) date++;//multiday event
