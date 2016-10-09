@@ -191,7 +191,7 @@ public class DayView {
 		});
 		springLayout.putConstraint(SpringLayout.WEST, btnSave, 10, SpringLayout.WEST, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, btnSave, -10, SpringLayout.SOUTH, frame.getContentPane());
-		final JComboBox removeList = new JComboBox();
+		final JComboBox removeList = new JComboBox(CalFile.CalReadV2(Date.getCurDate(), true));
 		removeList.setPreferredSize(new Dimension(195, 25));
 		JButton remove = new JButton("Remove Event");
 		final JRadioButton single = new JRadioButton("Single");
@@ -218,7 +218,23 @@ public class DayView {
 		remove.addActionListener(
 				new ActionListener(){
 						public void actionPerformed(ActionEvent e){
-								
+								if(removeList.getSelectedItem() != null)
+								{
+									String event = (String)removeList.getSelectedItem();
+									CalFile.remove(event, Date.getCurDate(), all.isSelected());
+									frame.dispose();
+									EventQueue.invokeLater(new Runnable() {
+										public void run() {
+											try {
+												DayView window = new DayView();
+												window.frame.setVisible(true);
+											
+											} catch (Exception e) {
+												e.printStackTrace();
+											}
+										}
+									});
+								}
 						}
 				});
 		
