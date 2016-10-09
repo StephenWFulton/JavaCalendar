@@ -198,7 +198,10 @@ public class CalFile{
             		line = br.readLine();
             	}
             }
-            
+            bw.close();
+            br.close();
+            file.delete();
+            file2.renameTo(file);
     	}catch(IOException e)
     	{
     		e.printStackTrace();
