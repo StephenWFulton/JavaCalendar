@@ -185,8 +185,10 @@ public class AddView {
 		final JTextField eventText = new JTextField(20);
 		eventText.setText("");
 		final JButton addeventbtn = new JButton("Add Event");
+		final JButton cancelbtn = new JButton("Canel");
 		eventPanel.add(eventText);
 		eventPanel.add(addeventbtn);
+		eventPanel.add(cancelbtn);
 		
 		addeventbtn.addActionListener(
 				new ActionListener(){
@@ -225,6 +227,23 @@ public class AddView {
 									window.frame.setVisible(true);
 									
 								} catch (Exception e) {
+									e.printStackTrace();
+								}
+							}
+						});
+					}
+				});
+		
+		cancelbtn.addActionListener(
+				new ActionListener(){
+					public void actionPerformed(ActionEvent e){
+						frame.dispose();
+						EventQueue.invokeLater(new Runnable() {
+							public void run(){
+								try{
+									DayView window = new DayView();
+									window.frame.setVisible(true);
+								} catch (Exception e){
 									e.printStackTrace();
 								}
 							}
