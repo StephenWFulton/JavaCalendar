@@ -157,14 +157,6 @@ public class AddView {
 		dayOfWeek.add(friday);
 		final JCheckBox saturday = new JCheckBox("Saturday");
 		dayOfWeek.add(saturday);
-		final ButtonGroup dayOfWeekGroup = new ButtonGroup();
-		dayOfWeekGroup.add(sunday);
-		dayOfWeekGroup.add(monday);
-		dayOfWeekGroup.add(tuesday);
-		dayOfWeekGroup.add(wednesday);
-		dayOfWeekGroup.add(thursday);
-		dayOfWeekGroup.add(friday);
-		dayOfWeekGroup.add(saturday);
 		typePanel.add(dayOfWeek);
 		dayOfWeek.setVisible(weekly.isSelected());
 		
