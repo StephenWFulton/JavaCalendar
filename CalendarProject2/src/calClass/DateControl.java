@@ -209,13 +209,12 @@ public class DateControl {
         return getCurDay();
     }
     
-    public String nextDayOfWeek(){
+    public void nextDayOfWeek(){
     	myCal.add(Calendar.DATE, 7);
-    	if(myCal.get(Calendar.DATE) >= 31 && myCal.get(Calendar.MONTH) == 6)
-    	{
-    		return Integer.toString(20160531);
-    	}
-    	return Integer.toString(myCal.get(Calendar.YEAR)*10000 + myCal.get(Calendar.MONTH)*100 + myCal.get(Calendar.DATE));
+    }
+    
+    public void getNextMonth(){
+    	myCal.add(Calendar.MONTH, 1);
     }
     
     public void resetDate(){
