@@ -155,6 +155,7 @@ public class AddView {
 		multiDay.addActionListener(
 				new ActionListener(){
 						public void actionPerformed(ActionEvent e){
+								System.out.println(Date.getCurDate());
 								recurringGroup.clearSelection();
 								weekly.setVisible(false);
 								biweekly.setVisible(false);
@@ -198,7 +199,8 @@ public class AddView {
 						
 						if(single.isSelected()) writeEvent(eventCurDate, eventEndDate, "s", event);
 						else if(multiDay.isSelected()){
-							//calculate end date from monthList
+							eventEndDate = calculateEndDate(monthList.getSelectedItem().toString(), (int)dayList.getSelectedItem());
+							
 							writeEvent(eventCurDate, eventEndDate, "m", event);
 						}
 						else if(recurring.isSelected()){
@@ -298,6 +300,50 @@ public class AddView {
 		updateDays(dayBox, curMonth);
 	}
 	
+	public static int calculateEndDate(String month, int day)
+	{
+		if(month.equals("August"))
+		{
+			return 20160000+800+day;
+		}
+		else if(month.equals("September"))
+		{
+			return 20160000+900+day;
+		}
+		else if(month.equals("October"))
+		{
+			return 20160000+1000+day;
+		}
+		else if(month.equals("November"))
+		{
+			return 20160000+1100+day;
+		}
+		else if(month.equals("December"))
+		{
+			return 20160000+1200+day;
+		}
+		else if(month.equals("January"))
+		{
+			return 20170000+100+day;
+		}
+		else if(month.equals("February"))
+		{
+			return 20170000+200+day;
+		}
+		else if(month.equals("March"))
+		{
+			return 20170000+300+day;
+		}
+		else if(month.equals("April"))
+		{
+			return 20170000+400+day;
+		}
+		else
+		{
+			return 20170000+500+day;
+		}
+	}
+	
 	public static void updateDays(JComboBox dayBox, String month)
 	{
 		Integer firstDay = 1;
@@ -366,18 +412,23 @@ public class AddView {
 	}
 	
 	private void writeEvent(int date, int enddate, String modifier, String event){
+		System.out.println(enddate);
+		System.out.println(Date.getCurDate());
 		if(modifier.equals("s")){
 			CalFile.CalWrite(date, event);
 		}
 		else{
 			while(date <= enddate){
 				CalFile.CalWrite(date, event);
-				date = date+1;
+				System.out.println(Date.getCurDate());
+				Date.getNextDay();
+				date = Date.getCurDate();
 				/*if(modifier.equals("w")) date = Date.getNextWeek(date);//weekly event
 				else if(modifier.equals("b")) date = Date.getNextWeek(getNextWeek(date));//biweekly event
 				else if(modifier.equals("m")) date++;//multiday event
 				else date = getNextMonth(date);//monthly event*/
 			}
+			Date.resetDate();
 		}
 	}
 
