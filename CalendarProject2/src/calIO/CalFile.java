@@ -213,11 +213,8 @@ public class CalFile{
     	try{
     		String curDate = Integer.toString(date);
             String nextDate = Integer.toString(getNextDay(date));
-            int Enddate = 0;
-            if(nextDate.equals("20170531")) Enddate = 1;
             
             BufferedReader br = new BufferedReader(new FileReader("CalendarInfo.txt"));
-            String sb = "";
             String line = br.readLine();
             int[] startTimes = new int[0];
             int[] endTimes = new int[0];

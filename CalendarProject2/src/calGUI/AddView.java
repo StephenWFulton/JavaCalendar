@@ -15,7 +15,7 @@ public class AddView {
 	public JFrame frame;
 	private static DateControl Date;
 	private final static String[] months = {"August", "September", "October", "November", "December", "January", "February", "March", "April", "May"};
-	public final static int[] days = {31,30,31,30,31,31,28,31,30,31};
+	private final static int[] days = {31,30,31,30,31,31,28,31,30,31};
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -411,9 +411,7 @@ public class AddView {
 		
 	}
 	
-	private void writeEvent(int date, int enddate, String modifier, String event){
-		System.out.println(enddate);
-		System.out.println(Date.getCurDate());
+	private static void writeEvent(int date, int enddate, String modifier, String event){
 		if(modifier.equals("s")){
 			CalFile.CalWrite(date, event);
 		}
