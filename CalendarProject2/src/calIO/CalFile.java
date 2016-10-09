@@ -208,7 +208,18 @@ public class CalFile{
         }
     }
     
-    public static String CalReadV2(int date)
+    public static String getEvents(int date)
+    {
+    	String temp = "";
+    	String[] x = CalReadV2(date);
+    	for (int i = 0; i < x.length; i++)
+    	{
+    		temp += x[i] + "\n";
+    	}
+    	return temp;
+    }
+    
+    public static String[] CalReadV2(int date)
     {
     	try{
     		String curDate = Integer.toString(date);
@@ -227,8 +238,10 @@ public class CalFile{
                 line = br.readLine();
             }
             line = br.readLine();
-            while(!(line.equals(nextDate)))
+            if(curDate.equals("20170531"))
             {
+            	while(line != null)
+            	{
             		int startTime = Integer.parseInt(line.substring(0, line.indexOf(" ")));
                 	line = line.substring(line.indexOf(" ")+1);
                 	startTimes = updateIntArr(startTime, startTimes);
@@ -237,6 +250,21 @@ public class CalFile{
                 	endTimes = updateIntArr(endTime, endTimes);
                 	events = updateStringArr(line, events);
                 	line = br.readLine();
+            	}
+            }
+            else
+            {
+            	while(!(line.equals(nextDate)))
+                {
+                		int startTime = Integer.parseInt(line.substring(0, line.indexOf(" ")));
+                    	line = line.substring(line.indexOf(" ")+1);
+                    	startTimes = updateIntArr(startTime, startTimes);
+                    	int endTime = Integer.parseInt(line.substring(0, line.indexOf(" ")));
+                    	line = line.substring(line.indexOf(" ")+1);
+                    	endTimes = updateIntArr(endTime, endTimes);
+                    	events = updateStringArr(line, events);
+                    	line = br.readLine();
+                }
             }
             br.close();
             return checkConflicts(startTimes, endTimes, events);
@@ -244,7 +272,7 @@ public class CalFile{
     	}catch (IOException e)
     	{
     		e.printStackTrace();
-    		return "";
+    		return new String[0];
     	}
     }
     
@@ -328,7 +356,11 @@ public class CalFile{
             line = br.readLine();
             //write event
             boolean eventWritten = false;
-            while(!(line.equals(nextDate)) && line != null){
+            while(line != null){
+            	if(line.equals(nextDate))
+            	{
+            		break;
+            	}
             	int lineStartTime = Integer.parseInt(line.substring(0, line.indexOf(" ")));
             	int eventStartTime = Integer.parseInt(event.substring(0, line.indexOf(" ")));
             	if(lineStartTime < eventStartTime){
@@ -362,13 +394,19 @@ public class CalFile{
             if(!eventWritten){
             	bw.write(event);
             	bw.newLine();
-            	bw.write(line);
-            	bw.newLine();
+            	if(line != null)
+            	{
+                	bw.write(line);
+                	bw.newLine();
+            	}
             }
             else
             {
-                bw.write(line);
-                bw.newLine();
+            	if(line != null)
+            	{
+            		bw.write(line);
+                    bw.newLine();
+            	}
             }
             
             line = br.readLine();
@@ -564,7 +602,7 @@ public class CalFile{
     	
     }
     
-    public static String checkConflicts(int[] startTimes, int[] endTimes, String[] events){
+    public static String[] checkConflicts(int[] startTimes, int[] endTimes, String[] events){
     	String[] conflicts = new String[startTimes.length];
     	int[] hours = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
     	String temp = "";
@@ -581,10 +619,10 @@ public class CalFile{
     	}
     	
     	for(int i = 0; i < startTimes.length; i++){
-    		temp += startTimes[i] + "-" + endTimes[i] + " " + events[i] + conflicts[i] + "\n";
+    		events[i] = startTimes[i] + "-" + endTimes[i] + " " + events[i] + conflicts[i];
     	}
     	
-    	return temp;
+    	return events;
     	
     }
     

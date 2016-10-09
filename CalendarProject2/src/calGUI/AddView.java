@@ -417,12 +417,15 @@ public class AddView {
 		else{
 			while(date <= enddate){
 				CalFile.CalWrite(date, event);
-				Date.getNextDay();
+				if(modifier.equals("w")) Date.nextDayOfWeek();//weekly event
+				else if(modifier.equals("b")){
+					Date.nextDayOfWeek();//biweekly event
+					Date.nextDayOfWeek();
+				}
+				else if(modifier.equals("m")) Date.getNextDay();//multiday event
+				else Date.getNextMonth();//monthly event
+				
 				date = Date.getCurDate();
-				/*if(modifier.equals("w")) date = Date.getNextWeek(date);//weekly event
-				else if(modifier.equals("b")) date = Date.getNextWeek(getNextWeek(date));//biweekly event
-				else if(modifier.equals("m")) date++;//multiday event
-				else date = getNextMonth(date);//monthly event*/
 			}
 			Date.resetDate();
 		}

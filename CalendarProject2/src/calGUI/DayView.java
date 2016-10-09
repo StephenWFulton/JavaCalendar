@@ -146,7 +146,7 @@ public class DayView {
 		springLayout.putConstraint(SpringLayout.SOUTH, btnweek, -6, SpringLayout.NORTH, Pane);
 		springLayout.putConstraint(SpringLayout.NORTH, Pane, 6, SpringLayout.SOUTH, btnYear);
 		textArea.setText("");
-		textArea.setText(CalFile.CalReadV2(Date.setCurFileDate()));
+		textArea.setText(CalFile.getEvents(Date.setCurFileDate()));
 		springLayout.putConstraint(SpringLayout.NORTH, textArea, 85, SpringLayout.NORTH, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, btnYear, -16, SpringLayout.NORTH, textArea);
 		springLayout.putConstraint(SpringLayout.WEST, textArea, 25, SpringLayout.WEST, frame.getContentPane());
