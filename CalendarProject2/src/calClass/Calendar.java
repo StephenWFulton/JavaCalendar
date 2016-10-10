@@ -1,6 +1,6 @@
 package calClass;
 
-/*
+/**
  @file Calendar.java
  @author Ryan Niday
  @since 2016.09.17

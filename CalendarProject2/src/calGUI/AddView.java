@@ -9,7 +9,13 @@ import calClass.DateControl;
 import calIO.CalFile;
 
 import java.io.*;
-
+/**
+ * 
+ * @author Stephen Fulton, Shawn Parkes, and Rebekah Manweiler
+ * <h2>AddView Class</h2>
+ * <p>Displays options for the user when creating a new event for the current day</p>
+ *
+ */
 public class AddView {
 	
 	public JFrame frame;
@@ -228,6 +234,7 @@ public class AddView {
 						}
 				});
 		
+		//new panel for a textfield (for event description), add button, and cancel button
 		JPanel eventPanel = new JPanel();
 		eventPanel.setLayout(new FlowLayout());
 		final JTextField eventText = new JTextField(20);
@@ -354,6 +361,12 @@ public class AddView {
 					}
 				});
 		
+		/**
+		 * cancelbtn ActionListener
+		 * this action listener monitors the cancel button
+		 * @post disposes the frame and opens a new DayView window for the current day
+		 * @author Rebekah Manweiler
+		 */
 		cancelbtn.addActionListener(
 				new ActionListener(){
 					public void actionPerformed(ActionEvent e){
@@ -550,6 +563,19 @@ public class AddView {
 		
 	}
 	
+	/**
+	 * <p>This method calls the CalFile.CalWrite method for each day that contains the event. 
+	 * For example, a weekly event occurs on the current day and every 7 days after until the enddate is reached,
+	 *  and for each of those days CalWrite is called to write the event to the file for that day.</p>
+	 * @author Rebekah Manweiler
+	 * @since 10/10/2016
+	 * @param date - int: the current(starting) date
+	 * @param enddate - int: the last day included in the event time range
+	 * @param modifier - String: the type of event chosen (single, multiday, weekly, biweekly, monthly)
+	 * @param event - String: the comment/detail associated with the event
+	 * @post new event(s) are written to CalInfo.txt
+	 * @return void
+	 */
 	private static void writeEvent(int date, int enddate, String modifier, String event){
 		if(modifier.equals("s")){
 			CalFile.CalWrite(date, event);

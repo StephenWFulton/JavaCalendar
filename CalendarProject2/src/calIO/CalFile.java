@@ -11,7 +11,7 @@ import java.io.*;
 import java.util.Scanner;
 
 public class CalFile{
-    /*
+    /**
      *	@pre None.
      *	@post None.
      *	@return Allows user to run methods of this file at will.
@@ -87,7 +87,7 @@ public class CalFile{
         kb.close();
     }
 
-    /*
+    /**
      *	@pre None.
      *	@post None.
      *	@return If the file exists it returns true, if not returns false.
@@ -99,7 +99,7 @@ public class CalFile{
 	return Existance;
     }
     
-    /*
+    /**
      *	@pre None.
      *	@post A file called CalendarInfo.txt exists with proper information and formatting
      *	@return None
@@ -209,7 +209,7 @@ public class CalFile{
     	}
     }
     
-    /*
+    /**
      *	@pre The CalendarInfo.txt file exists and has proper information and dates in it.
      *	@post None.
      *	@return String that holds the event written at the date inputed.
@@ -390,11 +390,12 @@ public class CalFile{
     	 return nextDate;
     }
     
-    /*
+    /**
      *	@pre The CalendarInfo.txt file exists with proper information and formatting.
      *	@post A new event is added to the CalendarInfo file.
      *	@return Boolean that tells you if the writing was successful.
-     *
+     *  @author edited by Rebekah Manweiler
+     *  @since 10/10/2016
      */
     public static boolean CalWrite(int date, String event){
         try{
@@ -493,7 +494,7 @@ public class CalFile{
         return(true);
     }
     
-    /*
+    /**
      *	@pre The CalendarInfo.txt file exists with proper information and formatting
      *	@post None.
      *	@return Integer of the date stored as current date.
@@ -515,7 +516,7 @@ public class CalFile{
         }
     }
     
-    /*
+    /**
      *	@pre The CalendarInfo.txt file exists with proper information and formatting
      *	@post None.
      *	@return Boolean stating if the writing was completed.
@@ -559,7 +560,7 @@ public class CalFile{
         return(true);
     }
     
-    /*
+    /**
      *	@pre The CalendarInfo.txt file exists with proper information and formatting
      *	@post None.
      *	@return String containing the current view of the calendar.
@@ -582,7 +583,7 @@ public class CalFile{
         }
     }
     
-    /*
+    /**
      *	@pre The CalendarInfo.txt file exists with proper information and formatting
      *	@post None.
      *	@return Boolean stating if the writing was successful.
@@ -619,7 +620,7 @@ public class CalFile{
         }
     }
     
-    /*
+    /**
      *	@pre The CalendarInfo.txt file exists with proper information and formatting
      *	@post None.
      *	@return Integer of the date stored as the First date of the Calendar.
@@ -640,7 +641,7 @@ public class CalFile{
         }
     }
     
-    /*
+    /**
      *	@pre The CalendarInfo.txt file exists with proper information and formatting
      *	@post None.
      *	@return Integer of the date stored as the last date of the Calendar.
@@ -662,16 +663,17 @@ public class CalFile{
         
     }
     
-    public static boolean remove(int index, int date, boolean removeAll){
-    	//String event = CalRead(date);
-    	return false;
-    	
-    }
-    
+    /**
+     * @author Rebekah Manweiler and Stephen Fulton
+     * @param startTimes - int[] the array of start times for events that occur in the same day
+     * @param endTimes - int[] the array of end times for events that occur in the same day
+     * @param events - String[] the array of 'events' (example: 9 8 workout *conflict*) that occur in the same day
+     * @post attaches '*conflict*' to the end of each event that occurs during the same time period as another event in the day
+     * @return String[] - events
+     */
     public static String[] checkConflicts(int[] startTimes, int[] endTimes, String[] events){
     	String[] conflicts = new String[startTimes.length];
     	int[] hours = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-    	String temp = "";
     	
     	for(int i = 0; i < conflicts.length; i++){
     		conflicts[i] = "";

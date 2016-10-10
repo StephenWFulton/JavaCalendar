@@ -33,7 +33,6 @@ import calIO.CalFile;
 
 import javax.swing.JTextPane;
 
-
 public class DayView {
 	
 	public JFrame frame;

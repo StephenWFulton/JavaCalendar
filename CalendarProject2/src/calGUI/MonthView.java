@@ -25,7 +25,6 @@ import javax.swing.JTextPane;
 import calClass.DateControl;
 import javax.swing.JButton;
 
-
 public class MonthView {
 
 	public JFrame frame;
@@ -39,7 +38,6 @@ public class MonthView {
         		String[] WeekNames = {"Sunday", "Monday", "Tuesday", "Wed.", "Thursday", "Friday", "Saturday"};
         		return WeekNames[col];
         	}
-        	//System.out.println(Date.daysOfTheMonth().length);
         	if(row == 1 && col < Date.firstDayOfMonth()){
         		return new String();
         	}

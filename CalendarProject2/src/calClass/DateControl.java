@@ -1,6 +1,6 @@
 package calClass;
 
-/*
+/**
  @file DateControl.java
  @author Ryan Niday
  @since 2016.02.27
@@ -23,7 +23,7 @@ public class DateControl {
     
     
     
-    /*
+    /**
      @pre    CalFile has view of a txt file containing a date to start on
      @post   The calendar object is set to the start date found from CalFile
      @return None
@@ -35,7 +35,7 @@ public class DateControl {
         myCal = new GregorianCalendar(year,month-1,day);
     }
     
-    /*
+    /**
      @pre    None
      @post   None
      @return A single number representing the year, month, and day
@@ -51,7 +51,7 @@ public class DateControl {
     	myCal.add(Calendar.DATE, 1);
     }
     
-    /*
+    /**
      @pre    Valid ints are inputed for year, month, and day
      @post   The current date of the Calendar object is set to the new input
      @return None
@@ -80,7 +80,7 @@ public class DateControl {
         CalFile.setDate(setCurFileDate());
     }
     
-    /*
+    /**
      @pre    Valid int is inputed for day
      @post   The current day of the Calendar object is set to the new input
      @return None
@@ -101,7 +101,7 @@ public class DateControl {
         CalFile.setDate(setCurFileDate());
     }
     
-    /*
+    /**
      @pre    Valid int is inputed for month
      @post   The current month of the Calendar object is set to the new input
      @return None
@@ -122,7 +122,7 @@ public class DateControl {
         CalFile.setDate(setCurFileDate());
     }
     
-    /*
+    /**
      @pre    Valid int is inputed for year
      @post   The current year of the Calendar object is set to the new input
      @return None
@@ -133,7 +133,7 @@ public class DateControl {
         CalFile.setDate(setCurFileDate());
     }
     
-    /*
+    /**
      @pre    None
      @post   None
      @return Current day of the week being tracked by the calendar
@@ -142,7 +142,7 @@ public class DateControl {
         return myCal.get(Calendar.DAY_OF_WEEK) - 1;
     }
     
-    /*
+    /**
      @pre    None
      @post   None
      @return Current week of the year being tracked by the calendar
@@ -151,7 +151,7 @@ public class DateControl {
         return myCal.get(Calendar.WEEK_OF_YEAR);
     }
     
-    /*
+    /**
      @pre    None
      @post   None
      @return Current day of the month being tracked by the calendar
@@ -160,7 +160,7 @@ public class DateControl {
         return myCal.get(Calendar.DATE);
     }
     
-    /*
+    /**
      @pre    None
      @post   None
      @return Current month being tracked by the calendar
@@ -169,7 +169,7 @@ public class DateControl {
         return myCal.get(Calendar.MONTH) + 1;
     }
     
-    /*
+    /**
      @pre    None
      @post   None
      @return Current year bring tracked by the calendar
@@ -178,7 +178,7 @@ public class DateControl {
         return myCal.get(Calendar.YEAR);
     }
     
-    /*
+    /**
      @pre    None
      @post   None
      @return Day of the week for the first day of a month
@@ -194,7 +194,7 @@ public class DateControl {
     	return myCal.get(Calendar.YEAR)*10000 + (myCal.get(Calendar.MONTH)+1)*100 + myCal.get(Calendar.DATE);
     }
     
-    /*
+    /**
      @pre    None
      @post   None
      @return Number of days in the currently tracked month
@@ -220,7 +220,7 @@ public class DateControl {
     public void resetDate(){
     	myCal.set(year, month, day);
     }
-    /*
+    /**
      @pre    None
      @post   None
      @return An array of the days in the selected month
@@ -235,7 +235,7 @@ public class DateControl {
         return daysOfMonth;
     }
     
-    /*
+    /**
      @pre    None
      @post   None
      @return An array of the days in the selected week
@@ -257,7 +257,7 @@ public class DateControl {
     }
     
     //Checks if date is in the calendar and returns true or false respectively
-    /*
+    /**
      @pre    None
      @post   None
      @return False if the selected day is after May 31, or before August 1
@@ -272,7 +272,7 @@ public class DateControl {
     }
     
     //Converts the string name of a month into the number representation
-    /*
+    /**
      @pre    None
      @post   None
      @return The name corresponding to the number of the current month

@@ -18,7 +18,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import calClass.DateControl;
 
-
 public class WeekView {
 
 	public JFrame frame;
