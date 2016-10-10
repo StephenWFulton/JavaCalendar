@@ -141,6 +141,25 @@ public class AddView {
 		dayGroup.add(multiDay);
 		dayGroup.add(recurring);
 		
+		final JPanel dayOfWeek = new JPanel();
+		dayOfWeek.setLayout(new BoxLayout(dayOfWeek, BoxLayout.X_AXIS));
+		final JCheckBox sunday = new JCheckBox("Sunday");
+		dayOfWeek.add(sunday);
+		final JCheckBox monday = new JCheckBox("Monday");
+		dayOfWeek.add(monday);
+		final JCheckBox tuesday = new JCheckBox("Tuesday");
+		dayOfWeek.add(tuesday);
+		final JCheckBox wednesday = new JCheckBox("Wednesday");
+		dayOfWeek.add(wednesday);
+		final JCheckBox thursday = new JCheckBox("Thursday");
+		dayOfWeek.add(thursday);
+		final JCheckBox friday = new JCheckBox("Friday");
+		dayOfWeek.add(friday);
+		final JCheckBox saturday = new JCheckBox("Saturday");
+		dayOfWeek.add(saturday);
+		typePanel.add(dayOfWeek);
+		dayOfWeek.setVisible(weekly.isSelected());
+		
 		single.addActionListener(
 				new ActionListener(){
 						public void actionPerformed(ActionEvent e){
@@ -153,6 +172,7 @@ public class AddView {
 								monthList.removeAllItems();
 								dayList.removeAllItems();
 								endDay.setVisible(false);
+								dayOfWeek.setVisible(false);
 						}
 				});
 		
@@ -167,6 +187,7 @@ public class AddView {
 								dayList.setVisible(true);
 								fillBoxes(monthList, dayList);
 								endDay.setVisible(true);
+								dayOfWeek.setVisible(false);
 						}
 				});
 		
@@ -182,6 +203,28 @@ public class AddView {
 								monthList.removeAllItems();
 								dayList.removeAllItems();
 								endDay.setVisible(false);
+								dayOfWeek.setVisible(weekly.isSelected());
+						}
+				});
+		
+		weekly.addActionListener(
+				new ActionListener(){
+						public void actionPerformed(ActionEvent e){
+								dayOfWeek.setVisible(true);
+						}
+				});
+		
+		biweekly.addActionListener(
+				new ActionListener(){
+						public void actionPerformed(ActionEvent e){
+								dayOfWeek.setVisible(false);
+						}
+				});
+		
+		monthly.addActionListener(
+				new ActionListener(){
+						public void actionPerformed(ActionEvent e){
+								dayOfWeek.setVisible(false);
 						}
 				});
 		
@@ -213,14 +256,86 @@ public class AddView {
 						else if(recurring.isSelected()){
 							if(weekly.isSelected()){
 								//calculate end date
-								writeEvent(eventCurDate, eventEndDate, "w", event);
+								eventEndDate = 20170531;
+								boolean daySelected = false;
+								if(sunday.isSelected()){
+									while(Date.getCurDayOfWeek() != 0 && Date.getCurDate() != 20170531)
+									{
+										Date.getNextDay();
+									}
+									eventCurDate = Date.getCurDate();
+									writeEvent(eventCurDate, eventEndDate, "w", event);
+									daySelected = true;
+								}
+								if(monday.isSelected()){
+									while(Date.getCurDayOfWeek() != 1 && Date.getCurDate() != 20170531)
+									{
+										Date.getNextDay();
+									}
+									eventCurDate = Date.getCurDate();
+									writeEvent(eventCurDate, eventEndDate, "w", event);
+									daySelected = true;
+								}
+								if(tuesday.isSelected()){
+									while(Date.getCurDayOfWeek() != 2 && Date.getCurDate() != 20170531)
+									{
+										Date.getNextDay();
+									}
+									eventCurDate = Date.getCurDate();
+									writeEvent(eventCurDate, eventEndDate, "w", event);
+									daySelected = true;
+								}
+								if(wednesday.isSelected()){
+									while(Date.getCurDayOfWeek() != 3 && Date.getCurDate() != 20170531)
+									{
+										Date.getNextDay();
+									}
+									eventCurDate = Date.getCurDate();
+									writeEvent(eventCurDate, eventEndDate, "w", event);
+									daySelected = true;
+								}
+								if(thursday.isSelected()){
+									while(Date.getCurDayOfWeek() != 4 && Date.getCurDate() != 20170531)
+									{
+										Date.getNextDay();
+									}
+									eventCurDate = Date.getCurDate();
+									writeEvent(eventCurDate, eventEndDate, "w", event);
+									daySelected = true;
+								}
+								if(friday.isSelected()){
+									while(Date.getCurDayOfWeek() != 5 && Date.getCurDate() != 20170531)
+									{
+										Date.getNextDay();
+									}
+									eventCurDate = Date.getCurDate();
+									writeEvent(eventCurDate, eventEndDate, "w", event);
+									daySelected = true;
+								}
+								if(saturday.isSelected()){
+									while(Date.getCurDayOfWeek() != 6 && Date.getCurDate() != 20170531)
+									{
+										Date.getNextDay();
+									}
+									eventCurDate = Date.getCurDate();
+									writeEvent(eventCurDate, eventEndDate, "w", event);
+									daySelected = true;
+								}
+								
+								if(!daySelected)
+								{
+									writeEvent(eventCurDate, eventEndDate, "w", event);
+								}
+								
 							}
 							else if(biweekly.isSelected()){
 								//calcuate end date
+								eventEndDate = 20170531;
 								writeEvent(eventCurDate, eventEndDate, "b", event);
 							}
 							else if(monthly.isSelected()){
 								//calculate end date
+								eventEndDate = 20170531;
 								writeEvent(eventCurDate, eventEndDate, "n", event);
 							}
 						}
