@@ -154,6 +154,16 @@ public class CalFile{
         return(true);
     }
     
+    /**
+     * <p>Removes the given event at the given date, or removes all instances of the given event from the Calendar</p>
+     * @param event - String: Event in the form of "starttime endtime event"
+     * @param date - Int: Date at which the event will be removed (presuming single is selected)
+     * @param removeAll - Boolean: True if all events removed, false if single event removed
+     * @author Stephen Fulton
+     * @pre event is valid, date is valid, bool is valid
+     * @post None
+     * @return None
+     */
     public static void remove(String event, int date, boolean removeAll)
     {
     	try{
@@ -263,6 +273,14 @@ public class CalFile{
         }
     }
     
+    /**
+     * <p>Gets the events from the given date and returns them as one string.
+     * @param date - Int: Indicates the date from which events are pulled.
+     * @return String of all events on given date
+     * @author Stephen Fulton
+     * @pre Date is valid
+     * @post None
+     */
     public static String getEvents(int date)
     {
     	String temp = "";
@@ -274,6 +292,15 @@ public class CalFile{
     	return temp;
     }
     
+    /**
+     * <p> Reads in all events on a given date from file, returns them as an array of strings
+     * @param date: Int: Date at which the events will be read in
+     * @param box - Boolean: Indicates whether the function should return just the events themselves or an array in which the events are marked if they conflict.
+     * @return Array of Events (box - true: just the events, false: Events are marked if conflicting)
+     * @author: Stephen Fulton
+     * @pre: date is valid, box is valid
+     * @post: None
+     */
     public static String[] CalReadV2(int date, boolean box)
     {
     	try{
@@ -342,6 +369,15 @@ public class CalFile{
     	}
     }
     
+    /**
+     * <p>Updates an array of integers by adding in newInt, mimicing dynamic arrays
+     * @param newInt - Int: New int to be added to array
+     * @param oldArr - Int[]: Array for newInt to be added to
+     * @return Array of Integers with newInt added to it
+     * @author Stephen Fulton
+     * @pre None
+     * @post None
+     */
     public static int[] updateIntArr(int newInt, int[] oldArr)
     {
     	int[] temp = new int[oldArr.length+1];
@@ -353,6 +389,15 @@ public class CalFile{
     	return temp;
     }
     
+    /**
+     * <p>Updates an array of strings by adding in x, mimicing dynamic arrays
+     * @param x - String: new String to be added to array
+     * @param oldArr - String[]: array of strings which x will be added to
+     * @author Stephen Fulton
+     * @pre None
+     * @post None
+     * @return Array of Strings with x added to it
+     */
     public static String[] updateStringArr(String x, String[] oldArr)
     {
     	String[] temp = new String[oldArr.length+1];
@@ -364,6 +409,15 @@ public class CalFile{
     	return temp;
     }
     
+    /**
+     * <p>Returns the next day after the given date</p>
+     * @param date Int: Date which the next day will be calculated from (in the form YYYYMMDD)
+     * @return int that is the next day after the given date (in the form YYYYMMDD)
+     * @author Stephen Fulton
+     * @pre Date is valid
+     * @post none
+     * 
+     */
     public static int getNextDay(int date)
     {
     	 int nextDate = date;

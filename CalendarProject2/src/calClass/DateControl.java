@@ -47,6 +47,11 @@ public class DateControl {
         return buffer;
     }
     
+    /**
+     @pre	None
+     @post	The Calendar is set to 1 day past laster than its current setting
+     @return None
+     */
     public void getNextDay(){
     	myCal.add(Calendar.DATE, 1);
     }
@@ -190,6 +195,13 @@ public class DateControl {
         return getCurDayOfWeek();
     }
     
+    /**
+     * <p>Returns the current date in int form (i.e. 20160801)
+     * @author Stephen Fulton
+     * @pre None
+     * @post None
+     * @return Current date in integer form
+     */
     public int getCurDate(){
     	return myCal.get(Calendar.YEAR)*10000 + (myCal.get(Calendar.MONTH)+1)*100 + myCal.get(Calendar.DATE);
     }
@@ -209,14 +221,35 @@ public class DateControl {
         return getCurDay();
     }
     
+    /**
+     * <p>sets the next day of week (i.e. If its Monday, updates date to next monday)
+     * @author Stephen Fulton
+     * @pre	None
+     * @post None
+     * @return None
+     */
     public void nextDayOfWeek(){
     	myCal.add(Calendar.DATE, 7);
     }
     
+    /**
+     * <p>sets the next day of week (i.e. if its October 1, updates date to November 1)
+     * @author Stephen Fulton
+     * @pre	None
+     * @post None
+     * @return None
+     */
     public void getNextMonth(){
     	myCal.add(Calendar.MONTH, 1);
     }
     
+    /**
+     * <p>Resets the date to the set current day, month, and year values
+     * @author Stephen Fulton
+     * @pre	None
+     * @post None
+     * @return None
+     */
     public void resetDate(){
     	myCal.set(year, month, day);
     }

@@ -37,7 +37,7 @@ public class AddView {
 		});
 	}
 	
-	/*
+	/**
 	<p> Constructor for AddView </p>
 	@author Shawn Parkes
 	@post a new AddView frame is created
@@ -46,7 +46,7 @@ public class AddView {
 		initialize();
 	}
 	
-	/*
+	/**
 	<p> initializes the AddView frame </p>
 	@author Shawn Parkes, Stephen Fulton, Rebekah Manweiler
 	@post the AddView frame is initialized with its default values
@@ -84,7 +84,7 @@ public class AddView {
 		timeEnd.add(endHour);
 		timePanel.add(timeEnd);
 		
-		/*
+		/**
 		startHour actionListener
 		this actionListener monitors the startHour combobox
 		@post will update the endHour combobox with every hour after what is selected in StartHour
@@ -128,7 +128,7 @@ public class AddView {
 		multiPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		typePanel.add(multiPanel);
 		
-		/*
+		/**
 		monthList actionListener
 		this actionListener monitors the monthList combobox
 		@post updates the dayList comboBox with the available days
@@ -188,7 +188,7 @@ public class AddView {
 		typePanel.add(dayOfWeek);
 		dayOfWeek.setVisible(weekly.isSelected());
 		
-		/*
+		/**
 		single actionListener
 		this actionListener monitors the single radio button
 		@post updates what is available in the panel
@@ -210,7 +210,7 @@ public class AddView {
 						}
 				});
 		
-		/*
+		/**
 		multiDay actionListener
 		this actionListener monitors the multiDay radio button
 		@post updates what is available in the panel
@@ -231,7 +231,7 @@ public class AddView {
 						}
 				});
 		
-		/*
+		/**
 		recurring actionListener
 		this actionListener monitors the recurring radio button
 		@post updates what is available in the panel
@@ -253,7 +253,7 @@ public class AddView {
 						}
 				});
 		
-		/*
+		/**
 		weekly actionListener
 		this actionListener monitors the weekly radio button
 		@post updates what is available in the panel
@@ -266,7 +266,7 @@ public class AddView {
 						}
 				});
 		
-		/*
+		/**
 		biweekly actionListener
 		this actionListener monitors the biweekly radio button
 		@post updates what is available in the panel
@@ -279,7 +279,7 @@ public class AddView {
 						}
 				});
 		
-		/*
+		/**
 		monthly actionListener
 		this actionListener monitors the monthly radio button
 		@post updates what is available in the panel
@@ -447,7 +447,7 @@ public class AddView {
 		frame.add(eventPanel);
 	}
 	
-	/*
+	/**
 	<p> This method will first update the monthBox with available months for the multi day selection
 	and then call the updateDays method to update the dayBox </p>
 	@author Shawn Parkes
@@ -518,6 +518,14 @@ public class AddView {
 		updateDays(dayBox, curMonth);
 	}
 	
+	/**
+	<p> This method will calculate the end date based on the user's selected options from the month and day combo boxes.</p>
+	@author Stephen Fulton
+	@param month - String: Name of the selected month
+	@param day - Int: Index of date within month
+	@post None
+	@return new calculated end date
+	*/
 	public static int calculateEndDate(String month, int day)
 	{
 		if(month.equals("August"))
@@ -562,7 +570,7 @@ public class AddView {
 		}
 	}
 	
-	/*
+	/**
 	<p> This method will update the dayBox combo box based on the currently selected month</p>
 	@author Shawn Parkes
 	@param dayBox - JComboBox: the dayList combo box that will be updated
