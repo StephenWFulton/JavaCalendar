@@ -37,10 +37,20 @@ public class AddView {
 		});
 	}
 	
+	/*
+	<p> Constructor for AddView </p>
+	@author Shawn Parkes
+	@post a new AddView frame is created
+	*/
 	public AddView(){
 		initialize();
 	}
 	
+	/*
+	<p> initializes the AddView frame </p>
+	@author Shawn Parkes
+	@post the AddView frame is initialized with its default values
+	*/
 	private void initialize(){
 		Date = new DateControl();
 		frame = new JFrame();
@@ -74,6 +84,12 @@ public class AddView {
 		timeEnd.add(endHour);
 		timePanel.add(timeEnd);
 		
+		/*
+		startHour actionListener
+		this actionListener monitors the startHour combobox
+		@post will update the endHour combobox with every hour after what is selected in StartHour
+		@author Shawn Parkes
+		*/
 		startHour.addActionListener(
 				new ActionListener(){
 						public void actionPerformed(ActionEvent e){
@@ -112,6 +128,12 @@ public class AddView {
 		multiPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		typePanel.add(multiPanel);
 		
+		/*
+		monthList actionListener
+		this actionListener monitors the monthList combobox
+		@post updates the dayList comboBox with the available days
+		@author Shawn Parkes
+		*/
 		monthList.addActionListener(
 				new ActionListener(){
 						public void actionPerformed(ActionEvent e){
@@ -166,6 +188,12 @@ public class AddView {
 		typePanel.add(dayOfWeek);
 		dayOfWeek.setVisible(weekly.isSelected());
 		
+		/*
+		single actionListener
+		this actionListener monitors the single radio button
+		@post updates what is available in the panel
+		@author Shawn Parkes
+		*/
 		single.addActionListener(
 				new ActionListener(){
 						public void actionPerformed(ActionEvent e){
@@ -182,6 +210,12 @@ public class AddView {
 						}
 				});
 		
+		/*
+		multiDay actionListener
+		this actionListener monitors the multiDay radio button
+		@post updates what is available in the panel
+		@author Shawn Parkes
+		*/
 		multiDay.addActionListener(
 				new ActionListener(){
 						public void actionPerformed(ActionEvent e){
@@ -197,6 +231,12 @@ public class AddView {
 						}
 				});
 		
+		/*
+		recurring actionListener
+		this actionListener monitors the recurring radio button
+		@post updates what is available in the panel
+		@author Shawn Parkes
+		*/
 		recurring.addActionListener(
 				new ActionListener(){
 						public void actionPerformed(ActionEvent e){
@@ -213,6 +253,12 @@ public class AddView {
 						}
 				});
 		
+		/*
+		weekly actionListener
+		this actionListener monitors the weekly radio button
+		@post updates what is available in the panel
+		@author Shawn Parkes
+		*/
 		weekly.addActionListener(
 				new ActionListener(){
 						public void actionPerformed(ActionEvent e){
@@ -220,6 +266,12 @@ public class AddView {
 						}
 				});
 		
+		/*
+		biweekly actionListener
+		this actionListener monitors the biweekly radio button
+		@post updates what is available in the panel
+		@author Shawn Parkes
+		*/
 		biweekly.addActionListener(
 				new ActionListener(){
 						public void actionPerformed(ActionEvent e){
@@ -227,6 +279,12 @@ public class AddView {
 						}
 				});
 		
+		/*
+		monthly actionListener
+		this actionListener monitors the monthly radio button
+		@post updates what is available in the panel
+		@author Shawn Parkes
+		*/
 		monthly.addActionListener(
 				new ActionListener(){
 						public void actionPerformed(ActionEvent e){
