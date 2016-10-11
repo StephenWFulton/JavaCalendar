@@ -48,7 +48,7 @@ public class AddView {
 	
 	/*
 	<p> initializes the AddView frame </p>
-	@author Shawn Parkes
+	@author Shawn Parkes, Stephen Fulton, Rebekah Manweiler
 	@post the AddView frame is initialized with its default values
 	*/
 	private void initialize(){
@@ -447,6 +447,14 @@ public class AddView {
 		frame.add(eventPanel);
 	}
 	
+	/*
+	<p> This method will first update the monthBox with available months for the multi day selection
+	and then call the updateDays method to update the dayBox </p>
+	@author Shawn Parkes
+	@param monthBox - JComboBox: the monthList combo box that will be updated
+	@param dayBox - JComboBox: the dayList combo box that will be updated
+	@post the monthList and the dayList combo boxes are updated
+	*/
 	public static void fillBoxes(JComboBox monthBox, JComboBox dayBox)
 	{
 		String curMonth;
@@ -554,6 +562,13 @@ public class AddView {
 		}
 	}
 	
+	/*
+	<p> This method will update the dayBox combo box based on the currently selected month</p>
+	@author Shawn Parkes
+	@param dayBox - JComboBox: the dayList combo box that will be updated
+	@param month - String: the month that will determine how many days are in the dayBox
+	@post the dayList combo box is updated
+	*/
 	public static void updateDays(JComboBox dayBox, String month)
 	{
 		Integer firstDay = 1;
